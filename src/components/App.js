@@ -5,7 +5,8 @@ import GoogleBtn from "./GoogleBtn";
 import {connect} from 'react-redux';
 import {incrementCountAction} from './actions';
 
-//() SET UP REDUX AND REDUX THUNK
+//(DONE) SET UP REDUX AND REDUX THUNK
+//() BUILD GOOGLE LOGIN BUTTON
 //() CREATE LEFT NAV
 //() LOGIN FOR FAVORITES PRICE WATCHING
 //() TOP HIGHS AND LOWS FROM PAST 24 HOURS / PAST HOUR / PAST WEEK / PAST YEAR
@@ -22,6 +23,7 @@ const App = ({incrementMyCount, myCount}) => {
             <button onClick={incrementMyCount}>
                 {myCount}
             </button>
+            <GoogleBtn />
         </div>
     );
 }

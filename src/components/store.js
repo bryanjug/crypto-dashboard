@@ -1,9 +1,11 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
 import {INCREMENT_COUNT} from './actions';
+import {LOG_IN} from './actions';
 
 const initialState = {
     count: 0,
+    isLoggedIn: false,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -14,6 +16,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 count: action.payload,
+            }
+        case LOG_IN:
+            return {
+                ...state,
+                isLoggedIn: action.payload,
             }
     }
 };
