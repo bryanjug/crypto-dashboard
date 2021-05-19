@@ -13,32 +13,21 @@ export const incrementCountAction = () => async (dispatch, getState) => {
 	});
 };
 
-export const logInAction = () => (dispatch, getState) => {
-	const isLoggedIn = true;
+export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
 		type: LOG_IN,
 		payload: isLoggedIn,
 	});
 };
 
-export const loadingAction = () => (dispatch, getState) => {
-	const isLoading = true;
+export const loadingAction = (isLoading) => (dispatch, getState) => {
 	dispatch({
 		type: LOADING,
 		payload: isLoading,
 	});
 };
 
-export const notLoadingAction = () => (dispatch, getState) => {
-	const isLoading = false;
-	dispatch({
-		type: LOADING,
-		payload: isLoading,
-	});
-};
-
-export const notLoadingStyleAction = () => (dispatch, getState) => {
-    const loadingStyle = "loadingContainer displayNone";
+export const loadingStyleAction = (loadingStyle) => (dispatch, getState) => {
     dispatch({
         type: LOADING_STYLE,
         payload: loadingStyle,

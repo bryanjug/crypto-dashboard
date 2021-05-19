@@ -31,7 +31,7 @@ class GoogleBtn extends Component {
       }));
     //   this.props.setUserId(response.getId()); //gets unique Google userId
     //   this.props.setUserName(response.profileObj.givenName); //gets unique name
-      this.props.logInAction();
+      this.props.logInAction(true);
       this.props.usernameAction(response.profileObj.givenName);
     }
   }

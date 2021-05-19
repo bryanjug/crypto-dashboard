@@ -3,7 +3,11 @@ import "./App.css";
 import CoinGeko from "coingecko-api";
 import GoogleBtn from "./GoogleBtn";
 import { connect } from "react-redux";
-import { incrementCountAction, loadingAction, notLoadingAction, notLoadingStyleAction } from "./actions";
+import {
+	incrementCountAction,
+	loadingAction,
+	loadingStyleAction,
+} from "./actions";
 import { Link } from "react-router-dom";
 
 //(DONE) SET UP REDUX AND REDUX THUNK
@@ -12,8 +16,8 @@ import { Link } from "react-router-dom";
 //(DONE) STYLE GOOGLE LOGIN BUTTON
 //(DONE) CREATE LOADER STATE
 //(DONE) SHOW USER'S NAME ONCE LOGGED
-//() REMOVE REDUCERS AND PASS IN VARIABLES
-//() CHANGE CLASSNAME FOR DASHBOARD AND NAV ONCE SCREEN SIZE CHANGES USING STATE
+//(DONE) REMOVE EXTRA REDUCERS AND PASS IN VARIABLES
+//() CHANGE CLASSNAME FOR DASHBOARD AND NAV + BUTTON ONCE SCREEN SIZE CHANGES USING STATE
 //() CREATE RESPONSIVE LEFT NAV
 //() LOGIN FOR FAVORITES PRICE WATCHING
 //() TOP HIGHS AND LOWS FROM PAST 24 HOURS / PAST HOUR / PAST WEEK / PAST YEAR
@@ -24,19 +28,29 @@ import { Link } from "react-router-dom";
 //() SEARCH BAR FOR PRICE
 //() NEWS
 
-const App = ({ incrementMyCount, myCount, loadingAction, isLoading, notLoadingAction, notLoadingStyleAction, loadingStyle }) => {
-    const nav = useRef(null);
+const App = ({
+	incrementMyCount,
+	myCount,
+	loadingAction,
+	isLoading,
+	loadingStyleAction,
+	loadingStyle,
+}) => {
+	const nav = useRef(null);
 
 	useEffect(() => {
-        nav.current.style.left = "-60%";
-        notLoadingAction();
-    }, []);
-    
-    useEffect(() => {
-        if (isLoading === false) {
-            notLoadingStyleAction();
-        }
-    }, [isLoading])
+		nav.current.style.left = "-60%";
+		{
+			loadingAction(false);
+		}
+	}, []);
+
+	useEffect(() => {
+		if (isLoading === false) {
+			const style = "loadingContainer displayNone";
+			loadingStyleAction(style);
+		}
+	}, [isLoading]);
 
 	function showNav() {
 		nav.current.style.left = "0";
@@ -105,19 +119,16 @@ const App = ({ incrementMyCount, myCount, loadingAction, isLoading, notLoadingAc
 
 const mapStateToProps = (state) => {
 	return {
-        myCount: state.count,
-        isLoading: state.isLoading,
-        loadingStyle: state.loadingStyle
+		myCount: state.count,
+		isLoading: state.isLoading,
+		loadingStyle: state.loadingStyle,
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        incrementMyCount: () => dispatch(incrementCountAction()),
-        loadingAction: () => dispatch(loadingAction()),
-        notLoadingAction: () => dispatch(notLoadingAction()),
-        notLoadingStyleAction: () => dispatch(notLoadingStyleAction())
-    }
+const mapDispatchToProps = {
+	incrementMyCount: incrementCountAction,
+	loadingAction: loadingAction,
+	loadingStyleAction: loadingStyleAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
