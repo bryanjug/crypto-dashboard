@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import {connect} from 'react-redux';
-import {logInAction} from './actions';
+import {logInAction, usernameAction} from './actions';
 const CLIENT_ID = `${process.env.REACT_APP_CLIENT_ID}`;
 
 class GoogleBtn extends Component {
@@ -27,11 +27,12 @@ class GoogleBtn extends Component {
         isLogined: true,
         accessToken: response.accessToken,
         styleLogin: "googleBtn displayNone",
-        styleLogout: "googleBtn displayInline nav mx-auto",
+        styleLogout: "googleBtn displayInline",
       }));
     //   this.props.setUserId(response.getId()); //gets unique Google userId
     //   this.props.setUserName(response.profileObj.givenName); //gets unique name
       this.props.logInAction();
+      this.props.usernameAction(response.profileObj.givenName);
     }
   }
 
@@ -39,7 +40,7 @@ class GoogleBtn extends Component {
     this.setState(state => ({
       isLogined: false,
       accessToken: '',
-      styleLogin: "googleBtn displayInline nav mx-auto",
+      styleLogin: "googleBtn displayInline",
       styleLogout: "googleBtn displayNone",
     }));
     // this.props.setUserId(null);
@@ -71,8 +72,7 @@ class GoogleBtn extends Component {
           isSignedIn={true}
           icon={false}
       >
-        <i class="bi bi-google navIcon googleIcon"></i>
-        <span className="googleText navText">Logout</span>
+        <span className="googleText navText">Welcome, {this.props.username}.</span>
       </GoogleLogout>
       <GoogleLogin
           clientId={ CLIENT_ID }
@@ -84,7 +84,7 @@ class GoogleBtn extends Component {
           className={this.state.styleLogin}
           icon={false}
       >
-        <i class="bi bi-google navIcon googleIcon"></i>
+        <i className="bi bi-google navIcon googleIcon"></i>
         <span className="googleText navText">Login</span>
       </GoogleLogin>
     </div>
@@ -94,12 +94,14 @@ class GoogleBtn extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      isLoggedIn: state.isLoggedIn
+      isLoggedIn: state.isLoggedIn,
+      username: state.username,
     }
 }
 
 const mapDispatchToProps = {
     logInAction: logInAction,
+    usernameAction: usernameAction,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleBtn);
