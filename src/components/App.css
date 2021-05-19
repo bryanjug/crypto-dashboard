@@ -3,16 +3,17 @@ html, body {
 }
 .dashboard {
     background-color: #F5F5F5;
+    height: 100% !important;
+    padding-top: 15%;
 }
 .navContainer {
     background-color: #003466;
-    position: relative !important;
+    position: fixed !important;
     height: 100vh;
     top: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
-    width: 50%;
-    /* padding-left: 10% !important; */
+    width: 60%;
     /* left: -60% !important; */
 }
 .navContainer a:link, .navContainer a:visited, .navContainer a:hover, .navContainer a:active {
@@ -26,16 +27,17 @@ html, body {
     color: white !important;
     text-align: center !important;
     padding-left: 0 !important;
-    margin: 0 !important;
+    background-color: #002448 !important;
 }
 .googleBtn {
     background: inherit !important;
     border: none !important;
     box-shadow: none !important;
     color: #136DAF !important;
-    padding-left: 0 !important;
     width: 100% !important;
-    text-align: left !important;
+    text-align: center !important;
+    padding-top: 10% !important;
+    padding-bottom: 10% !important;
 }
 .displayInline {
     display: inline-block !important;
@@ -51,7 +53,40 @@ html, body {
     background: inherit;
     box-shadow: none !important; 
     border: none; 
+    padding-top: 8% !important;
+    padding-bottom: 8% !important;
+    color: #136DAF;
+    text-align: left;
+    padding-left: 20%;
+}
+.navLine {
+    width: 80% !important;
+    margin: auto !important;
+    padding: auto !important;
+    color: #136DAF;
+    height: .4% !important;
+    margin-bottom: 10% !important;
+}
+.openNavButton {
+    position: fixed;
+    top: .1%;
+    left: 4%;
+    font-size: 220% !important;
+}
+.navButton:hover {
     color: white !important;
-    padding-top: 10% !important;
-    padding-bottom: 10% !important;
+}
+.logoIcon {
+    font-size: 200%;
+    vertical-align: middle !important;
+}
+.logoText {
+    top: 5% !important;
+    position: relative !important;
+}
+.closeNavButton {
+    position: fixed;
+    top: 1%;
+    left: 3%;
+    color: #136DAF !important;
 }
