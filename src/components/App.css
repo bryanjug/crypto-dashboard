@@ -1,3 +1,57 @@
-html {
+html, body {
+    overflow-x: hidden;
+}
+.dashboard {
     background-color: #F5F5F5;
+}
+.navContainer {
+    background-color: #003466;
+    position: relative !important;
+    height: 100vh;
+    top: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 50%;
+    /* padding-left: 10% !important; */
+    /* left: -60% !important; */
+}
+.navContainer a:link, .navContainer a:visited, .navContainer a:hover, .navContainer a:active {
+    text-decoration: none !important; 
+    color: #136DAF;
+}
+.navContainer a:hover, .googleBtn:hover {
+    color: white !important;
+}
+.logo {
+    color: white !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+}
+.googleBtn {
+    background: inherit !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #136DAF !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+    text-align: left !important;
+}
+.displayInline {
+    display: inline-block !important;
+}
+.displayNone {
+    display: none !important;
+}
+.navIcon {
+    padding-right: 5% !important;
+}
+.navButton {
+    width: 100%;
+    background: inherit;
+    box-shadow: none !important; 
+    border: none; 
+    color: white !important;
+    padding-top: 10% !important;
+    padding-bottom: 10% !important;
 }

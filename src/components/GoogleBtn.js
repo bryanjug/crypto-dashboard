@@ -27,12 +27,11 @@ class GoogleBtn extends Component {
         isLogined: true,
         accessToken: response.accessToken,
         styleLogin: "googleBtn displayNone",
-        styleLogout: "googleBtn displayInline",
+        styleLogout: "googleBtn displayInline nav mx-auto",
       }));
     //   this.props.setUserId(response.getId()); //gets unique Google userId
     //   this.props.setUserName(response.profileObj.givenName); //gets unique name
       this.props.logInAction();
-      console.log("USER IS SIGNED IN");
     }
   }
 
@@ -40,7 +39,7 @@ class GoogleBtn extends Component {
     this.setState(state => ({
       isLogined: false,
       accessToken: '',
-      styleLogin: "googleBtn displayInline",
+      styleLogin: "googleBtn displayInline nav mx-auto",
       styleLogout: "googleBtn displayNone",
     }));
     // this.props.setUserId(null);
@@ -72,7 +71,8 @@ class GoogleBtn extends Component {
           isSignedIn={true}
           icon={false}
       >
-        <span className="googleText">Logout</span>
+        <i class="bi bi-google navIcon googleIcon"></i>
+        <span className="googleText navText">Logout</span>
       </GoogleLogout>
       <GoogleLogin
           clientId={ CLIENT_ID }
@@ -84,7 +84,8 @@ class GoogleBtn extends Component {
           className={this.state.styleLogin}
           icon={false}
       >
-        <span className="googleText">Login</span>
+        <i class="bi bi-google navIcon googleIcon"></i>
+        <span className="googleText navText">Login</span>
       </GoogleLogin>
     </div>
     )
@@ -93,7 +94,7 @@ class GoogleBtn extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.isLoggedIn
+      isLoggedIn: state.isLoggedIn
     }
 }
 

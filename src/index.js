@@ -5,10 +5,15 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import App from "./components/App";
 import store from './components/store';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>, 
+    <Router>
+        <Provider store={store}>
+            <Route exact path="/">
+                <App />
+            </Route>
+        </Provider>
+    </Router>, 
     document.querySelector("#root")
 );
