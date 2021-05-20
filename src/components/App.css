@@ -1,10 +1,22 @@
 html, body {
     overflow-x: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.navCol {
+    display:none;
+}
+.padding-0{
+    padding-right:0;
+}
+.navContainerCol {
+    background-color: #003466;
+    height: 100%;
 }
 .dashboard {
-    background-color: #F5F5F5;
+    background-color: #F5F5F5; 
     height: 100% !important;
-    padding-top: 15%;
+    padding-top: 60px !important;
 }
 .navContainer {
     background-color: #003466;
@@ -14,15 +26,14 @@ html, body {
     padding: 0 !important;
     margin: 0 !important;
     width: 60%;
-    /* left: -60% !important; */
     transition: all ease 1s;
     z-index: 9999 !important;
 }
-.navContainer a:link, .navContainer a:visited, .navContainer a:hover, .navContainer a:active {
+.navContainer a:link, .navContainer a:visited, .navContainer a:hover, .navContainerCol a:active, .navContainerCol a:link, .navContainerCol a:visited, .navContainerCol a:hover, .navContainerCol a:active {
     text-decoration: none !important; 
     color: #136DAF;
 }
-.navContainer a:hover, .googleBtn:hover {
+.navContainer a:hover, .navContainerCol a:hover, .googleBtn:hover {
     color: white !important;
 }
 .logo {
@@ -30,6 +41,7 @@ html, body {
     text-align: center !important;
     padding-left: 0 !important;
     background-color: #002448 !important;
+    cursor: default !important;
 }
 .googleBtn {
     background: inherit !important;
@@ -66,7 +78,7 @@ html, body {
     margin: auto !important;
     padding: auto !important;
     color: #136DAF;
-    height: .4% !important;
+    height: 2px !important;
     margin-bottom: 10% !important;
 }
 .openNavButton {
@@ -107,4 +119,75 @@ html, body {
     height: 100vh !important;
     background-color: #F5F5F5 !important;
     position: absolute !important;
+}
+@media only screen and (min-width: 375px) { 
+    .navContainer {
+        width: 50%;
+    }
+}
+@media only screen and (min-width: 425px) { 
+    .navContainer {
+        width: 45%;
+    }
+}
+@media only screen and (min-width: 600px) { 
+    .navContainer {
+        width: 40%;
+    }
+}
+@media only screen and (min-width: 768px) { 
+    .openNavButton, .navContainer {
+        display: none;
+    }
+    .navCol {
+        display: inline-block;
+    }
+}
+@media only screen and (min-width: 1583px) { 
+    .navCol, .dashboard {
+        font-size: 110% !important;
+    }
+    .googleText {
+        font-size: 120% !important;
+    }
+}
+@media only screen and (min-width: 1781px) { 
+    .navCol, .dashboard {
+        font-size: 120% !important;
+    }
+    .googleText {
+        font-size: 130% !important;
+    }
+}
+@media only screen and (min-width: 1900px) { 
+    .navCol, .dashboard {
+        font-size: 130% !important;
+    }
+    .googleText {
+        font-size: 140% !important;
+    }
+}
+@media only screen and (min-width: 2137px) { 
+    .navCol, .dashboard {
+        font-size: 145% !important;
+    }
+    .googleText {
+        font-size: 155% !important;
+    }
+}
+@media only screen and (min-width: 2850px) { 
+    .navCol, .dashboard {
+        font-size: 205% !important;
+    }
+    .googleText {
+        font-size: 215% !important;
+    }
+}
+@media only screen and (min-width: 4275px) { 
+    .navCol, .dashboard {
+        font-size: 305% !important;
+    }
+    .googleText {
+        font-size: 315% !important;
+    }
 }

@@ -5,7 +5,7 @@ import {
 	LOG_IN,
 	LOADING,
 	LOADING_STYLE,
-	USERNAME,
+    USERNAME,
 } from "./actions";
 
 const initialState = {
@@ -44,7 +44,7 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				username: action.payload,
-			};
+            };
 	}
 };
 
