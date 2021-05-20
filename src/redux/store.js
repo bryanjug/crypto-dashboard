@@ -6,6 +6,9 @@ import {
 	LOADING,
 	LOADING_STYLE,
     USERNAME,
+    STYLE_LOGIN,
+    STYLE_LOGOUT,
+    USER_ID,
 } from "./actions";
 
 const initialState = {
@@ -14,6 +17,10 @@ const initialState = {
 	isLoading: true,
     loadingStyle: "loadingContainer displayInline",
     username: "",
+    accessToken: "",
+    styleLogin: "googleBtn displayInline",
+    styleLogout: "googleBtn displayNone",
+    userId: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -44,6 +51,21 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				username: action.payload,
+            };
+        case STYLE_LOGIN:
+            return {
+                ...state,
+                styleLogin: action.payload,
+            };
+        case STYLE_LOGOUT:
+            return {
+                ...state,
+                styleLogout: action.payload,
+            };
+        case USER_ID:
+            return {
+                ...state,
+                userId: action.payload,
             };
 	}
 };

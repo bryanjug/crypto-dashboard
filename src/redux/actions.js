@@ -4,6 +4,9 @@ export const LOG_IN = "LOG_IN";
 export const LOADING = "LOADING";
 export const LOADING_STYLE = "LOADING_STYLE";
 export const USERNAME = "USERNAME";
+export const STYLE_LOGIN = "STYLE_LOGIN";
+export const STYLE_LOGOUT = "STYLE_LOGOUT";
+export const USER_ID = "USER_ID";
 
 export const incrementCountAction = () => async (dispatch, getState) => {
 	const newCount = await incrementCount();
@@ -38,5 +41,26 @@ export const usernameAction = (username) => (dispatch, getState) => {
     dispatch({
         type: USERNAME,
         payload: username,
+    });
+};
+
+export const styleLoginAction = (styleLogin) => (dispatch, getState) => {
+    dispatch({
+        type: STYLE_LOGIN,
+        payload: styleLogin,
+    });
+};
+
+export const styleLogoutAction = (styleLogout) => (dispatch, getState) => {
+    dispatch({
+        type: STYLE_LOGOUT,
+        payload: styleLogout,
+    });
+};
+
+export const userIdAction = (userId) => (dispatch, getState) => {
+    dispatch({
+        type: USER_ID,
+        payload: userId,
     });
 };

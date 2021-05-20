@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import {connect} from 'react-redux';
-import {logInAction, usernameAction} from './actions';
+import {logInAction, usernameAction, styleLoginAction, styleLogoutAction, userIdAction} from '../redux/actions';
 const CLIENT_ID = `${process.env.REACT_APP_CLIENT_ID}`;
 
 class GoogleBtn extends Component {
    constructor(props) {
     super(props);
-
-    this.state = {
-      isLogined: false,
-      accessToken: '',
-      styleLogin: "googleBtn displayInline",
-      styleLogout: "googleBtn displayNone",
-    };
 
     this.login = this.login.bind(this);
     this.handleLoginFailure = this.handleLoginFailure.bind(this);
@@ -23,27 +16,18 @@ class GoogleBtn extends Component {
 
   login (response) {
     if(response.accessToken){
-      this.setState(state => ({
-        isLogined: true,
-        accessToken: response.accessToken,
-        styleLogin: "googleBtn displayNone",
-        styleLogout: "googleBtn displayInline",
-      }));
-    //   this.props.setUserId(response.getId()); //gets unique Google userId
-    //   this.props.setUserName(response.profileObj.givenName); //gets unique name
       this.props.logInAction(true);
       this.props.usernameAction(response.profileObj.givenName);
+      this.props.styleLoginAction("googleBtn displayNone");
+      this.props.styleLogoutAction("googleBtn displayInline");
+      this.props.userIdAction(response.getId());
     }
   }
 
   logout (response) {
-    this.setState(state => ({
-      isLogined: false,
-      accessToken: '',
-      styleLogin: "googleBtn displayInline",
-      styleLogout: "googleBtn displayNone",
-    }));
-    // this.props.setUserId(null);
+    this.props.logInAction(false);
+    this.props.styleLoginAction("googleBtn displayInline");
+    this.props.styleLogoutAction("googleBtn displayNone");
   }
 
   handleLoginFailure (response) {
@@ -54,13 +38,6 @@ class GoogleBtn extends Component {
     console.log('Failed to log out');
   }
 
-//   <div className={this.props.loadingStyle}>
-//   <div className="spinner-border text-light" role="status">
-//   </div>
-//   <br />
-//   <span className="text-light loadingText">Loading...</span>
-// </div>
-
   render() {
     return (
     <div>
@@ -68,7 +45,7 @@ class GoogleBtn extends Component {
           clientId={ CLIENT_ID }
           onLogoutSuccess={ this.logout }
           onFailure={ this.handleLogoutFailure }
-          className={this.state.styleLogout}
+          className={this.props.styleLogout}
           isSignedIn={true}
           icon={false}
       >
@@ -81,7 +58,7 @@ class GoogleBtn extends Component {
           cookiePolicy={ 'single_host_origin' }
           responseType='code,token'
           isSignedIn={true}
-          className={this.state.styleLogin}
+          className={this.props.styleLogin}
           icon={false}
       >
         <i className="bi bi-google navIcon googleIcon"></i>
@@ -96,12 +73,18 @@ const mapStateToProps = (state) => {
     return {
       isLoggedIn: state.isLoggedIn,
       username: state.username,
+      styleLogin: state.styleLogin,
+      styleLogout: state.styleLogout,
+      userId: state.userId,
     }
 }
 
 const mapDispatchToProps = {
     logInAction: logInAction,
     usernameAction: usernameAction,
+    styleLoginAction: styleLoginAction,
+    styleLogoutAction: styleLogoutAction,
+    userIdAction: userIdAction,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleBtn);
