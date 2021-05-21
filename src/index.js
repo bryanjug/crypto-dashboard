@@ -19,6 +19,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 //(DONE) SPLIT FILES INTO DIFFERENT COMPONENTS
 //(DONE) SETUP JSON SERVER
 //(DONE) ADD USER TO DB ONCE LOGGED IN
+//(DONE) FIXED NAV POSITION FIXED
 //() CREATE DASHBOARD UI
 //() RESPONSIVE DASHBOARD UI
 //() LOGIN FOR FAVORITES PRICE WATCHING
@@ -28,7 +29,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 //() EXCHANGES LIST
 //() COINS LIST
 //() SEARCH BAR FOR PRICE
-//() NEWS
+//() NEWS API
 
 ReactDOM.render(
     <Router>

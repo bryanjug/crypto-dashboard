@@ -2,21 +2,50 @@ html, body {
     overflow-x: hidden;
     padding: 0 !important;
     margin: 0 !important;
+    background-color: #F5F5F5; 
 }
-.news {
+.newsItemsContainer {
+    width: 75%;
+    margin: auto;
+}
+.newsItem1, .newsItem2, .newsItem3 {
     background-color: white !important;
     border-radius: 20px;
     margin: auto !important;
-    width: 85%;
-    padding-top: 10%;
+    -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
+    -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
+    box-shadow: 0 0 9px rgb(207, 207, 207);
+    padding-top: 5%;
     padding-bottom: 5%;
     padding-left: 5%;
     padding-right: 5%;
     margin-top: 5% !important;
     margin-bottom: 5% !important;
-    -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
-    -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
-    box-shadow: 0 0 9px rgb(207, 207, 207);
+}
+.newsItem2, .newsItem3 {
+    display: none;
+}
+.newsText {
+    overflow: hidden;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    margin: auto !important; 
+}
+.newsTitle {
+    margin-bottom: 5%;
+}
+.news img {
+    height: 70px;
+    float: left;
+    padding-right: 5% !important;
+}
+.news {
+    margin: auto !important;
+    width: 100%;
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    padding: 0 !important;
 }
 .bitcoin {
     background-color: white !important;
@@ -59,7 +88,7 @@ html, body {
     border-radius: 20px;
     margin: auto !important;
     width: 85%;
-    padding-top: 14%;
+    padding-top: 10%;
     padding-bottom: 4%;
     padding-left: 5%;
     padding-right: 5%;
@@ -102,7 +131,7 @@ html, body {
     border-radius: 20px;
     margin: auto !important;
     width: 85%;
-    padding-top: 14%;
+    padding-top: 10%;
     padding-bottom: 4%;
     padding-left: 5%;
     padding-right: 5%;
@@ -141,7 +170,6 @@ html, body {
     height: 100%;
 }
 .dashboard {
-    background-color: #F5F5F5; 
     height: 100% !important;
     padding-top: 50px !important;
 }
@@ -269,6 +297,82 @@ html, body {
     .navCol {
         display: inline-block;
     }
+    .navContainerCol {
+        width: 24%;
+    }
+    .dashboard {
+        width: 76%;
+        right: 0;
+        position: absolute;
+    }
+}
+@media only screen and (min-width: 950px) {
+    .navContainerCol {
+        width: 20%;
+    }
+    .dashboard {
+        width: 80%;
+        right: 0;
+        position: absolute;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .newsItem1, .newsItem2, .newsItem3 {
+        width: 47%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+    }
+    .news img {
+        height: 95px;
+    }
+    .newsItemsContainer {
+        width: 80%;
+        margin: auto;
+    }
+    .newsItem2 {
+        display: inline-block;
+    }
+    .newsText {
+        -webkit-line-clamp: 4; 
+    }
+    .navContainerCol {
+        width: 18%;
+    }
+    .dashboard {
+        width: 82%;
+        right: 0;
+        position: absolute;
+    }
+}
+@media only screen and (min-width: 1140px) {
+    .navContainerCol {
+        width: 16%;
+    }
+    .dashboard {
+        width: 84%;
+        right: 0;
+        position: absolute;
+    }
+}
+@media only screen and (min-width: 1295px) {
+    .navContainerCol {
+        width: 15%;
+    }
+    .dashboard {
+        width: 85%;
+        right: 0;
+        position: absolute;
+    }
+}
+@media only screen and (min-width: 1425px) {
+    .navContainerCol {
+        width: 14% !important;
+    }
+    .dashboard {
+        width: 86% !important;
+        right: 0;
+        position: absolute;
+    }
 }
 @media only screen and (min-width: 1583px) { 
     .navCol, .dashboard {
@@ -285,6 +389,23 @@ html, body {
     .googleText {
         font-size: 130% !important;
     }
+    .newsItem3 {
+        display: inline-block;
+    }
+    .newsItem1, .newsItem2, .newsItem3 {
+        width: 32%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .news img {
+        height: 115px;
+    }
+    .newsItemsContainer {
+        width: 83%;
+        margin: auto;
+    }
 }
 @media only screen and (min-width: 1900px) { 
     .navCol, .dashboard {
@@ -293,8 +414,14 @@ html, body {
     .googleText {
         font-size: 140% !important;
     }
+    .news img {
+        height: 125px;
+    }
 }
 @media only screen and (min-width: 2137px) { 
+    .news img {
+        height: 135px;
+    }
     .navCol, .dashboard {
         font-size: 145% !important;
     }
@@ -303,14 +430,24 @@ html, body {
     }
 }
 @media only screen and (min-width: 2850px) { 
+    .news img {
+        height: 185px;
+    }
     .navCol, .dashboard {
         font-size: 205% !important;
     }
     .googleText {
         font-size: 215% !important;
     }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        width: 15% !important;
+        height: 15% !important;
+    }
 }
 @media only screen and (min-width: 4275px) { 
+    .news img {
+        height: 285px;
+    }
     .navCol, .dashboard {
         font-size: 305% !important;
     }

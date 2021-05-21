@@ -3,8 +3,8 @@ import GoogleBtn from "./GoogleBtn";
 
 const Nav = () => {
     return (
-        <div className="col-md-3 col-lg-2 col-xl-2 padding-0 navCol">
-            <div className="navContainerCol">
+        <div className="padding-0 navCol">
+            <div className="navContainerCol position-fixed">
                 <div className="nav">
                     <button className="navButton logo">
                         <i className="bi bi-currency-bitcoin navIcon logoIcon"></i>

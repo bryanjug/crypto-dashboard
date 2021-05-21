@@ -1,6 +1,6 @@
 const Dashboard = () => {
     return (
-        <div className="col-12 col-md-9 col-lg-10 col-xl-10 dashboard">
+        <div className="dashboard">
             <div className="row">
                 <div className="col-12 favorite">
                     <span className="favoriteText">Favorite</span>
@@ -215,24 +215,44 @@ const Dashboard = () => {
             </div>
             <div className="row">
                 <div className="col-12 news">
-                    <p className="newsTitle">News</p>
-                    <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+                    <p className="newsTitle">Recent Crypto News</p>
+                    <div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1" alt=""/>
+                                <div className="row newsItemsContainer">
+                                    <div className="col-12 col-lg-6 col-xl-4 newsItem1">
+                                        <div className="newsImageContainer">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1" alt=""/>        
+                                        </div>
+                                        <div className="newsTextContainer">
+                                            <p className="newsText"><b>Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title</b></p>
+                                        </div>
+                                    </div>
+                                    <div className="col-12 col-lg-6 col-xl-4 newsItem2">
+                                        <div className="newsImageContainer">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1" alt=""/>        
+                                        </div>
+                                        <div className="newsTextContainer">
+                                            <p className="newsText"><b>Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title</b></p>
+                                        </div>
+                                    </div>
+                                    <div className="col-12 col-lg-6 col-xl-4 newsItem3">
+                                        <div className="newsImageContainer">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1" alt=""/>        
+                                        </div>
+                                        <div className="newsTextContainer">
+                                            <p className="newsText"><b>Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title</b></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="carousel-item">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1" alt=""/>
-                            </div>
-                            <div className="carousel-item">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1" alt=""/>
-                            </div>
+                           
                         </div>
-                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Previous</span>
                         </button>
-                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Next</span>
                         </button>
