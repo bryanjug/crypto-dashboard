@@ -1,5 +1,4 @@
-import { incrementCount } from "./countService";
-export const INCREMENT_COUNT = "INCREMENT_COUNT";
+import {NewUser} from './NewUser';
 export const LOG_IN = "LOG_IN";
 export const LOADING = "LOADING";
 export const LOADING_STYLE = "LOADING_STYLE";
@@ -7,14 +6,6 @@ export const USERNAME = "USERNAME";
 export const STYLE_LOGIN = "STYLE_LOGIN";
 export const STYLE_LOGOUT = "STYLE_LOGOUT";
 export const USER_ID = "USER_ID";
-
-export const incrementCountAction = () => async (dispatch, getState) => {
-	const newCount = await incrementCount();
-	dispatch({
-		type: INCREMENT_COUNT,
-		payload: newCount,
-	});
-};
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -58,7 +49,9 @@ export const styleLogoutAction = (styleLogout) => (dispatch, getState) => {
     });
 };
 
-export const userIdAction = (userId) => (dispatch, getState) => {
+export const userIdAction = (userId) => async (dispatch, getState) => {
+    await NewUser(userId);
+
     dispatch({
         type: USER_ID,
         payload: userId,
