@@ -5,7 +5,8 @@ export const NewUser = (userId) => {
     
     return API.get(`/favorites/${userId}`)
         .then(function(response) {
-            return;
+            console.log("Server is online!");
+            return true;
         })
         .catch(function (error) {
             if (error.response) {
@@ -17,7 +18,11 @@ export const NewUser = (userId) => {
                     favorite4: "",
                 };
 
-                return API.post("/favorites", payload);
+                API.post("/favorites", payload)
+                .then(function(response) {
+                    console.log("Server is online!");
+                    return true;
+                })
             }
             if (error.request) {
                 console.log("Server is offline");
@@ -26,14 +31,13 @@ export const NewUser = (userId) => {
                         .then(function (response) {
                             clearInterval(reconnect);
                             console.log("Server is online!");
-                            return;
+                            return true;
                         })
                         .catch(function (error) {
                             if (error.request) {
                                 console.log("Server is still offline");
                             }
                             if (error.response) {
-                                console.log("Server is online!");
                                 clearInterval(reconnect);
                                 let payload = {
                                     id: `${userId}`,
@@ -43,7 +47,11 @@ export const NewUser = (userId) => {
                                     favorite4: "",
                                 };
                 
-                                return API.post("/favorites", payload);
+                                API.post("/favorites", payload)
+                                    .then(function(response) {
+                                        console.log("Server is online!");
+                                        return true;
+                                    })
                             }
                         })
                 }, 3000);

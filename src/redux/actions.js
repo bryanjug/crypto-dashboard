@@ -6,6 +6,8 @@ export const USERNAME = "USERNAME";
 export const STYLE_LOGIN = "STYLE_LOGIN";
 export const STYLE_LOGOUT = "STYLE_LOGOUT";
 export const USER_ID = "USER_ID";
+export const CONNECTED = "CONNECTED";
+export const FAVORITE_LOADING_STYLE = "FAVORITE_LOADING_STYLE";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -50,10 +52,22 @@ export const styleLogoutAction = (styleLogout) => (dispatch, getState) => {
 };
 
 export const userIdAction = (userId) => async (dispatch, getState) => {
-    await NewUser(userId);
+    const connected = await NewUser(userId);
 
     dispatch({
         type: USER_ID,
         payload: userId,
+    });
+
+    dispatch({
+        type: CONNECTED,
+        payload: connected
+    });
+};
+
+export const favoriteLoadingStyleAction = (favoriteLoadingStyle) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_LOADING_STYLE,
+        payload: favoriteLoadingStyle
     });
 };

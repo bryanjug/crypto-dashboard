@@ -4,6 +4,10 @@ html, body {
     margin: 0 !important;
     background-color: #F5F5F5; 
 }
+.favoriteLoading {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
 .bitcoinGraph {
     width: 100% !important;
     margin: auto !important;
@@ -319,6 +323,7 @@ html, body {
         border-radius: 20px;
         padding-top: 15%;
         padding-bottom: 15%;
+        height: 100%;
         text-align: center;
         -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
         -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);

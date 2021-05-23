@@ -7,7 +7,9 @@ import {
     USERNAME,
     STYLE_LOGIN,
     STYLE_LOGOUT,
-    USER_ID,
+	USER_ID,
+	CONNECTED,
+	FAVORITE_LOADING_STYLE,
 } from "./actions";
 
 const initialState = {
@@ -19,7 +21,15 @@ const initialState = {
     accessToken: "",
     styleLogin: "googleBtn displayInline",
     styleLogout: "googleBtn displayNone",
-    userId: "",
+	userId: "",
+	favorite1: "",
+	favorite2: "",
+	favorite3: "",
+	favorite4: "",
+	favoriteStyle: "displayInline",
+	favoriteChartStyle: "displayNone",
+	connected: false,
+	favoriteLoadingStyle: "favoriteLoading",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -60,7 +70,17 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userId: action.payload,
-            };
+			};
+		case CONNECTED:
+			return {
+				...state,
+				connected: action.payload,
+			}
+		case FAVORITE_LOADING_STYLE:
+			return {
+				...state,
+				favoriteLoadingStyle: action.payload,
+			}
 	}
 };
 

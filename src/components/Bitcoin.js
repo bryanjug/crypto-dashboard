@@ -6,7 +6,6 @@ const Bitcoin = () => {
     const [aspectRatio, setAspectRatio] = useState(2);
 	Chart.defaults.scale.grid.display = false;
     Chart.defaults.scale.grid.borderWidth = 0;
-    console.log(Chart.defaults);
 
 	//changes font size and height of chart
 	const ResponsiveChart = () => {
