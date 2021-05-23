@@ -19,11 +19,7 @@ const App = ({
 	const nav = useRef(null);
 
 	useEffect(() => {
-		nav.current.style.left = "-60%";
 		loadingAction(false);
-	}, []);
-
-	useEffect(() => {
 		if (isLoading === false) {
 			const style = "loadingContainer displayNone";
 			loadingStyleAction(style);

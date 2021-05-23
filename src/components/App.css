@@ -4,11 +4,10 @@ html, body {
     margin: 0 !important;
     background-color: #F5F5F5; 
 }
-.graph {
-    position: relative !important;
-    margin: auto !important;
-    height: 41vh !important;
+.bitcoinGraph {
     width: 100% !important;
+    margin: auto !important;
+    height: 100% !important;
 }
 .bitcoinDropdownContainer {
     padding-right: 8%;
@@ -19,6 +18,7 @@ html, body {
     border-radius: 7px;
     color: gray;
     border: rgb(187, 187, 187) solid 1px;
+    cursor: pointer;
 }
 .bitcoinTitle {
     text-align: left !important;
@@ -179,6 +179,7 @@ html, body {
     box-shadow: 0 0 9px rgb(207, 207, 207);
     margin-top: 5% !important;
     margin-bottom: 5% !important;
+    cursor: pointer;
 }
 .navCol {
     display:none;
@@ -204,6 +205,7 @@ html, body {
     width: 60%;
     transition: all ease 1s;
     z-index: 9999 !important;
+    left: -60%;
 }
 .navContainer a:link, .navContainer a:visited, .navContainer a:hover, .navContainerCol a:active, .navContainerCol a:link, .navContainerCol a:visited, .navContainerCol a:hover, .navContainerCol a:active {
     text-decoration: none !important; 
@@ -291,9 +293,6 @@ html, body {
 }
 .loadingContainer {
     z-index: 9999999 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    background-color: #F5F5F5 !important;
     position: absolute !important;
 }
 @media only screen and (min-width: 375px) { 
