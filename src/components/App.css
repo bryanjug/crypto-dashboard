@@ -4,6 +4,12 @@ html, body {
     margin: 0 !important;
     background-color: #F5F5F5; 
 }
+.graph {
+    position: relative !important;
+    margin: auto !important;
+    height: 41vh !important;
+    width: 100% !important;
+}
 .bitcoinDropdownContainer {
     padding-right: 8%;
     padding-top: 2%;
@@ -63,7 +69,7 @@ html, body {
     padding: 0 !important;
 }
 .bitcoin {
-    background-color: white !important;
+    background-color: white;
     border-radius: 20px;
     margin: auto !important;
     width: 90%;
@@ -161,7 +167,7 @@ html, body {
     color: rgb(182, 182, 182);
 }
 .favorite {
-    background-color: white !important;
+    background-color: white;
     margin: auto !important;
     width: 90%;
     border-radius: 20px;
@@ -298,6 +304,12 @@ html, body {
 @media only screen and (min-width: 425px) { 
     .navContainer {
         width: 45%;
+    }
+    .bitcoin {
+        padding-top: 6%;
+    }
+    .bitcoinDropdownContainer {
+        padding-top: 1%;
     }
 }
 @media only screen and (min-width: 576px) { 
@@ -461,19 +473,13 @@ html, body {
         box-shadow: 0 0 9px rgb(207, 207, 207);
     }
     .bitcoin {
-        background-color: white !important;
-        border-radius: 20px;
-        margin: auto !important;
         width: 97%;
-        padding-top: 10%;
-        padding-bottom: 5%;
-        padding-left: 5%;
-        padding-right: 5%;
         margin-top: 3% !important;
         margin-bottom: 3% !important;
-        -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
-        -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
-        box-shadow: 0 0 9px rgb(207, 207, 207);
+        padding-top: 4%;
+    }
+    .bitcoinDropdownContainer {
+        padding-top: .5%;
     }
     .news {
         margin: auto !important;
@@ -541,14 +547,14 @@ html, body {
         margin: auto !important;
         width: 23%;
         border-radius: 20px;
-        padding-top: 6%;
-        padding-bottom: 6%;
+        padding-top: 5%;
+        padding-bottom: 5%;
         text-align: center;
         -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
         -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
         box-shadow: 0 0 9px rgb(207, 207, 207);
         margin-top: 2% !important;
-        margin-bottom: 2% !important;
+        margin-bottom: 1% !important;
     }
     .trending {
         background-color: white !important;
@@ -586,7 +592,7 @@ html, body {
         margin: auto !important;
         width: 42%;
         padding-top: 3%;
-        padding-bottom: 5%;
+        padding-bottom: 1%;
         padding-left: 1.5%;
         padding-right: 1.5%;
         margin-top: 1% !important;
