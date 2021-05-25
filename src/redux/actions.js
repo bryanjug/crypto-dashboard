@@ -12,6 +12,18 @@ export const FAVORITE_LOADING_STYLE = "FAVORITE_LOADING_STYLE";
 export const FAVORITE_STYLE = "FAVORITE_STYLE";
 export const FAVORITE_CHART_STYLE = "FAVORITE_CHART_STYLE";
 export const FETCH_FAVORITES = "FETCH_FAVORITES";
+export const FAVORITE_STYLE_0 = "FAVORITE_STYLE_0";
+export const FAVORITE_CHART_STYLE_0 = "FAVORITE_CHART_STYLE_0";
+export const FAVORITE_LOADING_STYLE_0 = "FAVORITE_LOADING_STYLE_0";
+export const FAVORITE_STYLE_1 = "FAVORITE_STYLE_1";
+export const FAVORITE_CHART_STYLE_1 = "FAVORITE_CHART_STYLE_1";
+export const FAVORITE_LOADING_STYLE_1 = "FAVORITE_LOADING_STYLE_1";
+export const FAVORITE_STYLE_2 = "FAVORITE_STYLE_2";
+export const FAVORITE_CHART_STYLE_2 = "FAVORITE_CHART_STYLE_2";
+export const FAVORITE_LOADING_STYLE_2 = "FAVORITE_LOADING_STYLE_2";
+export const FAVORITE_STYLE_3 = "FAVORITE_STYLE_3";
+export const FAVORITE_CHART_STYLE_3 = "FAVORITE_CHART_STYLE_3";
+export const FAVORITE_LOADING_STYLE_3 = "FAVORITE_LOADING_STYLE_3";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -96,5 +108,89 @@ export const fetchFavoritesAction = (userId) => async (dispatch, getState) => {
     dispatch({
         type: FETCH_FAVORITES,
         payload: favorites
+    });
+};
+
+export const favoriteStyleAction0 = (favoriteStyle0) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_STYLE_0,
+        payload: favoriteStyle0
+    });
+};
+
+export const favoriteChartStyleAction0 = (favoriteChartStyle0) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_CHART_STYLE_0,
+        payload: favoriteChartStyle0
+    });
+};
+
+export const favoriteLoadingStyleAction0 = (favoriteLoadingStyle0) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_LOADING_STYLE_0,
+        payload: favoriteLoadingStyle0
+    });
+};
+
+export const favoriteStyleAction1 = (favoriteStyle1) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_STYLE_1,
+        payload: favoriteStyle1
+    });
+};
+
+export const favoriteChartStyleAction1 = (favoriteChartStyle1) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_CHART_STYLE_1,
+        payload: favoriteChartStyle1
+    });
+};
+
+export const favoriteLoadingStyleAction1 = (favoriteLoadingStyle1) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_LOADING_STYLE_1,
+        payload: favoriteLoadingStyle1
+    });
+};
+
+export const favoriteStyleAction2 = (favoriteStyle2) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_STYLE_2,
+        payload: favoriteStyle2
+    });
+};
+
+export const favoriteChartStyleAction2 = (favoriteChartStyle2) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_CHART_STYLE_2,
+        payload: favoriteChartStyle2
+    });
+};
+
+export const favoriteLoadingStyleAction2 = (favoriteLoadingStyle2) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_LOADING_STYLE_2,
+        payload: favoriteLoadingStyle2
+    });
+};
+
+export const favoriteStyleAction3 = (favoriteStyle3) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_STYLE_3,
+        payload: favoriteStyle3
+    });
+};
+
+export const favoriteChartStyleAction3 = (favoriteChartStyle3) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_CHART_STYLE_3,
+        payload: favoriteChartStyle3
+    });
+};
+
+export const favoriteLoadingStyleAction3 = (favoriteLoadingStyle3) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_LOADING_STYLE_3,
+        payload: favoriteLoadingStyle3
     });
 };

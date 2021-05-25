@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Line, Chart } from "react-chartjs-2";
 
 const Bitcoin = () => {
-    const [chartData, setChartData] = useState({});
 	const [aspectRatio, setAspectRatio] = useState(2);
 	const [gradientSize, setGradientSize] = useState(550);
 	Chart.defaults.scale.grid.display = false;

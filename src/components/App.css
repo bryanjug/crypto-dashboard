@@ -4,6 +4,39 @@ html, body {
     margin: 0 !important;
     background-color: #F5F5F5; 
 }
+.favoriteChartStyle0 {
+    padding-top: 5%;
+}
+.favoriteCoin {
+    padding-left: 6%;
+    color: gray;
+}
+.favoritePrice {
+    padding-left: 6%;
+    font-size: 130%;
+}
+.favoritePercentage {
+    padding-left: 3%;
+    font-size: 90%;
+}
+.favoriteChangeIcon {
+    color: rgb(168, 168, 168);
+    font-size: 120%;
+    float: right;
+    padding-right: 6%;
+}
+.favorite0, .favorite1, .favorite2, .favorite3 {
+    background-color: white;
+    margin: auto !important;
+    width: 90%;
+    border-radius: 20px 20px 0 0;
+    -moz-box-shadow: 0 0 9px rgb(0, 0, 0);
+    -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
+    box-shadow: 0 0 9px rgb(207, 207, 207);
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    cursor: default;
+}
 .favoriteLoading {
     padding-top: 18px;
     padding-bottom: 18px;
@@ -166,7 +199,11 @@ html, body {
     -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
     box-shadow: 0 0 9px rgb(207, 207, 207);
 }
-.favoriteText, .favoriteIcon {
+.favoriteText {
+    font-size: 120%;
+    color: rgb(182, 182, 182);
+}
+.favoriteIcon {
     font-size: 150%;
     color: rgb(182, 182, 182);
 }
@@ -269,6 +306,7 @@ html, body {
     left: 4%;
     font-size: 220% !important;
     cursor: pointer;
+    z-index: 999;
 }
 .navButton:hover {
     color: white !important;
@@ -321,8 +359,8 @@ html, body {
         margin: auto !important;
         width: 44%;
         border-radius: 20px;
-        padding-top: 15%;
-        padding-bottom: 15%;
+        padding-top: 14%;
+        padding-bottom: 14%;
         height: 100%;
         text-align: center;
         -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
@@ -330,6 +368,17 @@ html, body {
         box-shadow: 0 0 9px rgb(207, 207, 207);
         margin-top: 3% !important;
         margin-bottom: 3% !important;
+    }
+    .favorite0, .favorite1, .favorite2, .favorite3 {
+        width: 44%;
+        margin-bottom: 3% !important;
+        margin-top: 3% !important;
+        position: relative;
+    }
+    .favoriteGraph {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
     }
     .trendingList {
         padding-top: 2%;
@@ -432,13 +481,20 @@ html, body {
     }
 }
 @media only screen and (min-width: 992px) {
+    .favorite0, .favorite1, .favorite2, .favorite3 {
+        width: 24%;
+        margin-bottom: 1% !important;
+        margin-top: 3% !important;
+        position: relative;
+        padding-bottom: 9% !important;
+    }
     .favorite {
         background-color: white !important;
         margin: auto !important;
         width: 24%;
         border-radius: 20px;
-        padding-top: 7%;
-        padding-bottom: 7%;
+        padding-top: 8%;
+        padding-bottom: 8%;
         text-align: center;
         -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
         -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
@@ -540,6 +596,13 @@ html, body {
     }
 }
 @media only screen and (min-width: 1425px) {
+    .favorite0, .favorite1, .favorite2, .favorite3 {
+        width: 23%;
+        margin-bottom: 1% !important;
+        margin-top: 2% !important;
+        position: relative;
+        padding-bottom: 9% !important;
+    }
     .navContainerCol {
         width: 14% !important;
     }
@@ -551,8 +614,8 @@ html, body {
         margin: auto !important;
         width: 23%;
         border-radius: 20px;
-        padding-top: 5%;
-        padding-bottom: 5%;
+        padding-top: 7%;
+        padding-bottom: 7%;
         text-align: center;
         -moz-box-shadow: 0 0 9px rgb(207, 207, 207);
         -webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
