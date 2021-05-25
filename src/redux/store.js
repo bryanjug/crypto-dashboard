@@ -10,13 +10,14 @@ import {
 	USER_ID,
 	CONNECTED,
 	FAVORITE_LOADING_STYLE,
+	FAVORITE_STYLE,
+	FAVORITE_CHART_STYLE,
+	FETCH_FAVORITES,
 } from "./actions";
 
 const initialState = {
 	count: 0,
 	isLoggedIn: false,
-	isLoading: true,
-    loadingStyle: "loadingContainer displayInline",
     username: "",
     accessToken: "",
     styleLogin: "googleBtn displayInline",
@@ -26,10 +27,11 @@ const initialState = {
 	favorite2: "",
 	favorite3: "",
 	favorite4: "",
-	favoriteStyle: "displayInline",
+	favoriteStyle: "displayNone",
 	favoriteChartStyle: "displayNone",
 	connected: false,
-	favoriteLoadingStyle: "favoriteLoading",
+	favoriteLoadingStyle: "favoriteLoading displayInline",
+	favorites: ([]),
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -80,6 +82,21 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				favoriteLoadingStyle: action.payload,
+			}
+		case FAVORITE_STYLE:
+			return {
+				...state,
+				favoriteStyle: action.payload,
+			}
+		case FAVORITE_CHART_STYLE:
+			return {
+				...state,
+				favoriteChartStyle: action.payload,
+			}
+		case FETCH_FAVORITES:
+			return {
+				...state,
+				favorites: action.payload,
 			}
 	}
 };

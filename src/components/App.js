@@ -1,30 +1,13 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import "./App.css";
 import GoogleBtn from "./GoogleBtn";
-import { connect } from "react-redux";
-import {
-	loadingAction,
-    loadingStyleAction,
-} from "../redux/actions";
 import { Link } from "react-router-dom";
 import Dashboard from './Dashboard';
-import Loader from './Loader';
 import Nav from './Nav';
 
 const App = ({
-	loadingAction,
-	isLoading,
-	loadingStyleAction,
 }) => {
 	const nav = useRef(null);
-
-	useEffect(() => {
-		loadingAction(false);
-		if (isLoading === false) {
-			const style = "loadingContainer displayNone";
-			loadingStyleAction(style);
-		}
-	}, [isLoading]);
 
 	function showNav() {
 		nav.current.style.left = "0";
@@ -32,10 +15,9 @@ const App = ({
 	function hideNav() {
 		nav.current.style.left = "-60%";
     }
-
+	
 	return (
 		<div>
-			<Loader />
 			<div className="openNavButton" onClick={showNav}>
 				<i className="bi bi-list" onClick={showNav}></i>
 			</div>
@@ -84,15 +66,4 @@ const App = ({
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		isLoading: state.isLoading,
-	};
-};
-
-const mapDispatchToProps = {
-	loadingAction: loadingAction,
-    loadingStyleAction: loadingStyleAction,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

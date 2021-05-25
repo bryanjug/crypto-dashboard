@@ -3,20 +3,35 @@ import { Line, Chart } from "react-chartjs-2";
 
 const Bitcoin = () => {
     const [chartData, setChartData] = useState({});
-    const [aspectRatio, setAspectRatio] = useState(2);
+	const [aspectRatio, setAspectRatio] = useState(2);
+	const [gradientSize, setGradientSize] = useState(550);
 	Chart.defaults.scale.grid.display = false;
     Chart.defaults.scale.grid.borderWidth = 0;
 
 	//changes font size and height of chart
 	const ResponsiveChart = () => {
+		//set gradient sizes
+		if (window.innerWidth >= 2137 && window.innerWidth < 2850) {
+			setGradientSize(900);
+		}
+		if (window.innerWidth >= 2850 && window.innerWidth < 3500) {
+			setGradientSize(1000);
+		}
+		if (window.innerWidth >= 3500 && window.innerWidth < 4275) {
+			setGradientSize(1200);
+		}
+		if (window.innerWidth >= 4275) {
+			setGradientSize(1400);
+		}
+		//set graph size
         if (window.innerWidth < 375) {
             Chart.defaults.font.size = 12;
             setAspectRatio(.8);
-        }
+		}
         if (window.innerWidth >= 375 && window.innerWidth < 576) {
             Chart.defaults.font.size = 12;
             setAspectRatio(1);
-        }
+		}
         if (window.innerWidth >= 576 && window.innerWidth < 768) {
             Chart.defaults.font.size = 12;
             setAspectRatio(1.4);
@@ -124,9 +139,9 @@ const Bitcoin = () => {
 
 	let data = (canvas) => {
 		const ctx = canvas.getContext("2d");
-		const gradient = ctx.createLinearGradient(0, 0, 0, 250);
-		gradient.addColorStop(0, "rgba(0,170,255,0.8147944697627315)");
-        gradient.addColorStop(1, "rgba(0,212,255,0)");
+		const gradient = ctx.createLinearGradient(0, 0, 0, gradientSize);
+		gradient.addColorStop(0, "rgba(0,77,116,.8)");
+		gradient.addColorStop(1, "rgba(0,77,116,.01)");
 
 		var d = new Date();
 		var weekday = new Array(14);
@@ -160,8 +175,8 @@ const Bitcoin = () => {
 					label: "Last 7 Days",
 					data: [7040, 7754, 6999, 6486, 8043, 7550, 8842],
 					backgroundColor: gradient,
-					borderColor: ["#1F3D71"],
-                    borderWidth: 3,
+					borderColor: ["#5091ed"],
+                    borderWidth: 0,
 				},
 			],
 		};

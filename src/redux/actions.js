@@ -1,4 +1,5 @@
 import {NewUser} from './NewUser';
+import {FetchFavorites} from './FetchFavorites';
 export const LOG_IN = "LOG_IN";
 export const LOADING = "LOADING";
 export const LOADING_STYLE = "LOADING_STYLE";
@@ -8,6 +9,9 @@ export const STYLE_LOGOUT = "STYLE_LOGOUT";
 export const USER_ID = "USER_ID";
 export const CONNECTED = "CONNECTED";
 export const FAVORITE_LOADING_STYLE = "FAVORITE_LOADING_STYLE";
+export const FAVORITE_STYLE = "FAVORITE_STYLE";
+export const FAVORITE_CHART_STYLE = "FAVORITE_CHART_STYLE";
+export const FETCH_FAVORITES = "FETCH_FAVORITES";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -69,5 +73,28 @@ export const favoriteLoadingStyleAction = (favoriteLoadingStyle) => async (dispa
     dispatch({
         type: FAVORITE_LOADING_STYLE,
         payload: favoriteLoadingStyle
+    });
+};
+
+export const favoriteStyleAction = (favoriteStyle) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_STYLE,
+        payload: favoriteStyle
+    });
+};
+
+export const favoriteChartStyleAction = (favoriteChartStyle) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_CHART_STYLE,
+        payload: favoriteChartStyle
+    });
+};
+
+export const fetchFavoritesAction = (userId) => async (dispatch, getState) => {
+    const favorites = await FetchFavorites(userId);
+    
+    dispatch({
+        type: FETCH_FAVORITES,
+        payload: favorites
     });
 };
