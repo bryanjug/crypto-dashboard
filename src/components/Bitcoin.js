@@ -74,6 +74,20 @@ const Bitcoin = () => {
 			Chart.defaults.font.size = 40;
         }
         window.addEventListener('resize', () => {
+			//set gradient sizes
+			if (window.innerWidth >= 2137 && window.innerWidth < 2850) {
+				setGradientSize(900);
+			}
+			if (window.innerWidth >= 2850 && window.innerWidth < 3500) {
+				setGradientSize(1000);
+			}
+			if (window.innerWidth >= 3500 && window.innerWidth < 4275) {
+				setGradientSize(1200);
+			}
+			if (window.innerWidth >= 4275) {
+				setGradientSize(1400);
+			}
+			//set graph size
             if (window.innerWidth < 375) {
                 Chart.defaults.font.size = 12;
                 setAspectRatio(.8);

@@ -25,6 +25,10 @@ import {
 	FAVORITE_STYLE_3,
 	FAVORITE_CHART_STYLE_3,
 	FAVORITE_LOADING_STYLE_3,
+	FAVORITE_0,
+	FAVORITE_1,
+	FAVORITE_2,
+	FAVORITE_3,
 } from "./actions";
 
 const initialState = {
@@ -181,6 +185,26 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				favoriteLoadingStyle3: action.payload,
+			}
+		case FAVORITE_0:
+			return {
+				...state,
+				favorite0: action.payload,
+			}
+		case FAVORITE_1:
+			return {
+				...state,
+				favorite1: action.payload,
+			}
+		case FAVORITE_2:
+			return {
+				...state,
+				favorite2: action.payload,
+			}
+		case FAVORITE_3:
+			return {
+				...state,
+				favorite3: action.payload,
 			}
 	}
 };

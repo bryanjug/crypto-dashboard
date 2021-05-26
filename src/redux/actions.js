@@ -24,6 +24,10 @@ export const FAVORITE_LOADING_STYLE_2 = "FAVORITE_LOADING_STYLE_2";
 export const FAVORITE_STYLE_3 = "FAVORITE_STYLE_3";
 export const FAVORITE_CHART_STYLE_3 = "FAVORITE_CHART_STYLE_3";
 export const FAVORITE_LOADING_STYLE_3 = "FAVORITE_LOADING_STYLE_3";
+export const FAVORITE_0 = "FAVORITE_0";
+export const FAVORITE_1 = "FAVORITE_1";
+export const FAVORITE_2 = "FAVORITE_2";
+export const FAVORITE_3 = "FAVORITE_3";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -192,5 +196,33 @@ export const favoriteLoadingStyleAction3 = (favoriteLoadingStyle3) => async (dis
     dispatch({
         type: FAVORITE_LOADING_STYLE_3,
         payload: favoriteLoadingStyle3
+    });
+};
+
+export const favorite0Action = (favorite0) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_0,
+        payload: favorite0
+    });
+};
+
+export const favorite1Action = (favorite1) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_1,
+        payload: favorite1
+    });
+};
+
+export const favorite2Action = (favorite2) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_2,
+        payload: favorite2
+    });
+};
+
+export const favorite3Action = (favorite3) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_3,
+        payload: favorite3
     });
 };
