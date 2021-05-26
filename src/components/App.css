@@ -5,6 +5,14 @@ body {
 	margin: 0 !important;
 	background-color: #f5f5f5;
 }
+.coinsListLoader {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: fixed;
+	text-align: center;
+	z-index: 99999999 !important;
+}
 .favoritesListName, .favoritesListPrice {
     cursor: pointer;
 }
@@ -58,7 +66,15 @@ body {
 	-webkit-box-shadow: 0 0 100px rgb(107, 107, 107);
     box-shadow: 0 0 100px rgb(107, 107, 107);
     overflow: scroll;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 }
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+} 
 .favoriteChartStyle0,
 .favoriteChartStyle1,
 .favoriteChartStyle2,
@@ -822,9 +838,15 @@ body {
 	}
 	.googleText {
 		font-size: 120% !important;
-	}
+    }
+    ::-webkit-scrollbar {
+        width: 9px;
+    }
 }
 @media only screen and (min-width: 1781px) {
+    ::-webkit-scrollbar {
+        width: 11px;
+    }
 	.navCol,
 	.dashboard {
 		font-size: 120% !important;
@@ -854,6 +876,9 @@ body {
 	}
 }
 @media only screen and (min-width: 1900px) {
+    ::-webkit-scrollbar {
+        width: 13px;
+    }
 	.navCol,
 	.dashboard {
 		font-size: 130% !important;
@@ -866,6 +891,9 @@ body {
 	}
 }
 @media only screen and (min-width: 2137px) {
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
 	.news img {
 		height: 135px;
 	}
@@ -878,6 +906,9 @@ body {
 	}
 }
 @media only screen and (min-width: 2850px) {
+    ::-webkit-scrollbar {
+        width: 17px;
+    }
 	.news img {
 		height: 185px;
 		border-radius: 40px;
@@ -896,6 +927,9 @@ body {
 	}
 }
 @media only screen and (min-width: 4275px) {
+    ::-webkit-scrollbar {
+        width: 25px;
+    }
 	.news img {
 		height: 285px;
 	}

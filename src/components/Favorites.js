@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Line, Chart } from "react-chartjs-2";
+import CoinGeko from "../API/CoinGecko";
 import {
 	fetchFavoritesAction,
 	favoriteStyleAction0,
@@ -19,6 +20,7 @@ import {
 	favorite1Action,
 	favorite2Action,
 	favorite3Action,
+	favoritesAlertStyleAction,
 } from "../redux/actions";
 
 const Favorites = ({
@@ -59,68 +61,115 @@ const Favorites = ({
 	favorite1Action,
 	favorite2Action,
 	favorite3Action,
+	favoritesAlertStyleAction,
+	favoritesAlertStyle,
+	fetchedFavorites,
 }) => {
 	Chart.defaults.scale.grid.display = false;
 	Chart.defaults.scale.grid.borderWidth = 0;
 	// Chart.defaults.scale.display = false;
 	Chart.defaults.plugins.legend.display = false;
+
+	const [coins, setCoins] = useState([]);
+	let coinsList = [];
+	
+	function NameList() {  
+		if (coins.length === 0) {
+			CoinGeko.get("/coins/list?include_platform=false")
+			.then(function(response) {
+				let res = response.data;
+				for (let i = 0; i < 100; i++) {
+					coinsList.push(res.[i].id);
+				}
+				setCoins(coinsList);
+
+				console.log(coinsList);
+			})
+		}
+	} 
+	
+	const NamesList = () => {
+		if (coins.length > 0) {
+			const listItems = coins.map((coin, i) =>  
+				<div key={i} className="row text-center favoritesListItem">
+					<div className="col-12">
+						<span className="favoritesListName">{coin}</span>
+					</div>
+				</div>
+			);
+			return (  
+				<div>
+					{listItems}  
+				</div>  
+			);    
+		} else {
+			return (
+				<div className="coinsListLoader">
+					<div className="spinner-border text-primary" role="status">
+					</div>
+				</div>
+			);
+		}
+	};
 	
 	useEffect(() => {
 		if (isLoggedIn === true && connected === true) {
 			//set loader and favoritestyle
 			//to display none and fetch favorites + show chart
 			fetchFavoritesAction(userId);
-			if (favorites[0] === "") {
-				favoriteStyleAction0("displayInline");
-				favoriteChartStyleAction0("displayNone");
-				favoriteLoadingStyleAction0("displayNone");
-				favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			}
-			if (favorites[0] !== "") {
-				favoriteStyleAction0("displayInline");
-				favoriteChartStyleAction0("displayNone");
-				favoriteLoadingStyleAction0("displayNone");
-				favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-				// favoriteStyleAction0("displayNone");
-				// favoriteChartStyleAction0("favoriteChartStyle0 row");
-				// favoriteLoadingStyleAction0("displayNone");
-				// favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0");
-			}
-			if (favorites[1] === "") {
-				favoriteStyleAction1("displayInline");
-				favoriteChartStyleAction1("displayNone");
-				favoriteLoadingStyleAction1("displayNone");
-				favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			}
-			if (favorites[1] !== "") {
-				favoriteStyleAction1("displayNone");
-				favoriteChartStyleAction1("favoriteChartStyle1 row");
-				favoriteLoadingStyleAction1("displayNone");
-				favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite1");
-			}
-			if (favorites[2] === "") {
-				favoriteStyleAction2("displayInline");
-				favoriteChartStyleAction2("displayNone");
-				favoriteLoadingStyleAction2("displayNone");
-				favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			}
-			if (favorites[2] !== "") {
-				favoriteStyleAction2("displayNone");
-				favoriteChartStyleAction2("favoriteChartStyle2 row");
-				favoriteLoadingStyleAction2("displayNone");
-				favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite2");
-			}
-			if (favorites[3] === "") {
-				favoriteStyleAction3("displayInline");
-				favoriteChartStyleAction3("displayNone");
-				favoriteLoadingStyleAction3("displayNone");
-				favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			}
-			if (favorites[3] !== "") {
-				favoriteStyleAction3("displayNone");
-				favoriteChartStyleAction3("favoriteChartStyle3 row");
-				favoriteLoadingStyleAction3("displayNone");
-				favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
+			if (fetchedFavorites === true) {
+				if (favorites[0] === "") {
+					favoriteStyleAction0("displayInline");
+					favoriteChartStyleAction0("displayNone");
+					favoriteLoadingStyleAction0("displayNone");
+					favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+				}
+				if (favorites[0] !== "") {
+					// favoriteStyleAction0("displayInline");
+					// favoriteChartStyleAction0("displayNone");
+					// favoriteLoadingStyleAction0("displayNone");
+					// favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+					favoriteStyleAction0("displayNone");
+					favoriteChartStyleAction0("favoriteChartStyle0 row");
+					favoriteLoadingStyleAction0("displayNone");
+					favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0");
+				}
+				if (favorites[1] === "") {
+					favoriteStyleAction1("displayInline");
+					favoriteChartStyleAction1("displayNone");
+					favoriteLoadingStyleAction1("displayNone");
+					favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+				}
+				if (favorites[1] !== "") {
+					favoriteStyleAction1("displayNone");
+					favoriteChartStyleAction1("favoriteChartStyle1 row");
+					favoriteLoadingStyleAction1("displayNone");
+					favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite1");
+				}
+				if (favorites[2] === "") {
+					favoriteStyleAction2("displayInline");
+					favoriteChartStyleAction2("displayNone");
+					favoriteLoadingStyleAction2("displayNone");
+					favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+				}
+				if (favorites[2] !== "") {
+					favoriteStyleAction2("displayNone");
+					favoriteChartStyleAction2("favoriteChartStyle2 row");
+					favoriteLoadingStyleAction2("displayNone");
+					favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite2");
+				}
+				if (favorites[3] === "") {
+					favoriteStyleAction3("displayInline");
+					favoriteChartStyleAction3("displayNone");
+					favoriteLoadingStyleAction3("displayNone");
+					favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+				}
+				if (favorites[3] !== "") {
+					favoriteStyleAction3("displayNone");
+					favoriteChartStyleAction3("favoriteChartStyle3 row");
+					favoriteLoadingStyleAction3("displayNone");
+					favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
+				}
 			}
 		}
 		if (isLoggedIn === true && connected === false) {
@@ -179,8 +228,8 @@ const Favorites = ({
 			favoriteChartStyleAction3("displayNone");
 			favoriteLoadingStyleAction3("favoriteLoading");
 			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-        }
-	}, [isLoggedIn, connected]);
+		}
+	}, [isLoggedIn, connected, fetchedFavorites]);
 	
 	let favorite1Data = (canvas) => {
 		const ctx = canvas.getContext("2d");
@@ -226,123 +275,19 @@ const Favorites = ({
 	};
 
 	function ShowCoinList() {
-
+		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
+		NameList();
+	}
+	function CloseCoinList() {
+		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert displayNone");
 	}
 
-	//favoriteChartStyle0 row
 	return (
 		<div className="row gx-0">
-			<div className="alert alert-light alert-dismissible fade show favoritesAlert" role="alert">
-				<button type="button" className="btn-close favoritesListClose" data-bs-dismiss="alert" aria-label="Close"></button>
+			<div className={favoritesAlertStyle} role="alert">
+				<button onClick={CloseCoinList} type="button" className="btn-close favoritesListClose" aria-label="Close"></button>
 				<div className="favoritesAlertList">
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
-					<div className="row text-center favoritesListItem">
-						<div className="col-6">
-							<i className="bi bi-circle"></i>
-							<span className="favoritesListName">Name</span>
-						</div>
-						<div className="col-6">
-							<span className="favoritesListPrice">Price</span>
-						</div>
-					</div>
+					<NamesList />
 				</div>
 			</div>
 			<div className={favorite0}>
@@ -650,6 +595,8 @@ const mapStateToProps = (state) => {
 		favorite1: state.favorite1,
 		favorite2: state.favorite2,
 		favorite3: state.favorite3,
+		favoritesAlertStyle: state.favoritesAlertStyle,
+		fetchedFavorites: state.fetchedFavorites,
 	};
 };
 
@@ -671,6 +618,7 @@ const mapDispatchToProps = {
 	favorite1Action: favorite1Action,
 	favorite2Action: favorite2Action,
 	favorite3Action: favorite3Action,
+	favoritesAlertStyleAction: favoritesAlertStyleAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

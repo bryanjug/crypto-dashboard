@@ -28,6 +28,8 @@ export const FAVORITE_0 = "FAVORITE_0";
 export const FAVORITE_1 = "FAVORITE_1";
 export const FAVORITE_2 = "FAVORITE_2";
 export const FAVORITE_3 = "FAVORITE_3";
+export const FAVORITES_ALERT_STYLE = "FAVORITES_ALERT_STYLE";
+export const FETCHED_FAVORITES = "FETCHED_FAVORITES";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -108,10 +110,15 @@ export const favoriteChartStyleAction = (favoriteChartStyle) => async (dispatch,
 
 export const fetchFavoritesAction = (userId) => async (dispatch, getState) => {
     const favorites = await FetchFavorites(userId);
-    
+    const fetchedFavorites = true;
     dispatch({
         type: FETCH_FAVORITES,
         payload: favorites
+    });
+
+    dispatch({
+        type: FETCHED_FAVORITES,
+        payload: fetchedFavorites
     });
 };
 
@@ -224,5 +231,12 @@ export const favorite3Action = (favorite3) => async (dispatch, getState) => {
     dispatch({
         type: FAVORITE_3,
         payload: favorite3
+    });
+};
+
+export const favoritesAlertStyleAction = (favoritesAlertStyle) => async (dispatch, getState) => {
+    dispatch({
+        type: FAVORITES_ALERT_STYLE,
+        payload: favoritesAlertStyle
     });
 };

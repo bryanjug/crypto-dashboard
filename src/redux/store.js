@@ -29,6 +29,8 @@ import {
 	FAVORITE_1,
 	FAVORITE_2,
 	FAVORITE_3,
+	FAVORITES_ALERT_STYLE,
+	FETCHED_FAVORITES,
 } from "./actions";
 
 const initialState = {
@@ -56,10 +58,12 @@ const initialState = {
 	favoriteStyle3: "displayNone",
 	favoriteChartStyle3: "displayNone",
 	favoriteLoadingStyle3: "favoriteLoading",
-	favorite0: "col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0",
+	favorite0: "col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite",
 	favorite1: "col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite",
 	favorite2: "col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite",
 	favorite3: "col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite",
+	favoritesAlertStyle: "alert alert-light alert-dismissible fade show favoritesAlert displayNone",
+	fetchedFavorites: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -205,6 +209,16 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				favorite3: action.payload,
+			}
+		case FAVORITES_ALERT_STYLE:
+			return {
+				...state,
+				favoritesAlertStyle: action.payload,
+			}
+		case FETCHED_FAVORITES:
+			return {
+				...state,
+				fetchedFavorites: action.payload,
 			}
 	}
 };
