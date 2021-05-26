@@ -5,6 +5,18 @@ body {
 	margin: 0 !important;
 	background-color: #f5f5f5;
 }
+.favoritesListBack, .favoritesListNext {
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 30px;
+    border: none;
+    background-color: inherit;
+    -moz-box-shadow: 0 0 3px rgb(107, 107, 107);
+	-webkit-box-shadow: 0 0 3px rgb(107, 107, 107);
+    box-shadow: 0 0 3px rgb(161, 161, 161);
+    margin-bottom: 5%;
+    color: gray;
+}
 .coinsListLoader {
 	top: 50%;
 	left: 50%;
@@ -106,7 +118,7 @@ body {
 	background-color: white;
 	margin: auto !important;
 	width: 90%;
-	border-radius: 20px 20px 0 0;
+	border-radius: 20px;
 	-moz-box-shadow: 0 0 9px rgb(0, 0, 0);
 	-webkit-box-shadow: 0 0 9px rgb(207, 207, 207);
 	box-shadow: 0 0 9px rgb(207, 207, 207);
@@ -115,6 +127,7 @@ body {
 	cursor: default;
 	padding-top: 1%;
     padding-bottom: 0;
+    overflow: hidden;
 }
 .favoriteLoading {
 	padding-top: 18px;

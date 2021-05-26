@@ -31,6 +31,9 @@ import {
 	FAVORITE_3,
 	FAVORITES_ALERT_STYLE,
 	FETCHED_FAVORITES,
+	COINS,
+	FAVORITES_LIST_BUTTON_STYLE,
+	SELECTED_FAVORITE,
 } from "./actions";
 
 const initialState = {
@@ -64,6 +67,9 @@ const initialState = {
 	favorite3: "col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite",
 	favoritesAlertStyle: "alert alert-light alert-dismissible fade show favoritesAlert displayNone",
 	fetchedFavorites: false,
+	coins: ([]),
+	favoritesListButtonStyle: "displayNone",
+	selectedFavorite: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -219,6 +225,21 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				fetchedFavorites: action.payload,
+			}
+		case COINS:
+			return {
+				...state,
+				coins: action.payload,
+			}
+		case FAVORITES_LIST_BUTTON_STYLE:
+			return {
+				...state,
+				favoritesListButtonStyle: action.payload,
+			}
+		case SELECTED_FAVORITE:
+			return {
+				...state,
+				selectedFavorite: action.payload,
 			}
 	}
 };

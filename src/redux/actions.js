@@ -30,6 +30,9 @@ export const FAVORITE_2 = "FAVORITE_2";
 export const FAVORITE_3 = "FAVORITE_3";
 export const FAVORITES_ALERT_STYLE = "FAVORITES_ALERT_STYLE";
 export const FETCHED_FAVORITES = "FETCHED_FAVORITES";
+export const COINS = "COINS";
+export const FAVORITES_LIST_BUTTON_STYLE = "FAVORITES_LIST_BUTTON_STYLE";
+export const SELECTED_FAVORITE = "SELECTED_FAVORITE";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -87,30 +90,29 @@ export const userIdAction = (userId) => async (dispatch, getState) => {
     });
 };
 
-export const favoriteLoadingStyleAction = (favoriteLoadingStyle) => async (dispatch, getState) => {
+export const favoriteLoadingStyleAction = (favoriteLoadingStyle) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_LOADING_STYLE,
         payload: favoriteLoadingStyle
     });
 };
 
-export const favoriteStyleAction = (favoriteStyle) => async (dispatch, getState) => {
+export const favoriteStyleAction = (favoriteStyle) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_STYLE,
         payload: favoriteStyle
     });
 };
 
-export const favoriteChartStyleAction = (favoriteChartStyle) => async (dispatch, getState) => {
+export const favoriteChartStyleAction = (favoriteChartStyle) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_CHART_STYLE,
         payload: favoriteChartStyle
     });
 };
 
-export const fetchFavoritesAction = (userId) => async (dispatch, getState) => {
+export const fetchFavoritesAction = (userId, fetchedFavorites) => async (dispatch, getState) => {
     const favorites = await FetchFavorites(userId);
-    const fetchedFavorites = true;
     dispatch({
         type: FETCH_FAVORITES,
         payload: favorites
@@ -122,121 +124,142 @@ export const fetchFavoritesAction = (userId) => async (dispatch, getState) => {
     });
 };
 
-export const favoriteStyleAction0 = (favoriteStyle0) => async (dispatch, getState) => {
+export const favoriteStyleAction0 = (favoriteStyle0) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_STYLE_0,
         payload: favoriteStyle0
     });
 };
 
-export const favoriteChartStyleAction0 = (favoriteChartStyle0) => async (dispatch, getState) => {
+export const favoriteChartStyleAction0 = (favoriteChartStyle0) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_CHART_STYLE_0,
         payload: favoriteChartStyle0
     });
 };
 
-export const favoriteLoadingStyleAction0 = (favoriteLoadingStyle0) => async (dispatch, getState) => {
+export const favoriteLoadingStyleAction0 = (favoriteLoadingStyle0) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_LOADING_STYLE_0,
         payload: favoriteLoadingStyle0
     });
 };
 
-export const favoriteStyleAction1 = (favoriteStyle1) => async (dispatch, getState) => {
+export const favoriteStyleAction1 = (favoriteStyle1) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_STYLE_1,
         payload: favoriteStyle1
     });
 };
 
-export const favoriteChartStyleAction1 = (favoriteChartStyle1) => async (dispatch, getState) => {
+export const favoriteChartStyleAction1 = (favoriteChartStyle1) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_CHART_STYLE_1,
         payload: favoriteChartStyle1
     });
 };
 
-export const favoriteLoadingStyleAction1 = (favoriteLoadingStyle1) => async (dispatch, getState) => {
+export const favoriteLoadingStyleAction1 = (favoriteLoadingStyle1) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_LOADING_STYLE_1,
         payload: favoriteLoadingStyle1
     });
 };
 
-export const favoriteStyleAction2 = (favoriteStyle2) => async (dispatch, getState) => {
+export const favoriteStyleAction2 = (favoriteStyle2) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_STYLE_2,
         payload: favoriteStyle2
     });
 };
 
-export const favoriteChartStyleAction2 = (favoriteChartStyle2) => async (dispatch, getState) => {
+export const favoriteChartStyleAction2 = (favoriteChartStyle2) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_CHART_STYLE_2,
         payload: favoriteChartStyle2
     });
 };
 
-export const favoriteLoadingStyleAction2 = (favoriteLoadingStyle2) => async (dispatch, getState) => {
+export const favoriteLoadingStyleAction2 = (favoriteLoadingStyle2) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_LOADING_STYLE_2,
         payload: favoriteLoadingStyle2
     });
 };
 
-export const favoriteStyleAction3 = (favoriteStyle3) => async (dispatch, getState) => {
+export const favoriteStyleAction3 = (favoriteStyle3) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_STYLE_3,
         payload: favoriteStyle3
     });
 };
 
-export const favoriteChartStyleAction3 = (favoriteChartStyle3) => async (dispatch, getState) => {
+export const favoriteChartStyleAction3 = (favoriteChartStyle3) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_CHART_STYLE_3,
         payload: favoriteChartStyle3
     });
 };
 
-export const favoriteLoadingStyleAction3 = (favoriteLoadingStyle3) => async (dispatch, getState) => {
+export const favoriteLoadingStyleAction3 = (favoriteLoadingStyle3) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_LOADING_STYLE_3,
         payload: favoriteLoadingStyle3
     });
 };
 
-export const favorite0Action = (favorite0) => async (dispatch, getState) => {
+export const favorite0Action = (favorite0) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_0,
         payload: favorite0
     });
 };
 
-export const favorite1Action = (favorite1) => async (dispatch, getState) => {
+export const favorite1Action = (favorite1) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_1,
         payload: favorite1
     });
 };
 
-export const favorite2Action = (favorite2) => async (dispatch, getState) => {
+export const favorite2Action = (favorite2) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_2,
         payload: favorite2
     });
 };
 
-export const favorite3Action = (favorite3) => async (dispatch, getState) => {
+export const favorite3Action = (favorite3) => (dispatch, getState) => {
     dispatch({
         type: FAVORITE_3,
         payload: favorite3
     });
 };
 
-export const favoritesAlertStyleAction = (favoritesAlertStyle) => async (dispatch, getState) => {
+export const favoritesAlertStyleAction = (favoritesAlertStyle) => (dispatch, getState) => {
     dispatch({
         type: FAVORITES_ALERT_STYLE,
         payload: favoritesAlertStyle
+    });
+};
+
+export const coinsAction = (coins) => (dispatch, getState) => {
+    dispatch({
+        type: COINS,
+        payload: coins
+    });
+};
+
+export const favoritesListButtonStyleAction = (favoritesListButtonStyle) => (dispatch, getState) => {
+    dispatch({
+        type: FAVORITES_LIST_BUTTON_STYLE,
+        payload: favoritesListButtonStyle
+    });
+};
+
+export const selectedFavoriteAction = (selectedFavorite) => (dispatch, getState) => {
+    dispatch({
+        type: SELECTED_FAVORITE,
+        payload: selectedFavorite
     });
 };

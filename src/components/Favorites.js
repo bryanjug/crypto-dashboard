@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Line, Chart } from "react-chartjs-2";
 import CoinGeko from "../API/CoinGecko";
+import API from "../API/API";
 import {
 	fetchFavoritesAction,
 	favoriteStyleAction0,
@@ -21,6 +22,9 @@ import {
 	favorite2Action,
 	favorite3Action,
 	favoritesAlertStyleAction,
+	favoritesListButtonStyleAction,
+	coinsAction,
+	selectedFavoriteAction,
 } from "../redux/actions";
 
 const Favorites = ({
@@ -64,15 +68,19 @@ const Favorites = ({
 	favoritesAlertStyleAction,
 	favoritesAlertStyle,
 	fetchedFavorites,
+	favoritesListButtonStyleAction,
+	favoritesListButtonStyle,
+	coinsAction,
+	coins,
+	selectedFavoriteAction,
+	selectedFavorite,
 }) => {
 	Chart.defaults.scale.grid.display = false;
 	Chart.defaults.scale.grid.borderWidth = 0;
-	// Chart.defaults.scale.display = false;
 	Chart.defaults.plugins.legend.display = false;
 
-	const [coins, setCoins] = useState([]);
 	let coinsList = [];
-	
+
 	function NameList() {  
 		if (coins.length === 0) {
 			CoinGeko.get("/coins/list?include_platform=false")
@@ -81,9 +89,8 @@ const Favorites = ({
 				for (let i = 0; i < 100; i++) {
 					coinsList.push(res.[i].id);
 				}
-				setCoins(coinsList);
-
-				console.log(coinsList);
+				coinsAction(coinsList);
+				favoritesListButtonStyleAction("row text-center");
 			})
 		}
 	} 
@@ -93,7 +100,7 @@ const Favorites = ({
 			const listItems = coins.map((coin, i) =>  
 				<div key={i} className="row text-center favoritesListItem">
 					<div className="col-12">
-						<span className="favoritesListName">{coin}</span>
+						<span className="favoritesListName" onClick={() => AddFavorite(i)}>{coin}</span>
 					</div>
 				</div>
 			);
@@ -111,12 +118,47 @@ const Favorites = ({
 			);
 		}
 	};
+
+	function AddFavorite(i) {
+		let payload = {
+			[selectedFavorite]: `${coins[i]}`,
+		};
+		API.patch(`/favorites/${userId}/`, payload)
+			.then(function (response) {
+				fetchFavoritesAction(userId, false);
+				CloseCoinList();
+			})
+	}
+
+	function ShowCoinList0() {
+		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
+		NameList();
+		selectedFavoriteAction("favorite1");
+	}
+	function ShowCoinList1() {
+		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
+		NameList();
+		selectedFavoriteAction("favorite2");
+	}
+	function ShowCoinList2() {
+		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
+		NameList();
+		selectedFavoriteAction("favorite3");
+	}
+	function ShowCoinList3() {
+		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
+		NameList();
+		selectedFavoriteAction("favorite4");
+	}
+	function CloseCoinList() {
+		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert displayNone");
+	}
 	
 	useEffect(() => {
 		if (isLoggedIn === true && connected === true) {
 			//set loader and favoritestyle
 			//to display none and fetch favorites + show chart
-			fetchFavoritesAction(userId);
+			fetchFavoritesAction(userId, true);
 			if (fetchedFavorites === true) {
 				if (favorites[0] === "") {
 					favoriteStyleAction0("displayInline");
@@ -125,10 +167,6 @@ const Favorites = ({
 					favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
 				}
 				if (favorites[0] !== "") {
-					// favoriteStyleAction0("displayInline");
-					// favoriteChartStyleAction0("displayNone");
-					// favoriteLoadingStyleAction0("displayNone");
-					// favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
 					favoriteStyleAction0("displayNone");
 					favoriteChartStyleAction0("favoriteChartStyle0 row");
 					favoriteLoadingStyleAction0("displayNone");
@@ -274,24 +312,28 @@ const Favorites = ({
 		};
 	};
 
-	function ShowCoinList() {
-		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
-		NameList();
-	}
-	function CloseCoinList() {
-		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert displayNone");
-	}
-
 	return (
 		<div className="row gx-0">
 			<div className={favoritesAlertStyle} role="alert">
 				<button onClick={CloseCoinList} type="button" className="btn-close favoritesListClose" aria-label="Close"></button>
 				<div className="favoritesAlertList">
 					<NamesList />
+					<div className={favoritesListButtonStyle}>
+						<div className="col-6">
+							<button className="favoritesListBack">
+								Back
+							</button>
+						</div>
+						<div className="col-6">
+							<button className="favoritesListNext">
+								Next
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div className={favorite0}>
-				<div className={favoriteStyle0} onClick={ShowCoinList}>
+				<div className={favoriteStyle0} onClick={ShowCoinList0}>
 					<span className="favoriteText">Add Favorite</span>
 					<br />
 					<i className="bi bi-plus-circle favoriteIcon"></i>
@@ -361,7 +403,7 @@ const Favorites = ({
 				</div>
 			</div>
 			<div className={favorite1}>
-				<div className={favoriteStyle1}>
+				<div className={favoriteStyle1} onClick={ShowCoinList1}>
 					<span className="favoriteText">Add Favorite</span>
 					<br />
 					<i className="bi bi-plus-circle favoriteIcon"></i>
@@ -431,7 +473,7 @@ const Favorites = ({
 				</div>
 			</div>
 			<div className={favorite2}>
-				<div className={favoriteStyle2}>
+				<div className={favoriteStyle2} onClick={ShowCoinList2}>
 					<span className="favoriteText">Add Favorite</span>
 					<br />
 					<i className="bi bi-plus-circle favoriteIcon"></i>
@@ -501,7 +543,7 @@ const Favorites = ({
 				</div>
 			</div>
 			<div className={favorite3}>
-				<div className={favoriteStyle3}>
+				<div className={favoriteStyle3} onClick={ShowCoinList3}>
 					<span className="favoriteText">Add Favorite</span>
 					<br />
 					<i className="bi bi-plus-circle favoriteIcon"></i>
@@ -597,6 +639,9 @@ const mapStateToProps = (state) => {
 		favorite3: state.favorite3,
 		favoritesAlertStyle: state.favoritesAlertStyle,
 		fetchedFavorites: state.fetchedFavorites,
+		coins: state.coins,
+		favoritesListButtonStyle: state.favoritesListButtonStyle,
+		selectedFavorite: state.selectedFavorite,
 	};
 };
 
@@ -619,6 +664,9 @@ const mapDispatchToProps = {
 	favorite2Action: favorite2Action,
 	favorite3Action: favorite3Action,
 	favoritesAlertStyleAction: favoritesAlertStyleAction,
+	coinsAction: coinsAction,
+	favoritesListButtonStyleAction: favoritesListButtonStyleAction,
+	selectedFavoriteAction: selectedFavoriteAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
