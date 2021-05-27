@@ -33,7 +33,13 @@ export const FETCHED_FAVORITES = "FETCHED_FAVORITES";
 export const COINS = "COINS";
 export const FAVORITES_LIST_BUTTON_STYLE = "FAVORITES_LIST_BUTTON_STYLE";
 export const SELECTED_FAVORITE = "SELECTED_FAVORITE";
-
+export const FAVORITE_REMOVE_ICON_STYLE = "FAVORITE_REMOVE_ICON_STYLE";
+export const FAVORITE_LIST_START = "FAVORITE_LIST_START";
+export const FAVORITE_LIST_END = "FAVORITE_LIST_END";
+export const COINS_ALL = "COINS_ALL";
+export const FAVORITE_BACK_BUTTON_STYLE = "FAVORITE_BACK_BUTTON_STYLE";
+export const FAVORITE_NEXT_BUTTON_STYLE = "FAVORITE_NEXT_BUTTON_STYLE";
+    
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
 		type: LOG_IN,
@@ -261,5 +267,47 @@ export const selectedFavoriteAction = (selectedFavorite) => (dispatch, getState)
     dispatch({
         type: SELECTED_FAVORITE,
         payload: selectedFavorite
+    });
+};
+
+export const favoriteRemoveIconStyleAction = (favoriteRemoveIconStyle) => (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_REMOVE_ICON_STYLE,
+        payload: favoriteRemoveIconStyle
+    });
+};
+
+export const favoriteListStartAction = (favoriteListStart) => (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_LIST_START,
+        payload: favoriteListStart
+    });
+};
+
+export const favoriteListEndAction = (favoriteListEnd) => (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_LIST_END,
+        payload: favoriteListEnd
+    });
+};
+
+export const coinsAllAction = (coinsAll) => (dispatch, getState) => {
+    dispatch({
+        type: COINS_ALL,
+        payload: coinsAll
+    });
+};
+
+export const favoriteBackButtonStyleAction = (favoriteBackButtonStyle) => (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_BACK_BUTTON_STYLE,
+        payload: favoriteBackButtonStyle
+    });
+};
+
+export const favoriteNextButtonStyleAction = (favoriteNextButtonStyle) => (dispatch, getState) => {
+    dispatch({
+        type: FAVORITE_NEXT_BUTTON_STYLE,
+        payload: favoriteNextButtonStyle
     });
 };

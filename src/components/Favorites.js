@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Line, Chart } from "react-chartjs-2";
 import CoinGeko from "../API/CoinGecko";
@@ -25,6 +25,11 @@ import {
 	favoritesListButtonStyleAction,
 	coinsAction,
 	selectedFavoriteAction,
+	favoriteListStartAction,
+	favoriteListEndAction,
+	coinsAllAction,
+	favoriteBackButtonStyleAction,
+	favoriteNextButtonStyleAction,
 } from "../redux/actions";
 
 const Favorites = ({
@@ -74,18 +79,33 @@ const Favorites = ({
 	coins,
 	selectedFavoriteAction,
 	selectedFavorite,
+	favoriteRemoveIconStyle,
+	favoriteListStartAction,
+	favoriteListEndAction,
+	coinsAllAction,
+	favoriteBackButtonStyleAction,
+	favoriteNextButtonStyleAction,
+	favoriteListStart,
+	favoriteListEnd,
+	coinsAll,
+	favoriteBackButtonStyle,
+	favoriteNextButtonStyle,
+	favoriteGraphData0,
+	favoriteGraphData1,
+	favoriteGraphData2,
+	favoriteGraphData3,
 }) => {
 	Chart.defaults.scale.grid.display = false;
 	Chart.defaults.scale.grid.borderWidth = 0;
 	Chart.defaults.plugins.legend.display = false;
 
-	let coinsList = [];
-
 	function NameList() {  
 		if (coins.length === 0) {
 			CoinGeko.get("/coins/list?include_platform=false")
 			.then(function(response) {
+				let coinsList = [];
 				let res = response.data;
+				coinsAllAction(res);
 				for (let i = 0; i < 100; i++) {
 					coinsList.push(res.[i].id);
 				}
@@ -93,8 +113,32 @@ const Favorites = ({
 				favoritesListButtonStyleAction("row text-center");
 			})
 		}
-	} 
-	
+	}
+
+	useEffect(() => {
+		if (coins.length > 0 && coinsAll.length > 0) {
+			let coinsList = [];
+			
+			for (let i = favoriteListStart; i < favoriteListEnd; i++) {
+				coinsList.push(coinsAll.[i].id);
+			}
+
+			coinsAction(coinsList);
+		}
+		if (favoriteListStart === 0) {
+			favoriteBackButtonStyleAction("displayNone");
+		}
+		if (favoriteListStart === 100) {
+			favoriteBackButtonStyleAction("favoritesListBack");
+		}
+		if (favoriteListEnd === Math.round(coinsAll.length/100)*100) {
+			favoriteNextButtonStyleAction("displayNone");
+		}
+		if (favoriteListEnd !== Math.round(coinsAll.length/100)*100) {
+			favoriteNextButtonStyleAction("favoritesListNext");
+		}
+	}, [favoriteListStart, favoriteListEnd])
+
 	const NamesList = () => {
 		if (coins.length > 0) {
 			const listItems = coins.map((coin, i) =>  
@@ -119,6 +163,16 @@ const Favorites = ({
 		}
 	};
 
+	function OnNextClick() {
+		favoriteListStartAction(favoriteListStart + 100);
+		favoriteListEndAction(favoriteListEnd + 100);
+	}
+
+	function OnBackClick() {
+		favoriteListStartAction(favoriteListStart - 100);
+		favoriteListEndAction(favoriteListEnd - 100);
+	}
+
 	function AddFavorite(i) {
 		let payload = {
 			[selectedFavorite]: `${coins[i]}`,
@@ -135,29 +189,91 @@ const Favorites = ({
 		NameList();
 		selectedFavoriteAction("favorite1");
 	}
+
 	function ShowCoinList1() {
 		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
 		NameList();
 		selectedFavoriteAction("favorite2");
 	}
+
 	function ShowCoinList2() {
 		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
 		NameList();
 		selectedFavoriteAction("favorite3");
 	}
+
 	function ShowCoinList3() {
 		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert");
 		NameList();
 		selectedFavoriteAction("favorite4");
 	}
+
 	function CloseCoinList() {
-		favoritesAlertStyleAction("alert alert-light alert-dismissible fade show favoritesAlert displayNone");
+		favoritesAlertStyleAction("displayNone");
+	}
+
+	function RemoveFavorite0() {
+		let payload = {
+			"favorite1": "",
+		};
+
+		API.patch(`/favorites/${userId}/`, payload)
+			.then(function (response) {
+				fetchFavoritesAction(userId, false);
+				favoriteStyleAction0("displayInline");
+				favoriteChartStyleAction0("displayNone");
+				favoriteLoadingStyleAction0("displayNone");
+				favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+			})
+	}
+
+	function RemoveFavorite1() {
+		let payload = {
+			"favorite2": "",
+		};
+
+		API.patch(`/favorites/${userId}/`, payload)
+			.then(function (response) {
+				fetchFavoritesAction(userId, false);
+				favoriteStyleAction1("displayInline");
+				favoriteChartStyleAction1("displayNone");
+				favoriteLoadingStyleAction1("displayNone");
+				favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+			})
+	}
+
+	function RemoveFavorite2() {
+		let payload = {
+			"favorite3": "",
+		};
+
+		API.patch(`/favorites/${userId}/`, payload)
+			.then(function (response) {
+				fetchFavoritesAction(userId, false);
+				favoriteStyleAction2("displayInline");
+				favoriteChartStyleAction2("displayNone");
+				favoriteLoadingStyleAction2("displayNone");
+				favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+			})
+	}
+
+	function RemoveFavorite3() {
+		let payload = {
+			"favorite4": "",
+		};
+
+		API.patch(`/favorites/${userId}/`, payload)
+			.then(function (response) {
+				fetchFavoritesAction(userId, false);
+				favoriteStyleAction3("displayInline");
+				favoriteChartStyleAction3("displayNone");
+				favoriteLoadingStyleAction3("displayNone");
+				favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+			})
 	}
 	
 	useEffect(() => {
 		if (isLoggedIn === true && connected === true) {
-			//set loader and favoritestyle
-			//to display none and fetch favorites + show chart
 			fetchFavoritesAction(userId, true);
 			if (fetchedFavorites === true) {
 				if (favorites[0] === "") {
@@ -231,45 +347,27 @@ const Favorites = ({
 			favoriteLoadingStyleAction3("favoriteLoading");
 			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
 		}
-		if (isLoggedIn === false && connected === true) {
-			favoriteStyleAction0("displayInline");
-			favoriteChartStyleAction0("displayNone");
-			favoriteLoadingStyleAction0("displayNone");
-			favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			favoriteStyleAction1("displayInline");
-			favoriteChartStyleAction1("displayNone");
-			favoriteLoadingStyleAction1("displayNone");
-			favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			favoriteStyleAction2("displayInline");
-			favoriteChartStyleAction2("displayNone");
-			favoriteLoadingStyleAction2("displayNone");
-			favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			favoriteStyleAction3("displayInline");
-			favoriteChartStyleAction3("displayNone");
-			favoriteLoadingStyleAction3("displayNone");
-			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-        }
-        if (isLoggedIn === false && connected === false) {
+		if (isLoggedIn === false) {
 			favoriteStyleAction0("displayNone");
-			favoriteChartStyleAction0("displayNone");
-			favoriteLoadingStyleAction0("favoriteLoading");
-			favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+			favoriteChartStyleAction0("favoriteChartStyle0 row");
+			favoriteLoadingStyleAction0("displayNone");
+			favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0");
 			favoriteStyleAction1("displayNone");
-			favoriteChartStyleAction1("displayNone");
-			favoriteLoadingStyleAction1("favoriteLoading");
-			favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+			favoriteChartStyleAction1("favoriteChartStyle1 row");
+			favoriteLoadingStyleAction1("displayNone");
+			favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite1");
 			favoriteStyleAction2("displayNone");
-			favoriteChartStyleAction2("displayNone");
-			favoriteLoadingStyleAction2("favoriteLoading");
-			favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+			favoriteChartStyleAction2("favoriteChartStyle2 row");
+			favoriteLoadingStyleAction2("displayNone");
+			favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite2");
 			favoriteStyleAction3("displayNone");
-			favoriteChartStyleAction3("displayNone");
-			favoriteLoadingStyleAction3("favoriteLoading");
-			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-		}
+			favoriteChartStyleAction3("favoriteChartStyle3 row");
+			favoriteLoadingStyleAction3("displayNone");
+			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
+        }
 	}, [isLoggedIn, connected, fetchedFavorites]);
 	
-	let favorite1Data = (canvas) => {
+	let favorite0Data = (canvas) => {
 		const ctx = canvas.getContext("2d");
 		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
 		gradient.addColorStop(0, "rgba(51, 67, 117, 1)");
@@ -303,7 +401,136 @@ const Favorites = ({
 			datasets: [
 				{
 					fill: "start",
-					data: [7040, 10000, 6999, 6486, 8043, 7550, 8842],
+					data: favoriteGraphData0,
+					backgroundColor: gradient,
+					borderColor: ["#5091ed"],
+					borderWidth: 0,
+				},
+			],
+		};
+	};
+
+	let favorite1Data = (canvas) => {
+		const ctx = canvas.getContext("2d");
+		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
+		gradient.addColorStop(0, "#7adbe8");
+		gradient.addColorStop(1, "#1FC295");
+		var d = new Date();
+		var weekday = new Array(14);
+		weekday[-6] = "Monday";
+		weekday[-5] = "Tuesday";
+		weekday[-4] = "Wednesday";
+		weekday[-3] = "Thursday";
+		weekday[-2] = "Friday";
+		weekday[-1] = "Saturday";
+		weekday[0] = "Sunday";
+		weekday[1] = "Monday";
+		weekday[2] = "Tuesday";
+		weekday[3] = "Wednesday";
+		weekday[4] = "Thursday";
+		weekday[5] = "Friday";
+		weekday[6] = "Saturday";
+
+		return {
+			labels: [
+				weekday[d.getDay() - 6],
+				weekday[d.getDay() - 5],
+				weekday[d.getDay() - 4],
+				weekday[d.getDay() - 3],
+				weekday[d.getDay() - 2],
+				weekday[d.getDay() - 1],
+				weekday[d.getDay()], //current day
+			],
+			datasets: [
+				{
+					fill: "start",
+					data: favoriteGraphData1,
+					backgroundColor: gradient,
+					borderColor: ["#5091ed"],
+					borderWidth: 0,
+				},
+			],
+		};
+	};
+
+	let favorite2Data = (canvas) => {
+		const ctx = canvas.getContext("2d");
+		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
+		gradient.addColorStop(0, "#ED4952");
+		gradient.addColorStop(1, "#e59295");
+		var d = new Date();
+		var weekday = new Array(14);
+		weekday[-6] = "Monday";
+		weekday[-5] = "Tuesday";
+		weekday[-4] = "Wednesday";
+		weekday[-3] = "Thursday";
+		weekday[-2] = "Friday";
+		weekday[-1] = "Saturday";
+		weekday[0] = "Sunday";
+		weekday[1] = "Monday";
+		weekday[2] = "Tuesday";
+		weekday[3] = "Wednesday";
+		weekday[4] = "Thursday";
+		weekday[5] = "Friday";
+		weekday[6] = "Saturday";
+
+		return {
+			labels: [
+				weekday[d.getDay() - 6],
+				weekday[d.getDay() - 5],
+				weekday[d.getDay() - 4],
+				weekday[d.getDay() - 3],
+				weekday[d.getDay() - 2],
+				weekday[d.getDay() - 1],
+				weekday[d.getDay()], //current day
+			],
+			datasets: [
+				{
+					fill: "start",
+					data: favoriteGraphData2,
+					backgroundColor: gradient,
+					borderColor: ["#5091ed"],
+					borderWidth: 0,
+				},
+			],
+		};
+	};
+
+	let favorite3Data = (canvas) => {
+		const ctx = canvas.getContext("2d");
+		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
+		gradient.addColorStop(0, "#d973df");
+		gradient.addColorStop(1, "#3c37d8");
+		var d = new Date();
+		var weekday = new Array(14);
+		weekday[-6] = "Monday";
+		weekday[-5] = "Tuesday";
+		weekday[-4] = "Wednesday";
+		weekday[-3] = "Thursday";
+		weekday[-2] = "Friday";
+		weekday[-1] = "Saturday";
+		weekday[0] = "Sunday";
+		weekday[1] = "Monday";
+		weekday[2] = "Tuesday";
+		weekday[3] = "Wednesday";
+		weekday[4] = "Thursday";
+		weekday[5] = "Friday";
+		weekday[6] = "Saturday";
+
+		return {
+			labels: [
+				weekday[d.getDay() - 6],
+				weekday[d.getDay() - 5],
+				weekday[d.getDay() - 4],
+				weekday[d.getDay() - 3],
+				weekday[d.getDay() - 2],
+				weekday[d.getDay() - 1],
+				weekday[d.getDay()], //current day
+			],
+			datasets: [
+				{
+					fill: "start",
+					data: favoriteGraphData3,
 					backgroundColor: gradient,
 					borderColor: ["#5091ed"],
 					borderWidth: 0,
@@ -320,12 +547,12 @@ const Favorites = ({
 					<NamesList />
 					<div className={favoritesListButtonStyle}>
 						<div className="col-6">
-							<button className="favoritesListBack">
+							<button className={favoriteBackButtonStyle} onClick={OnBackClick}>
 								Back
 							</button>
 						</div>
 						<div className="col-6">
-							<button className="favoritesListNext">
+							<button className={favoriteNextButtonStyle} onClick={OnNextClick}>
 								Next
 							</button>
 						</div>
@@ -345,7 +572,7 @@ const Favorites = ({
 						</span>
 						<span className="priceUp favoritePercentage"><b>7%</b></span>
 						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
-						<i className="bi bi-dash-circle favoriteChangeIcon"></i>
+						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite0}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
@@ -355,7 +582,7 @@ const Favorites = ({
 					<div className="col-12">
 						<div className="favoriteGraph" style={{ width: null, height: null }}>
 							<Line
-								data={favorite1Data}
+								data={favorite0Data}
 								options={{
 									responsive: true,
 									maintainAspectRatio: true,
@@ -415,7 +642,7 @@ const Favorites = ({
 						</span>
 						<span className="priceUp favoritePercentage"><b>7%</b></span>
 						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
-						<i className="bi bi-dash-circle favoriteChangeIcon"></i>
+						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite1}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
@@ -481,11 +708,11 @@ const Favorites = ({
 				<div className={favoriteChartStyle2}>
 					<div className="col-12">
 						<span className="favoritePrice">
-						<b>$9992</b>
+							<b>$9992</b>
 						</span>
 						<span className="priceUp favoritePercentage"><b>7%</b></span>
 						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
-						<i className="bi bi-dash-circle favoriteChangeIcon"></i>
+						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite2}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
@@ -495,7 +722,7 @@ const Favorites = ({
 					<div className="col-12">
 						<div className="favoriteGraph" style={{ width: null, height: null }}>
 							<Line
-								data={favorite1Data}
+								data={favorite2Data}
 								options={{
 									responsive: true,
 									maintainAspectRatio: true,
@@ -551,11 +778,11 @@ const Favorites = ({
 				<div className={favoriteChartStyle3}>
 					<div className="col-12">
 						<span className="favoritePrice">
-						<b>$9992</b>
+							<b>$9992</b>
 						</span>
 						<span className="priceUp favoritePercentage"><b>7%</b></span>
 						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
-						<i className="bi bi-dash-circle favoriteChangeIcon"></i>
+						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite3}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
@@ -565,7 +792,7 @@ const Favorites = ({
 					<div className="col-12">
 						<div className="favoriteGraph" style={{ width: null, height: null }}>
 							<Line
-								data={favorite1Data}
+								data={favorite3Data}
 								options={{
 									responsive: true,
 									maintainAspectRatio: true,
@@ -642,6 +869,16 @@ const mapStateToProps = (state) => {
 		coins: state.coins,
 		favoritesListButtonStyle: state.favoritesListButtonStyle,
 		selectedFavorite: state.selectedFavorite,
+		favoriteRemoveIconStyle: state.favoriteRemoveIconStyle,
+		favoriteListStart: state.favoriteListStart,
+		favoriteListEnd: state.favoriteListEnd,
+		coinsAll: state.coinsAll,
+		favoriteBackButtonStyle: state.favoriteBackButtonStyle,
+		favoriteNextButtonStyle: state.favoriteNextButtonStyle,
+		favoriteGraphData0: state.favoriteGraphData0,
+		favoriteGraphData1: state.favoriteGraphData1,
+		favoriteGraphData2: state.favoriteGraphData2,
+		favoriteGraphData3: state.favoriteGraphData3,
 	};
 };
 
@@ -667,6 +904,11 @@ const mapDispatchToProps = {
 	coinsAction: coinsAction,
 	favoritesListButtonStyleAction: favoritesListButtonStyleAction,
 	selectedFavoriteAction: selectedFavoriteAction,
+	favoriteListStartAction: favoriteListStartAction,
+	favoriteListEndAction: favoriteListEndAction,
+	coinsAllAction: coinsAllAction,
+	favoriteBackButtonStyleAction: favoriteBackButtonStyleAction,
+	favoriteNextButtonStyleAction: favoriteNextButtonStyleAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

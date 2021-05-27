@@ -105,11 +105,12 @@ body {
 	padding-left: 3%;
 	font-size: 90%;
 }
-.favoriteChangeIcon {
+.favoriteRemoveIcon {
 	color: rgb(168, 168, 168);
 	font-size: 120%;
 	float: right;
-	padding-right: 6%;
+    padding-right: 6%;
+    cursor: pointer !important;
 }
 .favorite0,
 .favorite1,
@@ -381,7 +382,8 @@ body {
 	width: 100% !important;
 	text-align: center !important;
 	padding-top: 10% !important;
-	padding-bottom: 10% !important;
+    padding-bottom: 10% !important;
+    font-size: 100% !important;
 }
 .displayInline {
 	display: inline-block !important;
@@ -434,7 +436,8 @@ body {
 	position: absolute;
 	top: 1%;
 	left: 6%;
-	color: #136daf !important;
+    color: #136daf !important;
+    cursor: pointer;
 }
 .loading {
 	top: 50%;
@@ -845,27 +848,34 @@ body {
 	}
 }
 @media only screen and (min-width: 1583px) {
+    .favoritesListBack, .favoritesListNext {
+        -moz-box-shadow: 0 0 6px rgb(107, 107, 107);
+        -webkit-box-shadow: 0 0 6px rgb(107, 107, 107);
+        box-shadow: 0 0 6px rgb(161, 161, 161);
+    }
 	.navCol,
 	.dashboard {
 		font-size: 110% !important;
 	}
-	.googleText {
-		font-size: 120% !important;
+	.googleBtn {
+		font-size: 105% !important;
     }
     ::-webkit-scrollbar {
         width: 9px;
     }
 }
 @media only screen and (min-width: 1781px) {
+    .favoritesListBack, .favoritesListNext {
+        -moz-box-shadow: 0 0 8px rgb(107, 107, 107);
+        -webkit-box-shadow: 0 0 8px rgb(107, 107, 107);
+        box-shadow: 0 0 8px rgb(161, 161, 161);
+    }
     ::-webkit-scrollbar {
         width: 11px;
     }
 	.navCol,
 	.dashboard {
 		font-size: 120% !important;
-	}
-	.googleText {
-		font-size: 130% !important;
 	}
 	.newsItem3 {
 		display: inline-block;
@@ -896,14 +906,16 @@ body {
 	.dashboard {
 		font-size: 130% !important;
 	}
-	.googleText {
-		font-size: 140% !important;
-	}
 	.news img {
 		height: 125px;
 	}
 }
 @media only screen and (min-width: 2137px) {
+    .favoritesListBack, .favoritesListNext {
+        -moz-box-shadow: 0 0 10px rgb(107, 107, 107);
+        -webkit-box-shadow: 0 0 10px rgb(107, 107, 107);
+        box-shadow: 0 0 10px rgb(161, 161, 161);
+    }
     ::-webkit-scrollbar {
         width: 15px;
     }
@@ -914,11 +926,13 @@ body {
 	.dashboard {
 		font-size: 145% !important;
 	}
-	.googleText {
-		font-size: 155% !important;
-	}
 }
 @media only screen and (min-width: 2850px) {
+    .favoritesListBack, .favoritesListNext {
+        -moz-box-shadow: 0 0 12px rgb(107, 107, 107);
+        -webkit-box-shadow: 0 0 12px rgb(107, 107, 107);
+        box-shadow: 0 0 12px rgb(161, 161, 161);
+    }
     ::-webkit-scrollbar {
         width: 17px;
     }
@@ -930,9 +944,6 @@ body {
 	.dashboard {
 		font-size: 205% !important;
 	}
-	.googleText {
-		font-size: 215% !important;
-	}
 	.carousel-control-prev-icon,
 	.carousel-control-next-icon {
 		width: 15% !important;
@@ -940,6 +951,11 @@ body {
 	}
 }
 @media only screen and (min-width: 4275px) {
+    .favoritesListBack, .favoritesListNext {
+        -moz-box-shadow: 0 0 20px rgb(107, 107, 107);
+        -webkit-box-shadow: 0 0 20px rgb(107, 107, 107);
+        box-shadow: 0 0 20px rgb(161, 161, 161);
+    }
     ::-webkit-scrollbar {
         width: 25px;
     }
@@ -949,8 +965,8 @@ body {
 	.navCol,
 	.dashboard {
 		font-size: 305% !important;
-	}
-	.googleText {
-		font-size: 315% !important;
-	}
+    }
+    .navLine {
+        height: 4px !important;
+    }
 }

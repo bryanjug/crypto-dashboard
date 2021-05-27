@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import {connect} from 'react-redux';
-import {logInAction, usernameAction, styleLoginAction, styleLogoutAction, userIdAction} from '../redux/actions';
+import {logInAction, usernameAction, styleLoginAction, styleLogoutAction, userIdAction, favoriteRemoveIconStyleAction} from '../redux/actions';
 const CLIENT_ID = `${process.env.REACT_APP_CLIENT_ID}`;
 
 class GoogleBtn extends Component {
@@ -21,6 +21,7 @@ class GoogleBtn extends Component {
       this.props.styleLoginAction("googleBtn displayNone");
       this.props.styleLogoutAction("googleBtn displayInline");
       this.props.userIdAction(response.getId());
+      this.props.favoriteRemoveIconStyleAction("bi bi-dash-circle favoriteRemoveIcon");
     }
   }
 
@@ -28,6 +29,7 @@ class GoogleBtn extends Component {
     this.props.logInAction(false);
     this.props.styleLoginAction("googleBtn displayInline");
     this.props.styleLogoutAction("googleBtn displayNone");
+    this.props.favoriteRemoveIconStyleAction("displayNone");
   }
 
   handleLoginFailure (response) {
@@ -85,6 +87,7 @@ const mapDispatchToProps = {
     styleLoginAction: styleLoginAction,
     styleLogoutAction: styleLogoutAction,
     userIdAction: userIdAction,
+    favoriteRemoveIconStyleAction: favoriteRemoveIconStyleAction,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleBtn);

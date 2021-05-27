@@ -34,6 +34,12 @@ import {
 	COINS,
 	FAVORITES_LIST_BUTTON_STYLE,
 	SELECTED_FAVORITE,
+	FAVORITE_REMOVE_ICON_STYLE,
+	FAVORITE_LIST_START,
+	FAVORITE_LIST_END,
+	COINS_ALL,
+	FAVORITE_BACK_BUTTON_STYLE,
+	FAVORITE_NEXT_BUTTON_STYLE,
 } from "./actions";
 
 const initialState = {
@@ -70,6 +76,16 @@ const initialState = {
 	coins: ([]),
 	favoritesListButtonStyle: "displayNone",
 	selectedFavorite: "",
+	favoriteRemoveIconStyle: "displayNone",
+	favoriteListStart: 0,
+	favoriteListEnd: 100,
+	coinsAll: ({}),
+	favoriteBackButtonStyle: "displayNone",
+	favoriteNextButtonStyle: "favoritesListNext",
+	favoriteGraphData0: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
+	favoriteGraphData1: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
+	favoriteGraphData2: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
+	favoriteGraphData3: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -240,6 +256,36 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				selectedFavorite: action.payload,
+			}
+		case FAVORITE_REMOVE_ICON_STYLE:
+			return {
+				...state,
+				favoriteRemoveIconStyle: action.payload,
+			}
+		case FAVORITE_LIST_START:
+			return {
+				...state,
+				favoriteListStart: action.payload,
+			}
+		case FAVORITE_LIST_END:
+			return {
+				...state,
+				favoriteListEnd: action.payload,
+			}
+		case COINS_ALL:
+			return {
+				...state,
+				coinsAll: action.payload,
+			}
+		case FAVORITE_BACK_BUTTON_STYLE:
+			return {
+				...state,
+				favoriteBackButtonStyle: action.payload,
+			}
+		case FAVORITE_NEXT_BUTTON_STYLE:
+			return {
+				...state,
+				favoriteNextButtonStyle: action.payload,
 			}
 	}
 };
