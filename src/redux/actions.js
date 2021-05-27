@@ -1,5 +1,7 @@
 import {NewUser} from './NewUser';
 import {FetchFavorites} from './FetchFavorites';
+import {BitcoinGraphData} from './BitcoinGraphData';
+import {FavoritesGraphData} from './FavoritesGraphData';
 export const LOG_IN = "LOG_IN";
 export const LOADING = "LOADING";
 export const LOADING_STYLE = "LOADING_STYLE";
@@ -39,7 +41,9 @@ export const FAVORITE_LIST_END = "FAVORITE_LIST_END";
 export const COINS_ALL = "COINS_ALL";
 export const FAVORITE_BACK_BUTTON_STYLE = "FAVORITE_BACK_BUTTON_STYLE";
 export const FAVORITE_NEXT_BUTTON_STYLE = "FAVORITE_NEXT_BUTTON_STYLE";
-    
+export const BITCOIN_GRAPH_DATA = "BITCOIN_GRAPH_DATA";
+export const FAVORITES_GRAPH_DATA = "FAVORITES_GRAPH_DATA";
+
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
 		type: LOG_IN,
@@ -309,5 +313,23 @@ export const favoriteNextButtonStyleAction = (favoriteNextButtonStyle) => (dispa
     dispatch({
         type: FAVORITE_NEXT_BUTTON_STYLE,
         payload: favoriteNextButtonStyle
+    });
+};
+
+export const bitcoinGraphDataAction = () => async (dispatch, getState) => {
+    const data = await BitcoinGraphData();
+
+    dispatch({
+        type: BITCOIN_GRAPH_DATA,
+        payload: data
+    });
+};
+
+export const favoritesGraphDataAction = (favorites) => async (dispatch, getState) => {
+    const data = await FavoritesGraphData(favorites);
+
+    dispatch({
+        type: FAVORITES_GRAPH_DATA,
+        payload: data
     });
 };

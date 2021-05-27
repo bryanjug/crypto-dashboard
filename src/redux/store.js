@@ -40,6 +40,8 @@ import {
 	COINS_ALL,
 	FAVORITE_BACK_BUTTON_STYLE,
 	FAVORITE_NEXT_BUTTON_STYLE,
+	BITCOIN_GRAPH_DATA,
+	FAVORITES_GRAPH_DATA,
 } from "./actions";
 
 const initialState = {
@@ -82,10 +84,15 @@ const initialState = {
 	coinsAll: ({}),
 	favoriteBackButtonStyle: "displayNone",
 	favoriteNextButtonStyle: "favoritesListNext",
-	favoriteGraphData0: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
-	favoriteGraphData1: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
-	favoriteGraphData2: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
-	favoriteGraphData3: ([1500, 3500, 2000, 5000, 3000, 7000, 3000]),
+	bitcoinGraphData: ({}),
+	favoritesGraphData: (
+		[
+			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 38521, -3.9593475742828677],
+			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 9992, -3.9593475742828677],
+			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 5286, -3.9593475742828677],
+			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 10443, -3.9593475742828677]
+		]
+	),
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -286,6 +293,16 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				favoriteNextButtonStyle: action.payload,
+			}
+		case BITCOIN_GRAPH_DATA:
+			return {
+				...state,
+				bitcoinGraphData: action.payload,
+			}
+		case FAVORITES_GRAPH_DATA:
+			return {
+				...state,
+				favoritesGraphData: action.payload,
 			}
 	}
 };

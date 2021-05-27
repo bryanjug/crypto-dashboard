@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import {
+	bitcoinGraphDataAction,
+} from "../redux/actions";
 import { Line, Chart } from "react-chartjs-2";
 
-const Bitcoin = () => {
+const Bitcoin = ({bitcoinGraphDataAction, bitcoinGraphData}) => {
 	const [aspectRatio, setAspectRatio] = useState(2);
 	const [gradientSize, setGradientSize] = useState(550);
 	Chart.defaults.scale.grid.display = false;
@@ -144,6 +148,7 @@ const Bitcoin = () => {
 	//runs responsive functions on mount and removes event listener on dismount
 	useEffect(() => {
 		ResponsiveChart();
+		bitcoinGraphDataAction();
 
 		return () => {
 			window.removeEventListener('resize', ResponsiveChart);
@@ -186,7 +191,7 @@ const Bitcoin = () => {
 				{
 					fill: "start",
 					label: "Last 7 Days",
-					data: [7040, 7754, 6999, 6486, 8043, 7550, 8842],
+					data: [bitcoinGraphData[0], bitcoinGraphData[1], bitcoinGraphData[2], bitcoinGraphData[3], bitcoinGraphData[4], bitcoinGraphData[5], bitcoinGraphData[6]],
 					backgroundColor: gradient,
 					borderColor: ["#5091ed"],
                     borderWidth: 0,
@@ -201,17 +206,8 @@ const Bitcoin = () => {
 				<div className="col-6">
 					<p className="bitcoinTitle">Bitcoin History</p>
 				</div>
-				<div className="col-6 bitcoinDropdownContainer">
-					<select
-						name="bitcoinDropdown"
-						id="bitcoinDropdown"
-						className="bitcoinDropdown"
-					>
-						<option value="7day">Last 7 days</option>
-						<option value="1day">1 day</option>
-						<option value="1month">1 month</option>
-						<option value="1year">1 year</option>
-					</select>
+				<div className="col-6 bitcoinDaysContainer">
+					<p className="bitcoinDays">Last 7 Days</p>
 				</div>
 			</div>
 			<div className="row">
@@ -259,4 +255,14 @@ const Bitcoin = () => {
 	);
 };
 
-export default Bitcoin;
+const mapStateToProps = (state) => {
+	return {
+		bitcoinGraphData: state.bitcoinGraphData,
+	};
+};
+
+const mapDispatchToProps = {
+	bitcoinGraphDataAction: bitcoinGraphDataAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bitcoin);

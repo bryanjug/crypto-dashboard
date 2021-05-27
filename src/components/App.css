@@ -139,16 +139,12 @@ body {
 	margin: auto !important;
 	height: 100% !important;
 }
-.bitcoinDropdownContainer {
+.bitcoinDaysContainer {
 	padding-right: 8%;
-	padding-top: 2%;
 }
-.bitcoinDropdown {
-	float: right;
-	border-radius: 7px;
+.bitcoinDays {
+	text-align: right;
 	color: gray;
-	border: rgb(187, 187, 187) solid 1px;
-	cursor: pointer;
 }
 .bitcoinTitle {
 	text-align: left !important;
@@ -463,9 +459,6 @@ body {
 	.bitcoin {
 		padding-top: 6%;
 	}
-	.bitcoinDropdownContainer {
-		padding-top: 1%;
-	}
 }
 @media only screen and (min-width: 500px) {
     .favoritesAlert {
@@ -669,9 +662,6 @@ body {
 		margin-top: 3% !important;
 		margin-bottom: 3% !important;
 		padding-top: 4%;
-	}
-	.bitcoinDropdownContainer {
-		padding-top: 0.5%;
 	}
 	.news {
 		margin: auto !important;

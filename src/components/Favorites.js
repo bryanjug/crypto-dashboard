@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Line, Chart } from "react-chartjs-2";
 import CoinGeko from "../API/CoinGecko";
@@ -90,10 +90,7 @@ const Favorites = ({
 	coinsAll,
 	favoriteBackButtonStyle,
 	favoriteNextButtonStyle,
-	favoriteGraphData0,
-	favoriteGraphData1,
-	favoriteGraphData2,
-	favoriteGraphData3,
+	favoritesGraphData,
 }) => {
 	Chart.defaults.scale.grid.display = false;
 	Chart.defaults.scale.grid.borderWidth = 0;
@@ -276,6 +273,7 @@ const Favorites = ({
 		if (isLoggedIn === true && connected === true) {
 			fetchFavoritesAction(userId, true);
 			if (fetchedFavorites === true) {
+				//get CoinGecko data and set chart data
 				if (favorites[0] === "") {
 					favoriteStyleAction0("displayInline");
 					favoriteChartStyleAction0("displayNone");
@@ -372,36 +370,31 @@ const Favorites = ({
 		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
 		gradient.addColorStop(0, "rgba(51, 67, 117, 1)");
 		gradient.addColorStop(1, "rgba(252, 167, 44, 1)");
-		var d = new Date();
-		var weekday = new Array(14);
-		weekday[-6] = "Monday";
-		weekday[-5] = "Tuesday";
-		weekday[-4] = "Wednesday";
-		weekday[-3] = "Thursday";
-		weekday[-2] = "Friday";
-		weekday[-1] = "Saturday";
-		weekday[0] = "Sunday";
-		weekday[1] = "Monday";
-		weekday[2] = "Tuesday";
-		weekday[3] = "Wednesday";
-		weekday[4] = "Thursday";
-		weekday[5] = "Friday";
-		weekday[6] = "Saturday";
+
+		const day0 = favoritesGraphData[0].[0];
+		const day1 = favoritesGraphData[0].[1];
+		const day2 = favoritesGraphData[0].[2];
+		const day3 = favoritesGraphData[0].[3];
+		const day4 = favoritesGraphData[0].[4];
+		const day5 = favoritesGraphData[0].[5];
+		const today = favoritesGraphData[0].[6];
+
+		let data = [day0, day1, day2, day3, day4, day5, today];
 
 		return {
 			labels: [
-				weekday[d.getDay() - 6],
-				weekday[d.getDay() - 5],
-				weekday[d.getDay() - 4],
-				weekday[d.getDay() - 3],
-				weekday[d.getDay() - 2],
-				weekday[d.getDay() - 1],
-				weekday[d.getDay()], //current day
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
 			],
 			datasets: [
 				{
 					fill: "start",
-					data: favoriteGraphData0,
+					data: data,
 					backgroundColor: gradient,
 					borderColor: ["#5091ed"],
 					borderWidth: 0,
@@ -415,36 +408,31 @@ const Favorites = ({
 		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
 		gradient.addColorStop(0, "#7adbe8");
 		gradient.addColorStop(1, "#1FC295");
-		var d = new Date();
-		var weekday = new Array(14);
-		weekday[-6] = "Monday";
-		weekday[-5] = "Tuesday";
-		weekday[-4] = "Wednesday";
-		weekday[-3] = "Thursday";
-		weekday[-2] = "Friday";
-		weekday[-1] = "Saturday";
-		weekday[0] = "Sunday";
-		weekday[1] = "Monday";
-		weekday[2] = "Tuesday";
-		weekday[3] = "Wednesday";
-		weekday[4] = "Thursday";
-		weekday[5] = "Friday";
-		weekday[6] = "Saturday";
+
+		const day0 = favoritesGraphData[1].[0];
+		const day1 = favoritesGraphData[1].[1];
+		const day2 = favoritesGraphData[1].[2];
+		const day3 = favoritesGraphData[1].[3];
+		const day4 = favoritesGraphData[1].[4];
+		const day5 = favoritesGraphData[1].[5];
+		const today = favoritesGraphData[1].[6];
+
+		let data = [day0, day1, day2, day3, day4, day5, today];
 
 		return {
 			labels: [
-				weekday[d.getDay() - 6],
-				weekday[d.getDay() - 5],
-				weekday[d.getDay() - 4],
-				weekday[d.getDay() - 3],
-				weekday[d.getDay() - 2],
-				weekday[d.getDay() - 1],
-				weekday[d.getDay()], //current day
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
 			],
 			datasets: [
 				{
 					fill: "start",
-					data: favoriteGraphData1,
+					data: data,
 					backgroundColor: gradient,
 					borderColor: ["#5091ed"],
 					borderWidth: 0,
@@ -458,36 +446,31 @@ const Favorites = ({
 		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
 		gradient.addColorStop(0, "#ED4952");
 		gradient.addColorStop(1, "#e59295");
-		var d = new Date();
-		var weekday = new Array(14);
-		weekday[-6] = "Monday";
-		weekday[-5] = "Tuesday";
-		weekday[-4] = "Wednesday";
-		weekday[-3] = "Thursday";
-		weekday[-2] = "Friday";
-		weekday[-1] = "Saturday";
-		weekday[0] = "Sunday";
-		weekday[1] = "Monday";
-		weekday[2] = "Tuesday";
-		weekday[3] = "Wednesday";
-		weekday[4] = "Thursday";
-		weekday[5] = "Friday";
-		weekday[6] = "Saturday";
+
+		const day0 = favoritesGraphData[2].[0];
+		const day1 = favoritesGraphData[2].[1];
+		const day2 = favoritesGraphData[2].[2];
+		const day3 = favoritesGraphData[2].[3];
+		const day4 = favoritesGraphData[2].[4];
+		const day5 = favoritesGraphData[2].[5];
+		const today = favoritesGraphData[2].[6];
+
+		let data = [day0, day1, day2, day3, day4, day5, today];
 
 		return {
 			labels: [
-				weekday[d.getDay() - 6],
-				weekday[d.getDay() - 5],
-				weekday[d.getDay() - 4],
-				weekday[d.getDay() - 3],
-				weekday[d.getDay() - 2],
-				weekday[d.getDay() - 1],
-				weekday[d.getDay()], //current day
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
 			],
 			datasets: [
 				{
 					fill: "start",
-					data: favoriteGraphData2,
+					data: data,
 					backgroundColor: gradient,
 					borderColor: ["#5091ed"],
 					borderWidth: 0,
@@ -501,36 +484,31 @@ const Favorites = ({
 		const gradient = ctx.createLinearGradient(0, 0, 400, 0);
 		gradient.addColorStop(0, "#d973df");
 		gradient.addColorStop(1, "#3c37d8");
-		var d = new Date();
-		var weekday = new Array(14);
-		weekday[-6] = "Monday";
-		weekday[-5] = "Tuesday";
-		weekday[-4] = "Wednesday";
-		weekday[-3] = "Thursday";
-		weekday[-2] = "Friday";
-		weekday[-1] = "Saturday";
-		weekday[0] = "Sunday";
-		weekday[1] = "Monday";
-		weekday[2] = "Tuesday";
-		weekday[3] = "Wednesday";
-		weekday[4] = "Thursday";
-		weekday[5] = "Friday";
-		weekday[6] = "Saturday";
+
+		const day0 = favoritesGraphData[3].[0];
+		const day1 = favoritesGraphData[3].[1];
+		const day2 = favoritesGraphData[3].[2];
+		const day3 = favoritesGraphData[3].[3];
+		const day4 = favoritesGraphData[3].[4];
+		const day5 = favoritesGraphData[3].[5];
+		const today = favoritesGraphData[3].[6];
+
+		let data = [day0, day1, day2, day3, day4, day5, today];
 
 		return {
 			labels: [
-				weekday[d.getDay() - 6],
-				weekday[d.getDay() - 5],
-				weekday[d.getDay() - 4],
-				weekday[d.getDay() - 3],
-				weekday[d.getDay() - 2],
-				weekday[d.getDay() - 1],
-				weekday[d.getDay()], //current day
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
 			],
 			datasets: [
 				{
 					fill: "start",
-					data: favoriteGraphData3,
+					data: data,
 					backgroundColor: gradient,
 					borderColor: ["#5091ed"],
 					borderWidth: 0,
@@ -568,10 +546,30 @@ const Favorites = ({
 				<div className={favoriteChartStyle0}>
 					<div className="col-12">
 						<span className="favoritePrice">
-						<b>$9992</b>
+							<b>
+								${favoritesGraphData[0].[7]}
+							</b>
 						</span>
-						<span className="priceUp favoritePercentage"><b>7%</b></span>
-						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+						{
+							favoritesGraphData[0].[8] > 0 ? 
+							<span className="priceUp favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[0].[8])}%
+								</b>
+							</span>
+							:
+							<span className="priceDown favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[0].[8])}%
+								</b>
+							</span>
+						}
+						{
+							favoritesGraphData[0].[8] > 0 ? 
+							<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+							:
+							<i className="bi bi-caret-down-fill priceDown favoritePercentageIcon"></i>
+						}
 						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite0}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
@@ -638,10 +636,30 @@ const Favorites = ({
 				<div className={favoriteChartStyle1}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							<b>$9992</b>
+							<b>
+								${favoritesGraphData[1].[7]}
+							</b>
 						</span>
-						<span className="priceUp favoritePercentage"><b>7%</b></span>
-						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+						{
+							favoritesGraphData[1].[8] > 0 ? 
+							<span className="priceUp favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[1].[8])}%
+								</b>
+							</span>
+							:
+							<span className="priceDown favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[1].[8])}%
+								</b>
+							</span>
+						}
+						{
+							favoritesGraphData[1].[8] > 0 ? 
+							<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+							:
+							<i className="bi bi-caret-down-fill priceDown favoritePercentageIcon"></i>
+						}
 						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite1}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
@@ -708,10 +726,30 @@ const Favorites = ({
 				<div className={favoriteChartStyle2}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							<b>$9992</b>
+							<b>
+								${favoritesGraphData[2].[7]}
+							</b>
 						</span>
-						<span className="priceUp favoritePercentage"><b>7%</b></span>
-						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+						{
+							favoritesGraphData[2].[8] > 0 ? 
+							<span className="priceUp favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[2].[8])}%
+								</b>
+							</span>
+							:
+							<span className="priceDown favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[2].[8])}%
+								</b>
+							</span>
+						}
+						{
+							favoritesGraphData[2].[8] > 0 ? 
+							<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+							:
+							<i className="bi bi-caret-down-fill priceDown favoritePercentageIcon"></i>
+						}
 						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite2}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
@@ -778,10 +816,30 @@ const Favorites = ({
 				<div className={favoriteChartStyle3}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							<b>$9992</b>
+							<b>
+								${favoritesGraphData[3].[7]}
+							</b>
 						</span>
-						<span className="priceUp favoritePercentage"><b>7%</b></span>
-						<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+						{
+							favoritesGraphData[3].[8] > 0 ? 
+							<span className="priceUp favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[3].[8])}%
+								</b>
+							</span>
+							:
+							<span className="priceDown favoritePercentage">
+								<b>
+									{Math.round(favoritesGraphData[3].[8])}%
+								</b>
+							</span>
+						}
+						{
+							favoritesGraphData[3].[8] > 0 ? 
+							<i className="bi bi-caret-up-fill priceUp favoritePercentageIcon"></i>
+							:
+							<i className="bi bi-caret-down-fill priceDown favoritePercentageIcon"></i>
+						}
 						<i className={favoriteRemoveIconStyle} onClick={RemoveFavorite3}></i>
 					</div>
 					<div className="col-12 favoriteCoinContainer">
@@ -875,10 +933,7 @@ const mapStateToProps = (state) => {
 		coinsAll: state.coinsAll,
 		favoriteBackButtonStyle: state.favoriteBackButtonStyle,
 		favoriteNextButtonStyle: state.favoriteNextButtonStyle,
-		favoriteGraphData0: state.favoriteGraphData0,
-		favoriteGraphData1: state.favoriteGraphData1,
-		favoriteGraphData2: state.favoriteGraphData2,
-		favoriteGraphData3: state.favoriteGraphData3,
+		favoritesGraphData: state.favoritesGraphData,
 	};
 };
 
