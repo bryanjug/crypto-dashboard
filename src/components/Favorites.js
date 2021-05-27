@@ -30,6 +30,7 @@ import {
 	coinsAllAction,
 	favoriteBackButtonStyleAction,
 	favoriteNextButtonStyleAction,
+	favoritesGraphDataAction,
 } from "../redux/actions";
 
 const Favorites = ({
@@ -90,7 +91,9 @@ const Favorites = ({
 	coinsAll,
 	favoriteBackButtonStyle,
 	favoriteNextButtonStyle,
+	favoritesGraphDataAction,
 	favoritesGraphData,
+	fetchedFavoritesGraphData,
 }) => {
 	Chart.defaults.scale.grid.display = false;
 	Chart.defaults.scale.grid.borderWidth = 0;
@@ -273,54 +276,56 @@ const Favorites = ({
 		if (isLoggedIn === true && connected === true) {
 			fetchFavoritesAction(userId, true);
 			if (fetchedFavorites === true) {
-				//get CoinGecko data and set chart data
-				if (favorites[0] === "") {
-					favoriteStyleAction0("displayInline");
-					favoriteChartStyleAction0("displayNone");
-					favoriteLoadingStyleAction0("displayNone");
-					favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-				}
-				if (favorites[0] !== "") {
-					favoriteStyleAction0("displayNone");
-					favoriteChartStyleAction0("favoriteChartStyle0 row");
-					favoriteLoadingStyleAction0("displayNone");
-					favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0");
-				}
-				if (favorites[1] === "") {
-					favoriteStyleAction1("displayInline");
-					favoriteChartStyleAction1("displayNone");
-					favoriteLoadingStyleAction1("displayNone");
-					favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-				}
-				if (favorites[1] !== "") {
-					favoriteStyleAction1("displayNone");
-					favoriteChartStyleAction1("favoriteChartStyle1 row");
-					favoriteLoadingStyleAction1("displayNone");
-					favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite1");
-				}
-				if (favorites[2] === "") {
-					favoriteStyleAction2("displayInline");
-					favoriteChartStyleAction2("displayNone");
-					favoriteLoadingStyleAction2("displayNone");
-					favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-				}
-				if (favorites[2] !== "") {
-					favoriteStyleAction2("displayNone");
-					favoriteChartStyleAction2("favoriteChartStyle2 row");
-					favoriteLoadingStyleAction2("displayNone");
-					favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite2");
-				}
-				if (favorites[3] === "") {
-					favoriteStyleAction3("displayInline");
-					favoriteChartStyleAction3("displayNone");
-					favoriteLoadingStyleAction3("displayNone");
-					favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-				}
-				if (favorites[3] !== "") {
-					favoriteStyleAction3("displayNone");
-					favoriteChartStyleAction3("favoriteChartStyle3 row");
-					favoriteLoadingStyleAction3("displayNone");
-					favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
+				favoritesGraphDataAction(favorites, true);
+				if (fetchedFavoritesGraphData === true) {
+					if (favorites[0] === "") {
+						favoriteStyleAction0("displayInline");
+						favoriteChartStyleAction0("displayNone");
+						favoriteLoadingStyleAction0("displayNone");
+						favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+					}
+					if (favorites[0] !== "") {
+						favoriteStyleAction0("displayNone");
+						favoriteChartStyleAction0("favoriteChartStyle0 row");
+						favoriteLoadingStyleAction0("displayNone");
+						favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0");
+					}
+					if (favorites[1] === "") {
+						favoriteStyleAction1("displayInline");
+						favoriteChartStyleAction1("displayNone");
+						favoriteLoadingStyleAction1("displayNone");
+						favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+					}
+					if (favorites[1] !== "") {
+						favoriteStyleAction1("displayNone");
+						favoriteChartStyleAction1("favoriteChartStyle1 row");
+						favoriteLoadingStyleAction1("displayNone");
+						favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite1");
+					}
+					if (favorites[2] === "") {
+						favoriteStyleAction2("displayInline");
+						favoriteChartStyleAction2("displayNone");
+						favoriteLoadingStyleAction2("displayNone");
+						favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+					}
+					if (favorites[2] !== "") {
+						favoriteStyleAction2("displayNone");
+						favoriteChartStyleAction2("favoriteChartStyle2 row");
+						favoriteLoadingStyleAction2("displayNone");
+						favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite2");
+					}
+					if (favorites[3] === "") {
+						favoriteStyleAction3("displayInline");
+						favoriteChartStyleAction3("displayNone");
+						favoriteLoadingStyleAction3("displayNone");
+						favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+					}
+					if (favorites[3] !== "") {
+						favoriteStyleAction3("displayNone");
+						favoriteChartStyleAction3("favoriteChartStyle3 row");
+						favoriteLoadingStyleAction3("displayNone");
+						favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
+					}
 				}
 			}
 		}
@@ -363,7 +368,7 @@ const Favorites = ({
 			favoriteLoadingStyleAction3("displayNone");
 			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
         }
-	}, [isLoggedIn, connected, fetchedFavorites]);
+	}, [isLoggedIn, connected, fetchedFavorites, fetchedFavoritesGraphData]);
 	
 	let favorite0Data = (canvas) => {
 		const ctx = canvas.getContext("2d");
@@ -547,7 +552,7 @@ const Favorites = ({
 					<div className="col-12">
 						<span className="favoritePrice">
 							<b>
-								${favoritesGraphData[0].[7]}
+								${(favoritesGraphData[0].[7]).toFixed(4)}
 							</b>
 						</span>
 						{
@@ -637,7 +642,7 @@ const Favorites = ({
 					<div className="col-12">
 						<span className="favoritePrice">
 							<b>
-								${favoritesGraphData[1].[7]}
+								${(favoritesGraphData[1].[7]).toFixed(4)}
 							</b>
 						</span>
 						{
@@ -727,7 +732,7 @@ const Favorites = ({
 					<div className="col-12">
 						<span className="favoritePrice">
 							<b>
-								${favoritesGraphData[2].[7]}
+								${(favoritesGraphData[2].[7]).toFixed(4)}
 							</b>
 						</span>
 						{
@@ -817,7 +822,7 @@ const Favorites = ({
 					<div className="col-12">
 						<span className="favoritePrice">
 							<b>
-								${favoritesGraphData[3].[7]}
+								${(favoritesGraphData[3].[7]).toFixed(4)}
 							</b>
 						</span>
 						{
@@ -934,6 +939,7 @@ const mapStateToProps = (state) => {
 		favoriteBackButtonStyle: state.favoriteBackButtonStyle,
 		favoriteNextButtonStyle: state.favoriteNextButtonStyle,
 		favoritesGraphData: state.favoritesGraphData,
+		fetchedFavoritesGraphData: state.fetchedFavoritesGraphData,
 	};
 };
 
@@ -964,6 +970,7 @@ const mapDispatchToProps = {
 	coinsAllAction: coinsAllAction,
 	favoriteBackButtonStyleAction: favoriteBackButtonStyleAction,
 	favoriteNextButtonStyleAction: favoriteNextButtonStyleAction,
+	favoritesGraphDataAction: favoritesGraphDataAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

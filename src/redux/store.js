@@ -42,6 +42,7 @@ import {
 	FAVORITE_NEXT_BUTTON_STYLE,
 	BITCOIN_GRAPH_DATA,
 	FAVORITES_GRAPH_DATA,
+	FETCHED_FAVORITES_GRAPH_DATA,
 } from "./actions";
 
 const initialState = {
@@ -93,6 +94,7 @@ const initialState = {
 			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 10443, -3.9593475742828677]
 		]
 	),
+	fetchedFavoritesGraphData: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -303,6 +305,11 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				favoritesGraphData: action.payload,
+			}
+		case FETCHED_FAVORITES_GRAPH_DATA:
+			return {
+				...state,
+				fetchedFavoritesGraphData: action.payload,
 			}
 	}
 };

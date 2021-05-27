@@ -43,6 +43,7 @@ export const FAVORITE_BACK_BUTTON_STYLE = "FAVORITE_BACK_BUTTON_STYLE";
 export const FAVORITE_NEXT_BUTTON_STYLE = "FAVORITE_NEXT_BUTTON_STYLE";
 export const BITCOIN_GRAPH_DATA = "BITCOIN_GRAPH_DATA";
 export const FAVORITES_GRAPH_DATA = "FAVORITES_GRAPH_DATA";
+export const FETCHED_FAVORITES_GRAPH_DATA = "FETCHED_FAVORITES_GRAPH_DATA";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -325,11 +326,15 @@ export const bitcoinGraphDataAction = () => async (dispatch, getState) => {
     });
 };
 
-export const favoritesGraphDataAction = (favorites) => async (dispatch, getState) => {
+export const favoritesGraphDataAction = (favorites, fetched) => async (dispatch, getState) => {
     const data = await FavoritesGraphData(favorites);
-
     dispatch({
         type: FAVORITES_GRAPH_DATA,
         payload: data
+    });
+
+    dispatch({
+        type: FETCHED_FAVORITES_GRAPH_DATA,
+        payload: fetched
     });
 };
