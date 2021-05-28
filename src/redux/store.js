@@ -46,6 +46,12 @@ import {
 	TRENDING_DATA,
 	TRENDING_LOADING_STYLE,
 	TRENDING_LIST_STYLE,
+	CHANGES_DATA,
+	CHANGES_LOADING_STYLE,
+	CHANGES_LIST_STYLE,
+	PRICES_DATA,
+	PRICES_LOADING_STYLE,
+	PRICES_LIST_STYLE,
 } from "./actions";
 
 const initialState = {
@@ -101,6 +107,12 @@ const initialState = {
 	trendingData: ([]),
 	trendingLoadingStyle: "col-12 trendingLoading text-center",
 	trendingListStyle: "displayNone",
+	changesData: ([]),
+	changesLoadingStyle: "changesLoading text-center",
+	changesListStyle: "displayNone",
+	pricesData: ([]),
+	pricesLoadingStyle: "pricesListLoader",
+	pricesListStyle: "displayNone",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -331,6 +343,36 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				trendingListStyle: action.payload,
+			}
+		case CHANGES_DATA:
+			return {
+				...state,
+				changesData: action.payload,
+			}
+		case CHANGES_LOADING_STYLE:
+			return {
+				...state,
+				changesLoadingStyle: action.payload,
+			}
+		case CHANGES_LIST_STYLE:
+			return {
+				...state,
+				changesListStyle: action.payload,
+			}
+		case PRICES_DATA:
+			return {
+				...state,
+				pricesData: action.payload,
+			}
+		case PRICES_LOADING_STYLE:
+			return {
+				...state,
+				pricesLoadingStyle: action.payload,
+			}
+		case PRICES_LIST_STYLE:
+			return {
+				...state,
+				pricesListStyle: action.payload,
 			}
 	}
 };

@@ -1,21 +1,21 @@
 import { useRef } from "react";
 import GoogleBtn from "./GoogleBtn";
 import { Link } from "react-router-dom";
-import Dashboard from './Dashboard';
 import Nav from './Nav';
+import PricesList from './PricesList';
 
-const App = () => {
-	const nav = useRef(null);
+const Prices = () => {
+    const nav = useRef(null);
 
-	function showNav() {
-		nav.current.style.left = "0";
-	}
-	function hideNav() {
-		nav.current.style.left = "-60%";
+    function showNav() {
+        nav.current.style.left = "0";
     }
-	
-	return (
-		<div>
+    function hideNav() {
+        nav.current.style.left = "-60%";
+    }
+    
+    return (
+        <div>
 			<div className="openNavButton" onClick={showNav}>
 				<i className="bi bi-list" onClick={showNav}></i>
 			</div>
@@ -70,10 +70,10 @@ const App = () => {
 			</div>
             <div className="row">
                 <Nav />
-				<Dashboard />
+				<PricesList />
 			</div>
 		</div>
-	);
-};
+    );
+}
 
-export default App;
+export default Prices;

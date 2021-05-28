@@ -1,11 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "./components/App.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import App from "./components/App";
 import store from './redux/store';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import App from "./components/App";
+import Prices from "./components/Prices";
 
 //(DONE) SET UP REDUX AND REDUX THUNK
 //(DONE) BUILD GOOGLE LOGIN BUTTON
@@ -43,18 +45,23 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 //(DONE) CONNECT TRENDING TO COINGECKO API
 //(DONE) CREATE LOADING SPINNER ON TRENDING WHILE CONNECTING
 //(DONE) RESPONSIVE TRENDING
-//() CONNECT CHANGES TO COINGECKO API
-//() PRICES OR COINS LIST LINK (PRICES OF EACH CURRENT AND COIN)
+//(DONE) CONNECT CHANGES TO COINGECKO API
+//(DONE) REMOVE COINGECKO NPM
+//() PRICES LIST LINK
 //() EVENTS LINK
 //() EXCHANGES LINK
+//() NEGATIVE PRICES LINK
+//() POSITIVE PRICES LINK
 //() NEWS API
-//() (OPTIONAL) BUILD BITCOIN DROPDOWN CHART CHANGES
 
 ReactDOM.render(
     <Router>
         <Provider store={store}>
             <Route exact path="/">
                 <App />
+            </Route>
+            <Route path="/prices">
+                <Prices />
             </Route>
         </Provider>
     </Router>, 

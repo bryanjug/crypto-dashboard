@@ -4,11 +4,13 @@ import {trendingDataAction} from "../redux/actions";
 
 const Trending = ({trendingDataAction, trendingData, trendingLoadingStyle, trendingListStyle}) => {
     useEffect(() => {
-        trendingDataAction();
+        if (trendingData.length === 0) {
+            trendingDataAction();
+        }
     }, [])
 
     return (
-        <div className="trending col-12 col-xl-4">
+        <div className="trending col-12 col-lg-6 col-xl-4">
             <p className="trendingTitle">Top Trending</p>
             <div className={trendingLoadingStyle}>
                 <div className="spinner-border text-primary" role="status">

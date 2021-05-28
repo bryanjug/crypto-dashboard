@@ -149,7 +149,6 @@ const Bitcoin = ({bitcoinGraphDataAction, bitcoinGraphData}) => {
 	useEffect(() => {
 		ResponsiveChart();
 		bitcoinGraphDataAction();
-
 		return () => {
 			window.removeEventListener('resize', ResponsiveChart);
 		}
