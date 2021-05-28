@@ -2,6 +2,7 @@ import {NewUser} from './NewUser';
 import {FetchFavorites} from './FetchFavorites';
 import {BitcoinGraphData} from './BitcoinGraphData';
 import {FavoritesGraphData} from './FavoritesGraphData';
+import {TrendingData} from './TrendingData';
 export const LOG_IN = "LOG_IN";
 export const LOADING = "LOADING";
 export const LOADING_STYLE = "LOADING_STYLE";
@@ -44,6 +45,9 @@ export const FAVORITE_NEXT_BUTTON_STYLE = "FAVORITE_NEXT_BUTTON_STYLE";
 export const BITCOIN_GRAPH_DATA = "BITCOIN_GRAPH_DATA";
 export const FAVORITES_GRAPH_DATA = "FAVORITES_GRAPH_DATA";
 export const FETCHED_FAVORITES_GRAPH_DATA = "FETCHED_FAVORITES_GRAPH_DATA";
+export const TRENDING_DATA = "TRENDING_DATA";
+export const TRENDING_LOADING_STYLE = "TRENDING_LOADING_STYLE";
+export const TRENDING_LIST_STYLE = "TRENDING_LIST_STYLE";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -336,5 +340,26 @@ export const favoritesGraphDataAction = (favorites, fetched) => async (dispatch,
     dispatch({
         type: FETCHED_FAVORITES_GRAPH_DATA,
         payload: fetched
+    });
+};
+
+export const trendingDataAction = () => async (dispatch, getState) => {
+    const data = await TrendingData();
+    const trendingLoadingStyle = "displayNone";
+    const trendingListStyle = "row text-center trendingList";
+
+    dispatch({
+        type: TRENDING_DATA,
+        payload: data
+    });
+
+    dispatch({
+        type: TRENDING_LOADING_STYLE,
+        payload: trendingLoadingStyle
+    });
+
+    dispatch({
+        type: TRENDING_LIST_STYLE,
+        payload: trendingListStyle
     });
 };

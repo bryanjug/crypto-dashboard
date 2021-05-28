@@ -82,7 +82,7 @@ export const FavoritesGraphData = async (favorites) => {
         })
 
     if (favorites[0] !== "") {
-        await CoinGecko.get(`/coins/${favorites[0]}/market_chart?vs_currency=usd&days=7&interval=daily`)
+        await CoinGecko.get(`/coins/${favorites[0]}/market_chart?vs_currency=usd&days=14&interval=daily`)
             .then(function(response) {
                 let length = (response.data.prices).length;
 
@@ -105,7 +105,7 @@ export const FavoritesGraphData = async (favorites) => {
     }
 
     if (favorites[1] !== "") {
-        await CoinGecko.get(`/coins/${favorites[1]}/market_chart?vs_currency=usd&days=7&interval=daily`)
+        await CoinGecko.get(`/coins/${favorites[1]}/market_chart?vs_currency=usd&days=14&interval=daily`)
             .then(function(response) {
                 let length = (response.data.prices).length;
 
@@ -127,7 +127,7 @@ export const FavoritesGraphData = async (favorites) => {
         today_1 = 0; 
     }
     if (favorites[2] !== "") {
-        await CoinGecko.get(`/coins/${favorites[2]}/market_chart?vs_currency=usd&days=7&interval=daily`)
+        await CoinGecko.get(`/coins/${favorites[2]}/market_chart?vs_currency=usd&days=14&interval=daily`)
             .then(function(response) {
                 let length = (response.data.prices).length;
                 
@@ -150,7 +150,7 @@ export const FavoritesGraphData = async (favorites) => {
     }
 
     if (favorites[3] !== "") {
-        await CoinGecko.get(`/coins/${favorites[3]}/market_chart?vs_currency=usd&days=7&interval=daily`)
+        await CoinGecko.get(`/coins/${favorites[3]}/market_chart?vs_currency=usd&days=14&interval=daily`)
             .then(function(response) {
                 let length = (response.data.prices).length;
                 

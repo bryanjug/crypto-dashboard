@@ -1,8 +1,12 @@
-const Changes = () => {
+import {useEffect} from 'react';
+import { connect } from "react-redux";
+import {} from "../redux/actions";
+
+const Changes = ({}) => {
     return (
         <div className="changes col-12 col-lg-6 col-xl-4">
             <p className="changesTitle">Top 24hr Price Changes</p>
-            <div className="row text-center changesList changesListFirst">
+            <div className="row text-center changesList">
                 <div className="col-4">
                     <i className="bi bi-circle"></i>
                     <span className="changesName">Name</span>
@@ -97,4 +101,14 @@ const Changes = () => {
     );
 }
 
-export default Changes;
+const mapStateToProps = (state) => {
+	return {
+
+    }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Changes);

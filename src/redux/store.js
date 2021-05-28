@@ -43,6 +43,9 @@ import {
 	BITCOIN_GRAPH_DATA,
 	FAVORITES_GRAPH_DATA,
 	FETCHED_FAVORITES_GRAPH_DATA,
+	TRENDING_DATA,
+	TRENDING_LOADING_STYLE,
+	TRENDING_LIST_STYLE,
 } from "./actions";
 
 const initialState = {
@@ -95,6 +98,9 @@ const initialState = {
 		]
 	),
 	fetchedFavoritesGraphData: false,
+	trendingData: ([]),
+	trendingLoadingStyle: "col-12 trendingLoading text-center",
+	trendingListStyle: "displayNone",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -310,6 +316,21 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				fetchedFavoritesGraphData: action.payload,
+			}
+		case TRENDING_DATA:
+			return {
+				...state,
+				trendingData: action.payload,
+			}
+		case TRENDING_LOADING_STYLE:
+			return {
+				...state,
+				trendingLoadingStyle: action.payload,
+			}
+		case TRENDING_LIST_STYLE:
+			return {
+				...state,
+				trendingListStyle: action.payload,
 			}
 	}
 };
