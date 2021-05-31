@@ -27,13 +27,13 @@ const Nav = () => {
                 </Link>
                 <Link to="/positive" className="nav">
                     <button className="navButton">
-                        <i class="bi bi-arrow-up-right-circle navIcon"></i>
+                        <i className="bi bi-arrow-up-right-circle navIcon"></i>
                         <span className="navText">Positive</span>
                     </button>
                 </Link>
                 <Link to="/negative" className="nav">
                     <button className="navButton">
-                        <i class="bi bi-arrow-down-left-circle navIcon"></i>
+                        <i className="bi bi-arrow-down-left-circle navIcon"></i>
                         <span className="navText">Negative</span>
                     </button>
                 </Link>

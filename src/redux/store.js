@@ -110,7 +110,7 @@ const initialState = {
 	changesData: ([]),
 	changesLoadingStyle: "changesLoading text-center",
 	changesListStyle: "displayNone",
-	pricesData: ([]),
+	pricesData: ({}),
 	pricesLoadingStyle: "pricesListLoader",
 	pricesListStyle: "displayNone",
 };

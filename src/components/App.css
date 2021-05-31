@@ -5,6 +5,34 @@ body {
 	margin: 0 !important;
 	background-color: #f5f5f5;
 }
+.pricesListRow {
+    padding-bottom: 10px;
+}
+.pricesListRow:after {
+    border-bottom: 1px solid rgb(212, 212, 212);
+	width: 90%;
+	content: "";
+	display: block;
+	margin: 0 auto;
+	padding-top: 8px;
+}
+.pricesName, .pricesPrice, .pricesChange {
+    color: gray;
+}
+.pricesName {
+    padding-left: 5px;
+}
+.pricesImage {
+    width: 25px;
+}
+.pricesBackButton, .pricesNextButton {
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 20px;
+    width: 100px;
+    color: gray;
+    background-color: inherit;
+    margin-top: 20px;
+}
 .pricesTitles {
     padding-bottom: 15px;
     color: gray;
@@ -12,7 +40,7 @@ body {
 }
 .pricesTitles:after {
     border-bottom: 1px solid rgb(212, 212, 212);
-	width: 80%;
+	width: 90%;
 	content: "";
 	display: block;
 	margin: 0 auto;
@@ -39,8 +67,10 @@ body {
     box-shadow: 0 0 20px rgb(155, 155, 155);
     padding-top: 30px;
     padding-bottom: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 5%;
     margin-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 .trendingImage, .changesImage {
     height: 25px;
@@ -557,12 +587,10 @@ body {
 @media only screen and (min-width: 768px) {
     .pricesList {
         width: 95%;
+        margin-top: 3%;
     }
     .pricesChangeTitle, .pricesChange {
         display: inline-block;
-    }
-    .pricesList {
-        margin-top: 3%;
     }
     .favoritesAlert {
         width: 50%;
@@ -839,6 +867,12 @@ body {
     }
 }
 @media only screen and (min-width: 1583px) {
+    .pricesBackButton, .pricesNextButton {
+        border: 2px solid rgb(194, 194, 194);
+        width: 130px;
+        height: 40px;
+        margin-top: 30px;
+    }
     .changesList:after {
         border-bottom: 1px solid rgb(194, 194, 194);
         width: 90%;
@@ -884,8 +918,11 @@ body {
         padding-top: 2%;
         padding-bottom: 2%;
     }
-    .trendingImage, .changesImage {
+    .trendingImage, .changesImage, .pricesImage {
         height: 30px;
+    }
+    .pricesImage {
+        width: 30px;
     }
     .favoritesListBack, .favoritesListNext {
         -moz-box-shadow: 0 0 8px rgb(107, 107, 107);
@@ -921,6 +958,12 @@ body {
 	}
 }
 @media only screen and (min-width: 1900px) {
+    .pricesBackButton, .pricesNextButton {
+        border: 3px solid rgb(194, 194, 194);
+        width: 150px;
+        height:45px;
+        border-radius: 50px;
+    }
     .changesList:after {
         border-bottom: 1px solid rgb(194, 194, 194);
         width: 90%;
@@ -933,7 +976,7 @@ body {
 		padding-top: 2%;
         padding-bottom: 2%;
     }
-    .trendingImage, .changesImage {
+    .trendingImage, .changesImage, .pricesImage {
         height: 32px;
     }
 	.trendingList:after {
@@ -956,11 +999,17 @@ body {
 	}
 }
 @media only screen and (min-width: 2137px) {
+    .pricesBackButton, .pricesNextButton {
+        border: 3px solid rgb(194, 194, 194);
+        width: 170px;
+        height:50px;
+        border-radius: 50px;
+    }
     .trendingList {
 		padding-top: 2%;
         padding-bottom: 2%;
     }
-    .trendingImage, .changesImage {
+    .trendingImage, .changesImage, .pricesImage {
         height: 35px;
     }
 	.trendingList:after {
@@ -996,11 +1045,17 @@ body {
 	}
 }
 @media only screen and (min-width: 2850px) {
+    .pricesBackButton, .pricesNextButton {
+        border: 3px solid rgb(194, 194, 194);
+        width: 20%;
+        height:75%;
+        border-radius: 50px;
+    }
     .trendingList {
 		padding-top: 2%;
         padding-bottom: 2%;
     }
-    .trendingImage, .changesImage {
+    .trendingImage, .changesImage, .pricesImage {
         height: 45px;
     }
 	.trendingList:after {
@@ -1042,11 +1097,16 @@ body {
 	}
 }
 @media only screen and (min-width: 4275px) {
+    .pricesBackButton, .pricesNextButton {
+        border: 3px solid rgb(194, 194, 194);
+        width: 20%;
+        height:85%;
+    }
     .trendingList {
 		padding-top: 2%;
         padding-bottom: 2%;
     }
-    .trendingImage, .changesImage {
+    .trendingImage, .changesImage, .pricesImage {
         height: 65px;
     }
 	.trendingList:after {
