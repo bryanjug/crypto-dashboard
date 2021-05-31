@@ -54,8 +54,6 @@ export const CHANGES_DATA = "CHANGES_DATA";
 export const CHANGES_LOADING_STYLE = "CHANGES_LOADING_STYLE";
 export const CHANGES_LIST_STYLE = "CHANGES_LIST_STYLE";
 export const PRICES_DATA = "PRICES_DATA";
-export const PRICES_LOADING_STYLE = "PRICES_LOADING_STYLE";
-export const PRICES_LIST_STYLE = "PRICES_LIST_STYLE";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -395,21 +393,9 @@ export const changesDataAction = () => async (dispatch, getState) => {
 
 export const pricesDataAction = (page) => async (dispatch, getState) => {
     const pricesData = await PricesData(page);
-    const pricesLoadingStyle = "displayNone";
-    const pricesListStyle = "col-12 pricesList text-center";
 
     dispatch({
         type: PRICES_DATA,
         payload: pricesData
-    });
-
-    dispatch({
-        type: PRICES_LOADING_STYLE,
-        payload: pricesLoadingStyle
-    });
-
-    dispatch({
-        type: PRICES_LIST_STYLE,
-        payload: pricesListStyle
     });
 };

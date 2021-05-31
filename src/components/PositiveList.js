@@ -1,41 +1,33 @@
 import { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { pricesDataAction } from "../redux/actions";
+import CoinGecko from '../API/CoinGecko';
 
-const PricesList = ({
-	pricesDataAction,
-	pricesData,
-}) => {
+const PositiveList = () => {
+    const [data, setData] = useState({});
     const [page, setPage] = useState(1);
     const [loadingStyle, setLoadingStyle] = useState("pricesListLoader");
     const [listStyle, setListStyle] = useState("displayNone");
 
+    function FetchData() {
+        CoinGecko.get(`/coins/markets?vs_currency=usd&order=h24_change_desc&per_page=100&page=${page}&sparkline=false`)
+            .then(function(response) {
+                setData(response.data);
+            })
+    }
+
     useEffect(() => {
-        pricesDataAction(page);
+        FetchData();
     }, [page])
 
     useEffect(() => {
-        if (pricesData.length > 0) {
+        if (data.length > 0) {
             setLoadingStyle("displayNone");
             setListStyle("col-12 pricesList text-center");
         }
-    }, [pricesData])
+    }, [data])
 
-    function NextPage() {
-        setPage(page + 1);
-        setLoadingStyle("pricesListLoader");
-        setListStyle("displayNone");
-    }
-
-    function BackPage() {
-        setPage(page - 1);
-        setLoadingStyle("pricesListLoader");
-        setListStyle("displayNone");
-    }
-
-    const PricesList = () => {
-        if (pricesData.length > 0) {
-            const listItems = pricesData.map((coin, i) =>  
+    const CoinList = () => {
+        if (data.length > 0) {
+            const listItems = data.map((coin, i) =>  
                 <div className="row pricesListRow" key={i}>
                     <div className="col-6 col-md-4">
                         <img src={coin.image} alt="" className="pricesImage"/>    
@@ -43,12 +35,12 @@ const PricesList = ({
                     </div>
                     {
                         coin.price_change_percentage_24h === null ?
-                        <div className="col-md-4 pricesChange priceUp">
+                        <div className="col-6 col-md-4 pricesChange priceUp">
                             <i className="bi bi-caret-up-fill priceUp"></i>
                             0%
                         </div>
                         :
-                        <div className="col-md-4 pricesChange">
+                        <div className="col-6 col-md-4 pricesChange">
                             {
                                 coin.price_change_percentage_24h > 0 ?
                                 <span className="priceUp">
@@ -78,18 +70,30 @@ const PricesList = ({
         }
     }
     
-	return (
-		<div className="dashboard">
+    function NextPage() {
+        setPage(page + 1);
+        setLoadingStyle("pricesListLoader");
+        setListStyle("displayNone");
+    }
+
+    function BackPage() {
+        setPage(page - 1);
+        setLoadingStyle("pricesListLoader");
+        setListStyle("displayNone");
+    }
+
+    return (
+        <div className="dashboard">
 			<div className={loadingStyle}>
 				<div className="spinner-border text-primary" role="status"></div>
 			</div>
 			<div className={listStyle}>
 				<div className="row pricesTitles">
 					<div className="col-6 col-md-4 pricesNameTitle">Name</div>
-					<div className="col-md-4 pricesChangeTitle">24hr Change</div>
+					<div className="col-6 col-md-4 pricesChangeTitle">24hr Change</div>
 					<div className="col-6 col-md-4 pricesPriceTitle">Price</div>
 				</div>
-                <PricesList />
+                <CoinList />
                 <div className="row">
                     <div className="col-6">
                         {
@@ -103,7 +107,7 @@ const PricesList = ({
                     </div>
                     <div className="col-6">
                         {
-                            page === 76 ?
+                            page === 77 ?
                             <div>
                             
                             </div>
@@ -114,17 +118,7 @@ const PricesList = ({
                 </div>
 			</div>
 		</div>
-	);
-};
+    );
+}
 
-const mapStateToProps = (state) => {
-	return {
-		pricesData: state.pricesData,
-	};
-};
-
-const mapDispatchToProps = {
-	pricesDataAction: pricesDataAction,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PricesList);
+export default PositiveList;

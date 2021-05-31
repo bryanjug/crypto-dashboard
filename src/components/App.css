@@ -34,9 +34,9 @@ body {
     margin-top: 20px;
 }
 .pricesTitles {
-    padding-bottom: 15px;
-    color: gray;
+    padding-bottom: 10px;
     font-size: 110%;
+    color: black;
 }
 .pricesTitles:after {
     border-bottom: 1px solid rgb(212, 212, 212);
@@ -46,7 +46,7 @@ body {
 	margin: 0 auto;
 	padding-top: 10px;
 }
-.pricesChangeTitle, .pricesChange {
+.pricesPrice, .pricesPriceTitle {
     display: none;
 }
 .pricesListLoader {
@@ -586,10 +586,10 @@ body {
 }
 @media only screen and (min-width: 768px) {
     .pricesList {
-        width: 95%;
-        margin-top: 3%;
+        width: 97%;
+        margin-top: 2%;
     }
-    .pricesChangeTitle, .pricesChange {
+    .pricesPrice, .pricesPriceTitle {
         display: inline-block;
     }
     .favoritesAlert {
@@ -750,6 +750,20 @@ body {
 	}
 }
 @media only screen and (min-width: 1425px) {
+    .pricesListRow {
+        padding-top: .5%;
+        padding-bottom: .5%;
+    }
+    .pricesListRow:after {
+        padding-top: .8%;
+    }
+    .pricesTitles {
+        padding-bottom: .5%;
+    }
+    .pricesList {
+        padding-top: 3%;
+        padding-bottom: 3%;
+    }
     .favoritesAlert {
         width: 30%;
     }
@@ -979,6 +993,9 @@ body {
     .trendingImage, .changesImage, .pricesImage {
         height: 32px;
     }
+    .pricesImage {
+        width: 32px;
+    }
 	.trendingList:after {
 		border-bottom: 1px solid rgb(194, 194, 194);
 		width: 90%;
@@ -1011,6 +1028,9 @@ body {
     }
     .trendingImage, .changesImage, .pricesImage {
         height: 35px;
+    }
+    .pricesImage {
+        width: 35px;
     }
 	.trendingList:after {
 		border-bottom: 1px solid rgb(194, 194, 194);
@@ -1057,6 +1077,9 @@ body {
     }
     .trendingImage, .changesImage, .pricesImage {
         height: 45px;
+    }
+    .pricesImage {
+        width: 45px;
     }
 	.trendingList:after {
 		border-bottom: 1px solid rgb(194, 194, 194);
@@ -1108,6 +1131,9 @@ body {
     }
     .trendingImage, .changesImage, .pricesImage {
         height: 65px;
+    }
+    .pricesImage {
+        width: 65px;
     }
 	.trendingList:after {
 		border-bottom: 1px solid rgb(194, 194, 194);

@@ -8,6 +8,9 @@ import store from './redux/store';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import App from "./components/App";
 import Prices from "./components/Prices";
+import Positive from './components/Positive';
+import Negative from './components/Negative';
+import Exchanges from './components/Exchanges';
 
 //(DONE) SET UP REDUX AND REDUX THUNK
 //(DONE) BUILD GOOGLE LOGIN BUTTON
@@ -48,13 +51,14 @@ import Prices from "./components/Prices";
 //(DONE) CONNECT CHANGES TO COINGECKO API
 //(DONE) REMOVE COINGECKO NPM
 //(DONE) RESPONSIVE PRICESLIST BUTTONS
-//() FETCH DATA AND MAP PRICESLIST
-//() SHOW / HIDE PRICESLIST LOADER
-//() PRICES LIST LINK
+//(DONE) FETCH DATA AND MAP PRICESLIST
+//(DONE) SHOW / HIDE PRICESLIST LOADER
+//(DONE) PRICES LIST LINK
+//(DONE) SETUP ALL LINKS
+//(DONE) POSITIVE PRICES LINK
+//(DONE) NEGATIVE PRICES LINK
 //() EVENTS LINK
 //() EXCHANGES LINK
-//() NEGATIVE PRICES LINK
-//() POSITIVE PRICES LINK
 //() NEWS API
 
 ReactDOM.render(
@@ -65,6 +69,15 @@ ReactDOM.render(
             </Route>
             <Route path="/prices">
                 <Prices />
+            </Route>
+            <Route path="/positive">
+                <Positive />
+            </Route>
+            <Route path="/negative">
+                <Negative />
+            </Route>
+            <Route path="/exchanges">
+                <Exchanges />
             </Route>
         </Provider>
     </Router>, 

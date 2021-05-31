@@ -1,12 +1,30 @@
-import { Link } from "react-router-dom";
+import { useRef } from "react";
 import GoogleBtn from "./GoogleBtn";
+import { Link } from "react-router-dom";
+import Nav from './Nav';
+import ExchangesList from './ExchangesList';
 
-const Nav = () => {
+const Exchanges = () => {
+    const nav = useRef(null);
+
+    function showNav() {
+        nav.current.style.left = "0";
+    }
+    function hideNav() {
+        nav.current.style.left = "-60%";
+    }
+
     return (
-        <div className="padding-0 navCol">
-            <div className="navContainerCol position-fixed">
+        <div>
+            <div className="openNavButton" onClick={showNav}>
+                <i className="bi bi-list" onClick={showNav}></i>
+            </div>
+            <div className="navContainer" ref={nav}>
                 <div className="nav">
                     <button className="navButton logo">
+                        <div className="closeNavButton" onClick={hideNav}>
+                            <i className="bi bi-x-lg"></i>
+                        </div>
                         <i className="bi bi-currency-bitcoin navIcon logoIcon"></i>
                         <span className="navText logoText">Crypto</span>
                     </button>
@@ -44,8 +62,12 @@ const Nav = () => {
                     </button>
                 </Link>
             </div>
+            <div className="row">
+                <Nav />
+                <ExchangesList />
+            </div>
         </div>
     );
 }
 
-export default Nav;
+export default Exchanges;

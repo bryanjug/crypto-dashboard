@@ -45,20 +45,14 @@ const App = () => {
 				</Link>
 				<Link to="/positive" className="nav">
 					<button className="navButton">
-						<i class="bi bi-arrow-up-right-circle navIcon"></i>
+						<i className="bi bi-arrow-up-right-circle navIcon"></i>
 						<span className="navText">Positive</span>
 					</button>
 				</Link>
 				<Link to="/negative" className="nav">
 					<button className="navButton">
-						<i class="bi bi-arrow-down-left-circle navIcon"></i>
+						<i className="bi bi-arrow-down-left-circle navIcon"></i>
 						<span className="navText">Negative</span>
-					</button>
-				</Link>
-				<Link to="/events" className="nav">
-					<button className="navButton">
-						<i className="bi bi-calendar-check-fill navIcon"></i>
-						<span className="navText">Events</span>
 					</button>
 				</Link>
 				<Link to="/exchanges" className="nav">

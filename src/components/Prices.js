@@ -55,12 +55,6 @@ const Prices = () => {
 						<span className="navText">Negative</span>
 					</button>
 				</Link>
-				<Link to="/events" className="nav">
-					<button className="navButton">
-						<i className="bi bi-calendar-check-fill navIcon"></i>
-						<span className="navText">Events</span>
-					</button>
-				</Link>
 				<Link to="/exchanges" className="nav">
 					<button className="navButton">
 						<i className="bi bi-shield-lock-fill navIcon"></i>
