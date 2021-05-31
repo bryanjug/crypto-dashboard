@@ -5,6 +5,7 @@ import {FavoritesGraphData} from './FavoritesGraphData';
 import {TrendingData} from './TrendingData';
 import {ChangesData} from './ChangesData';
 import {PricesData} from './PricesData';
+import {NewsData} from './NewsData';
 export const LOG_IN = "LOG_IN";
 export const LOADING = "LOADING";
 export const LOADING_STYLE = "LOADING_STYLE";
@@ -54,6 +55,7 @@ export const CHANGES_DATA = "CHANGES_DATA";
 export const CHANGES_LOADING_STYLE = "CHANGES_LOADING_STYLE";
 export const CHANGES_LIST_STYLE = "CHANGES_LIST_STYLE";
 export const PRICES_DATA = "PRICES_DATA";
+export const NEWS_DATA = "NEWS_DATA";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -397,5 +399,14 @@ export const pricesDataAction = (page) => async (dispatch, getState) => {
     dispatch({
         type: PRICES_DATA,
         payload: pricesData
+    });
+};
+
+export const newsDataAction = () => async (dispatch, getState) => {
+    const data = await NewsData();
+
+    dispatch({
+        type: NEWS_DATA,
+        payload: data
     });
 };

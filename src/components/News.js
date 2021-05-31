@@ -1,4 +1,17 @@
-const News = () => {
+import {useState, useEffect} from 'react';
+import Mediastack from '../API/Mediastack';
+import {connect} from 'react-redux';
+import {newsDataAction} from '../redux/actions';
+const API_KEY = `${process.env.REACT_APP_MEDIASTACK_KEY}`;
+
+const News = ({newsDataAction, newsData}) => {
+    useEffect(() => {
+        //gets and stores data if newsData is empty
+        if (Object.keys(newsData).length === 0) {
+            newsDataAction();
+        }
+    }, [])
+    
     return (
         <div className="row">
             <div className="col-12 news">
@@ -144,4 +157,14 @@ const News = () => {
     );
 }
 
-export default News;
+const mapStateToProps = (state) => {
+    return {
+        newsData: state.newsData
+    }
+}
+
+const mapDispatchToProps = {
+    newsDataAction: newsDataAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(News);

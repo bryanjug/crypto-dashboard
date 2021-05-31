@@ -50,6 +50,7 @@ import {
 	CHANGES_LOADING_STYLE,
 	CHANGES_LIST_STYLE,
 	PRICES_DATA,
+	NEWS_DATA,
 } from "./actions";
 
 const initialState = {
@@ -109,6 +110,7 @@ const initialState = {
 	changesLoadingStyle: "changesLoading text-center",
 	changesListStyle: "displayNone",
 	pricesData: ({}),
+	newsData: ({}),
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -359,6 +361,11 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				pricesData: action.payload,
+			}
+		case NEWS_DATA:
+			return {
+				...state,
+				newsData: action.payload,
 			}
 	}
 };

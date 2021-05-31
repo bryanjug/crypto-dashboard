@@ -57,8 +57,7 @@ import Exchanges from './components/Exchanges';
 //(DONE) SETUP ALL LINKS
 //(DONE) POSITIVE PRICES LINK
 //(DONE) NEGATIVE PRICES LINK
-//() EVENTS LINK
-//() EXCHANGES LINK
+//(DONE) EXCHANGES LINK
 //() NEWS API
 
 ReactDOM.render(
