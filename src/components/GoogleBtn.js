@@ -33,6 +33,7 @@ class GoogleBtn extends Component {
   }
 
   handleLoginFailure (response) {
+    console.log(response);
     console.log('Failed to log in');
   }
 
