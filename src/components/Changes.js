@@ -36,7 +36,7 @@ const Changes = ({changesDataAction, changesData, changesLoadingStyle, changesLi
                     {
                         changesData.length !== 0 ?
                         <span className="changesPercent priceUp">
-                            {(changesData[0].[2]).toFixed(1)}%
+                            {(changesData[0].[2]).toFixed(0)}%
                         </span>
                         :
                         <span></span>
@@ -63,7 +63,7 @@ const Changes = ({changesDataAction, changesData, changesLoadingStyle, changesLi
                     {
                         changesData.length !== 0 ?
                         <span className="changesPercent priceDown">
-                            {(changesData[1].[2]).toFixed(1)}%
+                            {(changesData[1].[2]).toFixed(0)}%
                         </span>
                         :
                         <span></span>
@@ -90,7 +90,7 @@ const Changes = ({changesDataAction, changesData, changesLoadingStyle, changesLi
                     {
                         changesData.length !== 0 ?
                         <span className="changesPercent priceUp">
-                            {(changesData[2].[2]).toFixed(1)}%
+                            {(changesData[2].[2]).toFixed(0)}%
                         </span>
                         :
                         <span></span>
@@ -117,7 +117,7 @@ const Changes = ({changesDataAction, changesData, changesLoadingStyle, changesLi
                     {
                         changesData.length !== 0 ?
                         <span className="changesPercent priceDown">
-                            {(changesData[3].[2]).toFixed(1)}%
+                            {(changesData[3].[2]).toFixed(0)}%
                         </span>
                         :
                         <span></span>
@@ -144,7 +144,7 @@ const Changes = ({changesDataAction, changesData, changesLoadingStyle, changesLi
                     {
                         changesData.length !== 0 ?
                         <span className="changesPercent priceUp">
-                            {(changesData[4].[2]).toFixed(1)}%
+                            {(changesData[4].[2]).toFixed(0)}%
                         </span>
                         :
                         <span></span>
@@ -171,7 +171,7 @@ const Changes = ({changesDataAction, changesData, changesLoadingStyle, changesLi
                     {
                         changesData.length !== 0 ?
                         <span className="changesPercent priceDown">
-                            {(changesData[5].[2]).toFixed(1)}%
+                            {(changesData[5].[2]).toFixed(0)}%
                         </span>
                         :
                         <span></span>
@@ -198,7 +198,7 @@ const Changes = ({changesDataAction, changesData, changesLoadingStyle, changesLi
                     {
                         changesData.length !== 0 ?
                         <span className="changesPercent priceUp">
-                            {(changesData[6].[2]).toFixed(1)}%
+                            {(changesData[6].[2]).toFixed(0)}%
                         </span>
                         :
                         <span></span>

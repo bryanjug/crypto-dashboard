@@ -56,7 +56,7 @@ const NegativeList = () => {
                         </div>
                     }
                     <div className="col-6 col-md-4 pricesPrice">
-                        {coin.current_price}
+                        ${coin.current_price}
                     </div>
                 </div>
 			);

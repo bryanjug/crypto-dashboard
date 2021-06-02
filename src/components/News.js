@@ -2,19 +2,20 @@ import {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {newsDataAction} from '../redux/actions';
 
-const News = ({newsDataAction, newsData}) => {
+const News = ({newsDataAction, newsData, fetchedNewsData}) => {
     const [loaderStyle, setLoaderStyle] = useState("newsLoader");
     const [newsStyle, setNewsStyle] = useState("carousel carousel-dark slide displayNone");
     
     useEffect(() => {
         //fetch news data if newsData is empty
-        if (newsData === undefined) {
+        if (Object.entries(newsData).length === 0) {
             newsDataAction();
-        } else {
+        }
+        if (fetchedNewsData === true) {
             setLoaderStyle("displayNone");
             setNewsStyle("carousel carousel-dark slide");
         }
-    }, [newsData])
+    }, [fetchedNewsData])
 
     return (
         <div className="row">
@@ -36,12 +37,6 @@ const News = ({newsDataAction, newsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url0} target="_blank" className="newsLink">
-                                            <div className="newsImageContainer">
-                                                <img
-                                                    src={newsData.url0}
-                                                    alt=""
-                                                />
-                                            </div>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -59,12 +54,6 @@ const News = ({newsDataAction, newsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url1} target="_blank" className="newsLink">
-                                            <div className="newsImageContainer">
-                                                <img
-                                                    src={newsData.url1}
-                                                    alt=""
-                                                />
-                                            </div>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -82,12 +71,6 @@ const News = ({newsDataAction, newsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url2} target="_blank" className="newsLink">
-                                            <div className="newsImageContainer">
-                                                <img
-                                                    src={newsData.url2}
-                                                    alt=""
-                                                />
-                                            </div>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -109,12 +92,6 @@ const News = ({newsDataAction, newsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url3} target="_blank" className="newsLink">
-                                            <div className="newsImageContainer">
-                                                <img
-                                                    src={newsData.url3}
-                                                    alt=""
-                                                />
-                                            </div>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -132,12 +109,6 @@ const News = ({newsDataAction, newsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url4} target="_blank" className="newsLink">
-                                            <div className="newsImageContainer">
-                                                <img
-                                                    src={newsData.url4}
-                                                    alt=""
-                                                />
-                                            </div>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -155,16 +126,65 @@ const News = ({newsDataAction, newsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url5} target="_blank" className="newsLink">
-                                            <div className="newsImageContainer">
-                                                <img
-                                                    src={newsData.url5}
-                                                    alt=""
-                                                />
-                                            </div>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
                                                         {newsData.title5}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <div className="row newsItemsContainer">
+                                <div className="col-12 col-lg-6 col-xl-4 newsItem1">
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url6} target="_blank" className="newsLink">
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title6}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
+                                </div>
+                                <div className="col-12 col-lg-6 col-xl-4 newsItem2">
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url7} target="_blank" className="newsLink">
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title7}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
+                                </div>
+                                <div className="col-12 col-lg-6 col-xl-4 newsItem3">
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url8} target="_blank" className="newsLink">
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title8}
                                                     </b>
                                                 </p>
                                             </div>
@@ -210,6 +230,7 @@ const News = ({newsDataAction, newsData}) => {
 const mapStateToProps = (state) => {
     return {
         newsData: state.newsData,
+        fetchedNewsData: state.fetchedNewsData,
     }
 }
 

@@ -64,7 +64,7 @@ const PricesList = ({
                         </div>
                     }
                     <div className="col-6 col-md-4 pricesChange">
-                        {coin.current_price}
+                        ${coin.current_price}
                     </div>
                 </div>
 			);

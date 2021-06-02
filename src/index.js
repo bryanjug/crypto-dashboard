@@ -59,7 +59,7 @@ import Exchanges from './components/Exchanges';
 //(DONE) NEGATIVE PRICES LINK
 //(DONE) EXCHANGES LINK
 //(DONE) SHOW/HIDE NEW LOADER
-//() NEWS API
+//(DONE) NEWS API
 
 ReactDOM.render(
     <Router>

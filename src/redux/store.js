@@ -51,6 +51,7 @@ import {
 	CHANGES_LIST_STYLE,
 	PRICES_DATA,
 	NEWS_DATA,
+	FETCHED_NEWS_DATA
 } from "./actions";
 
 const initialState = {
@@ -65,7 +66,7 @@ const initialState = {
 	favoriteChartStyle: "displayNone",
 	connected: false,
 	favoriteLoadingStyle: "favoriteLoading",
-	favorites: ([]),
+	favorites: (["Bitcoin", "Ethereum", "Litecoin", "Monero"]),
 	favoriteStyle0: "displayNone",
 	favoriteChartStyle0: "displayNone",
 	favoriteLoadingStyle0: "favoriteLoading",
@@ -97,9 +98,9 @@ const initialState = {
 	favoritesGraphData: (
 		[
 			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 38521, -3.9593475742828677],
-			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 9992, -3.9593475742828677],
-			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 5286, -3.9593475742828677],
-			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 10443, -3.9593475742828677]
+			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 9992, 7],
+			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 5286, -2],
+			[1500, 3500, 2000, 5000, 3000, 7000, 3000, 10443, 9]
 		]
 	),
 	fetchedFavoritesGraphData: false,
@@ -110,9 +111,8 @@ const initialState = {
 	changesLoadingStyle: "changesLoading text-center",
 	changesListStyle: "displayNone",
 	pricesData: ({}),
-	newsData: ({
-		test: "test"
-	}),
+	newsData: ({}),
+	fetchedNewsData: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -368,6 +368,11 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				newsData: action.payload,
+			}
+		case FETCHED_NEWS_DATA:
+			return {
+				...state,
+				fetchedNewsData: action.payload,
 			}
 	}
 };

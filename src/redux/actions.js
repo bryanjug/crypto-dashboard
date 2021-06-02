@@ -56,6 +56,7 @@ export const CHANGES_LOADING_STYLE = "CHANGES_LOADING_STYLE";
 export const CHANGES_LIST_STYLE = "CHANGES_LIST_STYLE";
 export const PRICES_DATA = "PRICES_DATA";
 export const NEWS_DATA = "NEWS_DATA";
+export const FETCHED_NEWS_DATA = "FETCHED_NEWS_DATA";
 
 export const logInAction = (isLoggedIn) => (dispatch, getState) => {
 	dispatch({
@@ -409,4 +410,9 @@ export const newsDataAction = () => async (dispatch, getState) => {
         type: NEWS_DATA,
         payload: data
     });
+
+    dispatch({
+        type: FETCHED_NEWS_DATA,
+        payload: true
+    })
 };

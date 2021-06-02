@@ -551,9 +551,16 @@ const Favorites = ({
 				<div className={favoriteChartStyle0}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							<b>
-								${(favoritesGraphData[0].[7]).toFixed(4)}
-							</b>
+							{
+								favoritesGraphData[0].[7] > 5 ?
+								<b>
+									${(favoritesGraphData[0].[7]).toFixed(0)}
+								</b>
+								:
+								<b>
+									${(favoritesGraphData[0].[7]).toFixed(4)}
+								</b>
+							}
 						</span>
 						{
 							favoritesGraphData[0].[8] > 0 ? 
@@ -641,9 +648,16 @@ const Favorites = ({
 				<div className={favoriteChartStyle1}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							<b>
-								${(favoritesGraphData[1].[7]).toFixed(4)}
-							</b>
+							{
+								favoritesGraphData[1].[7] > 5 ?
+								<b>
+									${(favoritesGraphData[1].[7]).toFixed(0)}
+								</b>
+								:
+								<b>
+									${(favoritesGraphData[1].[7]).toFixed(4)}
+								</b>
+							}
 						</span>
 						{
 							favoritesGraphData[1].[8] > 0 ? 
@@ -731,9 +745,16 @@ const Favorites = ({
 				<div className={favoriteChartStyle2}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							<b>
-								${(favoritesGraphData[2].[7]).toFixed(4)}
-							</b>
+							{
+								favoritesGraphData[2].[7] > 5 ?
+								<b>
+									${(favoritesGraphData[2].[7]).toFixed(0)}
+								</b>
+								:
+								<b>
+									${(favoritesGraphData[2].[7]).toFixed(4)}
+								</b>
+							}
 						</span>
 						{
 							favoritesGraphData[2].[8] > 0 ? 
@@ -821,9 +842,16 @@ const Favorites = ({
 				<div className={favoriteChartStyle3}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							<b>
-								${(favoritesGraphData[3].[7]).toFixed(4)}
-							</b>
+							{
+								favoritesGraphData[3].[7] > 5 ?
+								<b>
+									${(favoritesGraphData[3].[7]).toFixed(0)}
+								</b>
+								:
+								<b>
+									${(favoritesGraphData[3].[7]).toFixed(4)}
+								</b>
+							}
 						</span>
 						{
 							favoritesGraphData[3].[8] > 0 ? 
