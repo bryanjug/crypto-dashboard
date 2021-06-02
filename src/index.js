@@ -60,6 +60,7 @@ import Exchanges from './components/Exchanges';
 //(DONE) EXCHANGES LINK
 //(DONE) SHOW/HIDE NEW LOADER
 //(DONE) NEWS API
+//(DONE) CHANGE TO GNEWS API
 
 ReactDOM.render(
     <Router>

@@ -1,6 +1,5 @@
-import Mediastack from "../API/Mediastack";
-import API from "../API/API";
-const API_KEY = `${process.env.REACT_APP_MEDIASTACK_KEY}`;
+import Gnews from "../API/Gnews";
+const API_KEY = `${process.env.REACT_APP_GNEWS_KEY}`;
 
 export const NewsData = async () => {
   let data = {};
@@ -25,27 +24,47 @@ export const NewsData = async () => {
   let url7;
   let url8;
 
-  await Mediastack.get(`/news?access_key=${API_KEY}&keywords=crypto&languages=en&sort=published_desc`)
-    .then(function (response) {
-      title0 = response.data.data[0].title;
-      title1 = response.data.data[1].title;
-      title2 = response.data.data[2].title;
-      title3 = response.data.data[3].title;
-      title4 = response.data.data[4].title;
-      title5 = response.data.data[5].title;
-      title6 = response.data.data[6].title;
-      title7 = response.data.data[7].title;
-      title8 = response.data.data[8].title;
+  let image0;
+  let image1;
+  let image2;
+  let image3;
+  let image4;
+  let image5;
+  let image6;
+  let image7;
+  let image8;
 
-      url0 = response.data.data[0].url;
-      url1 = response.data.data[1].url;
-      url2 = response.data.data[2].url;
-      url3 = response.data.data[3].url;
-      url4 = response.data.data[4].url;
-      url5 = response.data.data[5].url;
-      url6 = response.data.data[6].url;
-      url7 = response.data.data[7].url;
-      url8 = response.data.data[8].url;
+  await Gnews.get(`/search?q=crypto&token=${API_KEY}`)
+    .then(function(response) {
+      image0 = response.data.articles[0].image;
+      image1 = response.data.articles[1].image;
+      image2 = response.data.articles[2].image;
+      image3 = response.data.articles[3].image;
+      image4 = response.data.articles[4].image;
+      image5 = response.data.articles[5].image;
+      image6 = response.data.articles[6].image;
+      image7 = response.data.articles[7].image;
+      image8 = response.data.articles[8].image;
+      
+      title0 = response.data.articles[0].title;
+      title1 = response.data.articles[1].title;
+      title2 = response.data.articles[2].title;
+      title3 = response.data.articles[3].title;
+      title4 = response.data.articles[4].title;
+      title5 = response.data.articles[5].title;
+      title6 = response.data.articles[6].title;
+      title7 = response.data.articles[7].title;
+      title8 = response.data.articles[8].title;
+
+      url0 = response.data.articles[0].url;
+      url1 = response.data.articles[1].url;
+      url2 = response.data.articles[2].url;
+      url3 = response.data.articles[3].url;
+      url4 = response.data.articles[4].url;
+      url5 = response.data.articles[5].url;
+      url6 = response.data.articles[6].url;
+      url7 = response.data.articles[7].url;
+      url8 = response.data.articles[8].url;
     });
 
 
@@ -68,6 +87,15 @@ export const NewsData = async () => {
     url6: url6,
     url7: url7,
     url8: url8,
+    image0: image0,
+    image1: image1,
+    image2: image2,
+    image3: image3,
+    image4: image4,
+    image5: image5,
+    image6: image6,
+    image7: image7,
+    image8: image8,
   };
 
   return data;

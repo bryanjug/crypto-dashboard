@@ -37,6 +37,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url0} target="_blank" className="newsLink">
+                                            <img src={newsData.image0} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -54,6 +55,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url1} target="_blank" className="newsLink">
+                                            <img src={newsData.image1} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -71,6 +73,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url2} target="_blank" className="newsLink">
+                                            <img src={newsData.image2} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -92,6 +95,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url3} target="_blank" className="newsLink">
+                                            <img src={newsData.image3} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -109,6 +113,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url4} target="_blank" className="newsLink">
+                                            <img src={newsData.image4} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -126,6 +131,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url5} target="_blank" className="newsLink">
+                                            <img src={newsData.image5} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -147,6 +153,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url6} target="_blank" className="newsLink">
+                                            <img src={newsData.image6} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -164,6 +171,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url7} target="_blank" className="newsLink">
+                                            <img src={newsData.image7} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
@@ -181,6 +189,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                     {
                                         newsData !== undefined ? 
                                         <a href={newsData.url8} target="_blank" className="newsLink">
+                                            <img src={newsData.image8} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
                                                     <b>
