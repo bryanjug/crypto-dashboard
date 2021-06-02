@@ -71,7 +71,7 @@ const ExchangesList = () => {
 			<div className={listStyle}>
 				<div className="row pricesTitles">
 					<div className="col-6 col-md-4 pricesNameTitle">Name</div>
-					<div className="col-6 col-md-4 pricesPriceTitle">Trade Volume</div>
+					<div className="col-6 col-md-4 pricesPriceTitle">BTC Trade Volume</div>
 					<div className="col-6 col-md-4 pricesChangeTitle">Trust Score</div>
 				</div>
                 <MarketList />

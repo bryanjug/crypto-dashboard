@@ -1,7 +1,7 @@
 import CoinGecko from "../API/CoinGecko";
 
 export const BitcoinGraphData = () => {
-    return CoinGecko.get(`/coins/bitcoin/market_chart?vs_currency=usd&days=6&interval=daily`)
+    return CoinGecko.get(`/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=daily`)
         .then(function(response) {
             const day0 = response.data.prices[0].[1];
             const day1 = response.data.prices[1].[1];

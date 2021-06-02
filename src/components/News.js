@@ -1,128 +1,178 @@
 import {useState, useEffect} from 'react';
-import Mediastack from '../API/Mediastack';
 import {connect} from 'react-redux';
 import {newsDataAction} from '../redux/actions';
-const API_KEY = `${process.env.REACT_APP_MEDIASTACK_KEY}`;
 
 const News = ({newsDataAction, newsData}) => {
-    useEffect(() => {
-        //gets and stores data if newsData is empty
-        if (Object.keys(newsData).length === 0) {
-            newsDataAction();
-        }
-    }, [])
+    const [loaderStyle, setLoaderStyle] = useState("newsLoader");
+    const [newsStyle, setNewsStyle] = useState("carousel carousel-dark slide displayNone");
     
+    useEffect(() => {
+        //fetch news data if newsData is empty
+        if (newsData === undefined) {
+            newsDataAction();
+        } else {
+            setLoaderStyle("displayNone");
+            setNewsStyle("carousel carousel-dark slide");
+        }
+    }, [newsData])
+
     return (
         <div className="row">
             <div className="col-12 news">
                 <p className="newsTitle">Recent Crypto News</p>
+                <div className={loaderStyle}>
+                    <div className="spinner-border text-primary" role="status">
+                    </div>
+                </div>
                 <div
                     id="carouselExampleDark"
-                    className="carousel carousel-dark slide"
+                    className={newsStyle}
                     data-bs-ride="carousel"
                 >
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <div className="row newsItemsContainer">
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem1">
-                                    <div className="newsImageContainer">
-                                        <img
-                                            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="newsTextContainer">
-                                        <p className="newsText">
-                                            <b>
-                                                Title Title Title Title Title Title Title Title Title
-                                                Title Title Title Title Title Title Title
-                                            </b>
-                                        </p>
-                                    </div>
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url0} target="_blank" className="newsLink">
+                                            <div className="newsImageContainer">
+                                                <img
+                                                    src={newsData.url0}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title0}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem2">
-                                    <div className="newsImageContainer">
-                                        <img
-                                            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="newsTextContainer">
-                                        <p className="newsText">
-                                            <b>
-                                                Title Title Title Title Title Title Title Title Title
-                                                Title Title Title Title Title Title Title
-                                            </b>
-                                        </p>
-                                    </div>
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url1} target="_blank" className="newsLink">
+                                            <div className="newsImageContainer">
+                                                <img
+                                                    src={newsData.url1}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title1}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem3">
-                                    <div className="newsImageContainer">
-                                        <img
-                                            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="newsTextContainer">
-                                        <p className="newsText">
-                                            <b>
-                                                Title Title Title Title Title Title Title Title Title
-                                                Title Title Title Title Title Title Title
-                                            </b>
-                                        </p>
-                                    </div>
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url2} target="_blank" className="newsLink">
+                                            <div className="newsImageContainer">
+                                                <img
+                                                    src={newsData.url2}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title2}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
                         <div className="carousel-item">
                             <div className="row newsItemsContainer">
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem1">
-                                    <div className="newsImageContainer">
-                                        <img
-                                            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="newsTextContainer">
-                                        <p className="newsText">
-                                            <b>
-                                                Content Title Title Title Title Title Title Title
-                                                Title Title Title Title Title Title Title Title
-                                            </b>
-                                        </p>
-                                    </div>
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url3} target="_blank" className="newsLink">
+                                            <div className="newsImageContainer">
+                                                <img
+                                                    src={newsData.url3}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title3}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem2">
-                                    <div className="newsImageContainer">
-                                        <img
-                                            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="newsTextContainer">
-                                        <p className="newsText">
-                                            <b>
-                                                Title Title Title Title Title Title Title Title Title
-                                                Title Title Title Title Title Title Title
-                                            </b>
-                                        </p>
-                                    </div>
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url4} target="_blank" className="newsLink">
+                                            <div className="newsImageContainer">
+                                                <img
+                                                    src={newsData.url4}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title4}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem3">
-                                    <div className="newsImageContainer">
-                                        <img
-                                            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-ZS726YA8OaY%2FTjVThqpJjmI%2FAAAAAAAAAr8%2FV7TB9zwOzoM%2Fs1600%2FMedium%2BBlue%2B250x250.jpg&f=1&nofb=1"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="newsTextContainer">
-                                        <p className="newsText">
-                                            <b>
-                                                Title Title Title Title Title Title Title Title Title
-                                                Title Title Title Title Title Title Title
-                                            </b>
-                                        </p>
-                                    </div>
+                                    {
+                                        newsData !== undefined ? 
+                                        <a href={newsData.url5} target="_blank" className="newsLink">
+                                            <div className="newsImageContainer">
+                                                <img
+                                                    src={newsData.url5}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="newsTextContainer">
+                                                <p className="newsText">
+                                                    <b>
+                                                        {newsData.title5}
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                        :
+                                        <div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -159,7 +209,7 @@ const News = ({newsDataAction, newsData}) => {
 
 const mapStateToProps = (state) => {
     return {
-        newsData: state.newsData
+        newsData: state.newsData,
     }
 }
 

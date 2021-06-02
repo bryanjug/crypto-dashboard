@@ -110,7 +110,9 @@ const initialState = {
 	changesLoadingStyle: "changesLoading text-center",
 	changesListStyle: "displayNone",
 	pricesData: ({}),
-	newsData: ({}),
+	newsData: ({
+		test: "test"
+	}),
 };
 
 const rootReducer = (state = initialState, action) => {

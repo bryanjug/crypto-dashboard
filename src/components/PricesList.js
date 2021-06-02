@@ -43,12 +43,12 @@ const PricesList = ({
                     </div>
                     {
                         coin.price_change_percentage_24h === null ?
-                        <div className="col-md-4 pricesChange priceUp">
+                        <div className="col-6 col-md-4 pricesPrice priceUp">
                             <i className="bi bi-caret-up-fill priceUp"></i>
                             0%
                         </div>
                         :
-                        <div className="col-md-4 pricesChange">
+                        <div className="col-6 col-md-4 pricesPrice">
                             {
                                 coin.price_change_percentage_24h > 0 ?
                                 <span className="priceUp">
@@ -63,7 +63,7 @@ const PricesList = ({
                             }
                         </div>
                     }
-                    <div className="col-6 col-md-4 pricesPrice">
+                    <div className="col-6 col-md-4 pricesChange">
                         {coin.current_price}
                     </div>
                 </div>
@@ -86,8 +86,8 @@ const PricesList = ({
 			<div className={listStyle}>
 				<div className="row pricesTitles">
 					<div className="col-6 col-md-4 pricesNameTitle">Name</div>
-					<div className="col-md-4 pricesChangeTitle">24hr Change</div>
-					<div className="col-6 col-md-4 pricesPriceTitle">Price</div>
+					<div className="col-6 col-md-4 pricesPriceTitle">24hr Change</div>
+					<div className="col-6 col-md-4 pricesChangeTitle">Price</div>
 				</div>
                 <PricesList />
                 <div className="row">

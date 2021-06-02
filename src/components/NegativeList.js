@@ -10,7 +10,6 @@ const NegativeList = () => {
     function FetchData() {
         CoinGecko.get(`/coins/markets?vs_currency=usd&order=h24_change_asc&per_page=100&page=${page}&sparkline=false`)
             .then(function(response) {
-                console.log(response.data);
                 setData(response.data);
             })
     }

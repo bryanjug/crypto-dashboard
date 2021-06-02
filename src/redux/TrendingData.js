@@ -46,7 +46,6 @@ export const TrendingData = async () => {
 		coin_id_5 = response.data.coins[5].item.id;
 		coin_id_6 = response.data.coins[6].item.id;
 
-		console.log(response.data.coins[0].item.large)
 		coin_img_0 = response.data.coins[0].item.large;
 		coin_img_1 = response.data.coins[1].item.large;
 		coin_img_2 = response.data.coins[2].item.large;
