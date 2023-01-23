@@ -36,7 +36,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem1">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url0} target="_blank" className="newsLink">
+                                        <a href={newsData.url0} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image0} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -54,7 +54,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem2">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url1} target="_blank" className="newsLink">
+                                        <a href={newsData.url1} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image1} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -72,7 +72,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem3">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url2} target="_blank" className="newsLink">
+                                        <a href={newsData.url2} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image2} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -94,7 +94,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem1">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url3} target="_blank" className="newsLink">
+                                        <a href={newsData.url3} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image3} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -112,7 +112,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem2">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url4} target="_blank" className="newsLink">
+                                        <a href={newsData.url4} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image4} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -130,7 +130,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem3">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url5} target="_blank" className="newsLink">
+                                        <a href={newsData.url5} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image5} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -152,7 +152,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem1">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url6} target="_blank" className="newsLink">
+                                        <a href={newsData.url6} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image6} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -170,7 +170,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem2">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url7} target="_blank" className="newsLink">
+                                        <a href={newsData.url7} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image7} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
@@ -188,7 +188,7 @@ const News = ({newsDataAction, newsData, fetchedNewsData}) => {
                                 <div className="col-12 col-lg-6 col-xl-4 newsItem3">
                                     {
                                         newsData !== undefined ? 
-                                        <a href={newsData.url8} target="_blank" className="newsLink">
+                                        <a href={newsData.url8} target="_blank" className="newsLink" rel="noreferrer">
                                             <img src={newsData.image8} alt=""/>
                                             <div className="newsTextContainer">
                                                 <p className="newsText">
