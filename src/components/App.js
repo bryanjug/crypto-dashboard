@@ -29,7 +29,6 @@ const App = () => {
 						<span className="navText logoText">Crypto</span>
 					</button>
 				</div>
-                {/* <GoogleBtn /> */}
 				<Link to="/" className="nav">
 					<button className="navButton">
 						<i className="bi bi-speedometer navIcon"></i>
