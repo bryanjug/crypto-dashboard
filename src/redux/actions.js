@@ -136,16 +136,16 @@ export const favoriteChartStyleAction = (favoriteChartStyle) => (dispatch, getSt
 };
 
 export const fetchFavoritesAction = (userId, fetchedFavorites) => async (dispatch, getState) => {
-    const favorites = await FetchFavorites(userId);
-    dispatch({
-        type: FETCH_FAVORITES,
-        payload: favorites
-    });
+    // const favorites = await FetchFavorites(userId);
+    // dispatch({
+    //     type: FETCH_FAVORITES,
+    //     payload: favorites
+    // });
 
-    dispatch({
-        type: FETCHED_FAVORITES,
-        payload: fetchedFavorites
-    });
+    // dispatch({
+    //     type: FETCHED_FAVORITES,
+    //     payload: fetchedFavorites
+    // });
 };
 
 export const favoriteStyleAction0 = (favoriteStyle0) => (dispatch, getState) => {
@@ -340,16 +340,16 @@ export const bitcoinGraphDataAction = () => async (dispatch, getState) => {
 };
 
 export const favoritesGraphDataAction = (favorites, fetched) => async (dispatch, getState) => {
-    const data = await FavoritesGraphData(favorites);
-    dispatch({
-        type: FAVORITES_GRAPH_DATA,
-        payload: data
-    });
+    // const data = await FavoritesGraphData(favorites);
+    // dispatch({
+    //     type: FAVORITES_GRAPH_DATA,
+    //     payload: data
+    // });
 
-    dispatch({
-        type: FETCHED_FAVORITES_GRAPH_DATA,
-        payload: fetched
-    });
+    // dispatch({
+    //     type: FETCHED_FAVORITES_GRAPH_DATA,
+    //     payload: fetched
+    // });
 };
 
 export const trendingDataAction = () => async (dispatch, getState) => {

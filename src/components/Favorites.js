@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Line, Chart } from "react-chartjs-2";
-import CoinGeko from "../API/CoinGecko";
+import CoinGecko from "../API/CoinGecko";
 import API from "../API/API";
 import {
 	fetchFavoritesAction,
@@ -99,9 +99,22 @@ const Favorites = ({
 	Chart.defaults.scale.grid.borderWidth = 0;
 	Chart.defaults.plugins.legend.display = false;
 
+    const [cryptos, setCryptos] = useState([])
+    
+    useEffect(() => {
+        function LoadFavorites() {
+            CoinGecko.get("/simple/price?ids=ethereum,tether,ripple,monero&vs_currencies=usd")
+            .then(function(response) {
+                setCryptos(response.data)
+                console.log(cryptos)
+            })
+        }
+        LoadFavorites()
+    }, [])
+
 	function NameList() {  
 		if (coins.length === 0) {
-			CoinGeko.get("/coins/list?include_platform=false")
+			CoinGecko.get("/coins/list?include_platform=false")
 			.then(function(response) {
 				let coinsList = [];
 				let res = response.data;
@@ -273,84 +286,64 @@ const Favorites = ({
 	}
 	
 	useEffect(() => {
-		if (isLoggedIn === true && connected === true) {
-			fetchFavoritesAction(userId, true);
-			if (fetchedFavorites === true) {
-				favoritesGraphDataAction(favorites, true);
-				if (fetchedFavoritesGraphData === true) {
-					if (favorites[0] === "") {
-						favoriteStyleAction0("displayInline");
-						favoriteChartStyleAction0("displayNone");
-						favoriteLoadingStyleAction0("displayNone");
-						favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-					}
-					if (favorites[0] !== "") {
-						favoriteStyleAction0("displayNone");
-						favoriteChartStyleAction0("favoriteChartStyle0 row");
-						favoriteLoadingStyleAction0("displayNone");
-						favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0");
-					}
-					if (favorites[1] === "") {
-						favoriteStyleAction1("displayInline");
-						favoriteChartStyleAction1("displayNone");
-						favoriteLoadingStyleAction1("displayNone");
-						favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-					}
-					if (favorites[1] !== "") {
-						favoriteStyleAction1("displayNone");
-						favoriteChartStyleAction1("favoriteChartStyle1 row");
-						favoriteLoadingStyleAction1("displayNone");
-						favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite1");
-					}
-					if (favorites[2] === "") {
-						favoriteStyleAction2("displayInline");
-						favoriteChartStyleAction2("displayNone");
-						favoriteLoadingStyleAction2("displayNone");
-						favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-					}
-					if (favorites[2] !== "") {
-						favoriteStyleAction2("displayNone");
-						favoriteChartStyleAction2("favoriteChartStyle2 row");
-						favoriteLoadingStyleAction2("displayNone");
-						favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite2");
-					}
-					if (favorites[3] === "") {
-						favoriteStyleAction3("displayInline");
-						favoriteChartStyleAction3("displayNone");
-						favoriteLoadingStyleAction3("displayNone");
-						favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-					}
-					if (favorites[3] !== "") {
-						favoriteStyleAction3("displayNone");
-						favoriteChartStyleAction3("favoriteChartStyle3 row");
-						favoriteLoadingStyleAction3("displayNone");
-						favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
-					}
-				}
-			}
-		}
-		if (isLoggedIn === true && connected === false) {
-			//show loader on favorites button while connecting
-			//to server once logged in
-			//hide all other favorites styles
-			favoriteStyleAction0("displayNone");
-			favoriteChartStyleAction0("displayNone");
-			favoriteLoadingStyleAction0("favoriteLoading");
-			favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			favoriteStyleAction1("displayNone");
-			favoriteChartStyleAction1("displayNone");
-			favoriteLoadingStyleAction1("favoriteLoading");
-			favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			favoriteStyleAction2("displayNone");
-			favoriteChartStyleAction2("displayNone");
-			favoriteLoadingStyleAction2("favoriteLoading");
-			favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
-			favoriteStyleAction3("displayNone");
-			favoriteChartStyleAction3("displayNone");
-			favoriteLoadingStyleAction3("favoriteLoading");
-			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+        async function fetchData() {
+            await fetchFavoritesAction(userId, true);
+            await favoritesGraphDataAction(favorites, true);
+        } 
+		if (isLoggedIn === true) {
+
+            fetchData()
+            if (favorites[0] === "") {
+                favoriteStyleAction0("displayInline");
+                favoriteChartStyleAction0("displayNone");
+                favoriteLoadingStyleAction0("displayNone");
+                favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+            }
+            if (favorites[0] !== "") {
+                favoriteStyleAction0("displayNone");
+                favoriteChartStyleAction0("favoriteChartStyle0 row");
+                favoriteLoadingStyleAction0("displayNone");
+                favorite0Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite0");
+            }
+            if (favorites[1] === "") {
+                favoriteStyleAction1("displayInline");
+                favoriteChartStyleAction1("displayNone");
+                favoriteLoadingStyleAction1("displayNone");
+                favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+            }
+            if (favorites[1] !== "") {
+                favoriteStyleAction1("displayNone");
+                favoriteChartStyleAction1("favoriteChartStyle1 row");
+                favoriteLoadingStyleAction1("displayNone");
+                favorite1Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite1");
+            }
+            if (favorites[2] === "") {
+                favoriteStyleAction2("displayInline");
+                favoriteChartStyleAction2("displayNone");
+                favoriteLoadingStyleAction2("displayNone");
+                favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+            }
+            if (favorites[2] !== "") {
+                favoriteStyleAction2("displayNone");
+                favoriteChartStyleAction2("favoriteChartStyle2 row");
+                favoriteLoadingStyleAction2("displayNone");
+                favorite2Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite2");
+            }
+            if (favorites[3] === "") {
+                favoriteStyleAction3("displayInline");
+                favoriteChartStyleAction3("displayNone");
+                favoriteLoadingStyleAction3("displayNone");
+                favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite");
+            }
+            if (favorites[3] !== "") {
+                favoriteStyleAction3("displayNone");
+                favoriteChartStyleAction3("favoriteChartStyle3 row");
+                favoriteLoadingStyleAction3("displayNone");
+                favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
+            }
 		}
 		if (isLoggedIn === false) {
+            fetchData()
 			favoriteStyleAction0("displayNone");
 			favoriteChartStyleAction0("favoriteChartStyle0 row");
 			favoriteLoadingStyleAction0("displayNone");
@@ -368,7 +361,7 @@ const Favorites = ({
 			favoriteLoadingStyleAction3("displayNone");
 			favorite3Action("col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 favorite3");
         }
-	}, [isLoggedIn, connected, fetchedFavorites, fetchedFavoritesGraphData]);
+	}, [isLoggedIn, fetchedFavorites, fetchedFavoritesGraphData]);
 	
 	let favorite0Data = (canvas) => {
 		const ctx = canvas.getContext("2d");
@@ -551,16 +544,14 @@ const Favorites = ({
 				<div className={favoriteChartStyle0}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							{
-								favoritesGraphData[0].[7] > 5 ?
-								<b>
-									${(favoritesGraphData[0].[7]).toFixed(0)}
-								</b>
-								:
-								<b>
-									${(favoritesGraphData[0].[7]).toFixed(4)}
-								</b>
-							}
+                            <b>
+                                {
+                                    cryptos.ethereum ?
+                                    `$${(cryptos.ethereum.usd).toFixed(2)}`
+                                    :
+                                    null
+                                }
+                            </b>
 						</span>
 						{
 							favoritesGraphData[0].[8] > 0 ? 
@@ -586,7 +577,7 @@ const Favorites = ({
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
-							{favorites[0]} price
+                            Ethereum
 						</p>
 					</div>
 					<div className="col-12">
@@ -648,16 +639,14 @@ const Favorites = ({
 				<div className={favoriteChartStyle1}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							{
-								favoritesGraphData[1].[7] > 5 ?
-								<b>
-									${(favoritesGraphData[1].[7]).toFixed(0)}
-								</b>
-								:
-								<b>
-									${(favoritesGraphData[1].[7]).toFixed(4)}
-								</b>
-							}
+                            <b>
+                                {
+                                    cryptos.ripple ?
+                                    `$${(cryptos.ripple.usd).toFixed(4)}`
+                                    :
+                                    null
+                                }
+                            </b>
 						</span>
 						{
 							favoritesGraphData[1].[8] > 0 ? 
@@ -683,7 +672,7 @@ const Favorites = ({
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
-							{favorites[1]} price
+                            Ripple
 						</p>
 					</div>
 					<div className="col-12">
@@ -745,16 +734,14 @@ const Favorites = ({
 				<div className={favoriteChartStyle2}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							{
-								favoritesGraphData[2].[7] > 5 ?
-								<b>
-									${(favoritesGraphData[2].[7]).toFixed(0)}
-								</b>
-								:
-								<b>
-									${(favoritesGraphData[2].[7]).toFixed(4)}
-								</b>
-							}
+                            <b>
+                                {
+                                    cryptos.tether ?
+                                    `$${(cryptos.tether.usd).toFixed(4)}`
+                                    :
+                                    null
+                                }
+                            </b>
 						</span>
 						{
 							favoritesGraphData[2].[8] > 0 ? 
@@ -780,7 +767,7 @@ const Favorites = ({
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
-							{favorites[2]} price
+                            {/* {cryptos.tether.usd} price */} Tether
 						</p>
 					</div>
 					<div className="col-12">
@@ -842,16 +829,14 @@ const Favorites = ({
 				<div className={favoriteChartStyle3}>
 					<div className="col-12">
 						<span className="favoritePrice">
-							{
-								favoritesGraphData[3].[7] > 5 ?
-								<b>
-									${(favoritesGraphData[3].[7]).toFixed(0)}
-								</b>
-								:
-								<b>
-									${(favoritesGraphData[3].[7]).toFixed(4)}
-								</b>
-							}
+                            <b>
+                                {
+                                    cryptos.monero ?
+                                    `$${(cryptos.monero.usd).toFixed(2)}`
+                                    :
+                                    null
+                                }
+                            </b>
 						</span>
 						{
 							favoritesGraphData[3].[8] > 0 ? 
@@ -877,7 +862,7 @@ const Favorites = ({
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
-							{favorites[3]} price
+                            Monero
 						</p>
 					</div>
 					<div className="col-12">

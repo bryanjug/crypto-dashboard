@@ -53,6 +53,7 @@ export const FavoritesGraphData = async (favorites) => {
         .then(function(response) {
             if (favorites[0] !== "") {
                 price0 = response.data.[favorites[0]].usd;
+                console.log(response.data.[favorites[0]])
                 priceChange0 = response.data.[favorites[0]].usd_24h_change;
             } else {
                 price0 = 0;

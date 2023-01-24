@@ -1,6 +1,7 @@
 import API from "../API/API";
 
 export const FetchFavorites = (userId) => {
+
     return API.get(`/favorites/${userId}`)
         .then(function(response) {
             const favorite1 = response.data.favorite1;
