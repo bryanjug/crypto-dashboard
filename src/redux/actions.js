@@ -1,5 +1,5 @@
 import {NewUser} from './NewUser';
-import {FetchFavorites} from './FetchFavorites';
+// import {FetchFavorites} from './FetchFavorites';
 import {BitcoinGraphData} from './BitcoinGraphData';
 import {FavoritesGraphData} from './FavoritesGraphData';
 import {TrendingData} from './TrendingData';
