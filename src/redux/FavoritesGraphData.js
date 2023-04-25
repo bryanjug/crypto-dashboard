@@ -1,10 +1,16 @@
 import CoinGecko from "../API/CoinGecko";
 
-export const FavoritesGraphData = async (favorites) => {
-    let favorite0 = `%2C${favorites[0]}`;
-    let favorite1 = `%2C${favorites[1]}`;
-    let favorite2 = `%2C${favorites[2]}`;
-    let favorite3 = `%2C${favorites[3]}`;
+export const FavoritesGraphData = async () => {
+    let favorite0 = `%2Cethereum`;
+    let favorite1 = `%2Cripple`;
+    let favorite2 = `%2Ctether`;
+    let favorite3 = `%2Cmonero`;
+
+    const favorite1Name = "ethereum";
+    const favorite2Name = "ripple";
+    const favorite3Name = "tether";
+    const favorite4Name = "monero";
+    const favorites = [favorite1Name, favorite2Name, favorite3Name, favorite4Name];
 
     let favoriteList = [favorite0, favorite1, favorite2, favorite3];
 

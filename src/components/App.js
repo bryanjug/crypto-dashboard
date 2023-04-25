@@ -29,13 +29,12 @@ const App = () => {
 						<span className="navText logoText">Crypto</span>
 					</button>
 				</div>
-				<Link to="/" className="nav">
+				<Link to="/" className="nav dashboardTitle">
 					<button className="navButton">
 						<i className="bi bi-speedometer navIcon"></i>
 						<span className="navText">Dashboard</span>
 					</button>
 				</Link>
-                <hr className="navLine" />
 				<Link to="/prices" className="nav">
 					<button className="navButton">
 						<i className="bi bi-graph-up navIcon"></i>

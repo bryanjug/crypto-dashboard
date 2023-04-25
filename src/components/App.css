@@ -5,6 +5,9 @@ body {
 	margin: 0 !important;
 	background-color: #e6e4de;
 }
+.dashboardTitle {
+    margin-top: 1em;
+}
 .newsLoader {
 	margin: auto;
 	text-align: center;
@@ -480,7 +483,7 @@ body {
 	border: none;
 	padding-top: 8% !important;
 	padding-bottom: 8% !important;
-	color: #136daf;
+	color: #147bc5;
 	text-align: left;
 	padding-left: 20%;
 }

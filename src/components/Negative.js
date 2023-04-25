@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import GoogleBtn from "./GoogleBtn";
 import { Link } from "react-router-dom";
 import Nav from './Nav';
 import NegativeList from './NegativeList';
@@ -29,7 +28,6 @@ const Negative = () => {
                         <span className="navText logoText">Crypto</span>
                     </button>
                 </div>
-                <GoogleBtn />
                 <hr className="navLine" />
                 <Link to="/" className="nav">
                     <button className="navButton">

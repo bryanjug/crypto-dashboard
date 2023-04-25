@@ -103,14 +103,16 @@ const Favorites = ({
     
     useEffect(() => {
         function LoadFavorites() {
-            CoinGecko.get("/simple/price?ids=ethereum,tether,ripple,monero&vs_currencies=usd")
+            CoinGecko.get("/simple/price?ids=ethereum,tether,ripple,monero&vs_currencies=usd&include_24hr_change=true")
             .then(function(response) {
                 setCryptos(response.data)
-                console.log(cryptos)
+                console.log(response.data)
             })
         }
         LoadFavorites()
     }, [])
+
+    console.log(cryptos)
 
 	function NameList() {  
 		if (coins.length === 0) {
@@ -554,16 +556,17 @@ const Favorites = ({
                             </b>
 						</span>
 						{
-							favoritesGraphData[0].[8] > 0 ? 
+							favoritesGraphData[1].[8] > 0 ? 
 							<span className="priceUp favoritePercentage">
 								<b>
-									{Math.round(favoritesGraphData[0].[8])}%
+                                {Math.round(favoritesGraphData[0].[8])}%
 								</b>
 							</span>
 							:
 							<span className="priceDown favoritePercentage">
 								<b>
-									{Math.round(favoritesGraphData[0].[8])}%
+                                {Math.round(favoritesGraphData[0].[8])}%
+
 								</b>
 							</span>
 						}
@@ -642,7 +645,7 @@ const Favorites = ({
                             <b>
                                 {
                                     cryptos.ripple ?
-                                    `$${(cryptos.ripple.usd).toFixed(4)}`
+                                    `$${(cryptos.ripple.usd).toFixed(2)}`
                                     :
                                     null
                                 }
@@ -737,7 +740,7 @@ const Favorites = ({
                             <b>
                                 {
                                     cryptos.tether ?
-                                    `$${(cryptos.tether.usd).toFixed(4)}`
+                                    `$${(cryptos.tether.usd).toFixed(2)}`
                                     :
                                     null
                                 }
@@ -767,7 +770,7 @@ const Favorites = ({
 					</div>
 					<div className="col-12 favoriteCoinContainer">
 						<p className="favoriteCoin">
-                            {/* {cryptos.tether.usd} price */} Tether
+                            Tether
 						</p>
 					</div>
 					<div className="col-12">

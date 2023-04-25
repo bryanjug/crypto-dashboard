@@ -339,17 +339,17 @@ export const bitcoinGraphDataAction = () => async (dispatch, getState) => {
     });
 };
 
-export const favoritesGraphDataAction = (favorites, fetched) => async (dispatch, getState) => {
-    // const data = await FavoritesGraphData(favorites);
-    // dispatch({
-    //     type: FAVORITES_GRAPH_DATA,
-    //     payload: data
-    // });
+export const favoritesGraphDataAction = (fetched) => async (dispatch, getState) => {
+    const data = await FavoritesGraphData();
+    dispatch({
+        type: FAVORITES_GRAPH_DATA,
+        payload: data
+    });
 
-    // dispatch({
-    //     type: FETCHED_FAVORITES_GRAPH_DATA,
-    //     payload: fetched
-    // });
+    dispatch({
+        type: FETCHED_FAVORITES_GRAPH_DATA,
+        payload: fetched
+    });
 };
 
 export const trendingDataAction = () => async (dispatch, getState) => {
